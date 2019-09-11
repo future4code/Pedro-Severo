@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author"           content="Pedro Severo">
+    <meta name="generator"        content="VSCode">
+    <meta name="Keywords"         content="bike, bicicletas, onde comprar uma bike, qual o preço de uma bike">
+    <meta name="description"      content="Loja fictícia de bike">
+    <meta name="application-name" content="Future4">
+
+    <title>Casa da bike - Qual bike voce procura?</title>
+
+    <style>
+            body {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+            }
+    
+            header {
+                background-color: #47c787;
+            }
+    
+            
+            nav ul {
+                margin: 0;
+                padding: 0;
+                text-align: right
+            }
+    
+            nav, ul, li, a, header {
+                padding: 10px 30px;
+                text-decoration: none;
+                color: #ffffff;
+                background-color: #47c787;
+            }
+    
+            nav ul li {
+                list-style-type: none;
+                display: inline;
+            }
+    
+            nav ul li a:hover {
+                background-color:green
+            }
+    
+            #logo, h1 {
+                float: left;
+            }
+
+            footer {
+                background-color: #47c787;
+                color: #ffffff;
+                clear: both;
+                text-align: center;
+            }
+            
+    </style>
+</head>
+
+
+<body>
+    <main>
+        <header>
+            <h1>Casa da bike</h1>
+            <img src="logo.gif" alt="Logo da loja" id="logo">
+        </header>
+        <nav>
+            <ul>
+                <li><a href="Conheça nossos produtos.html">Conheça nossos produtos</a></li>
+                <li><a href="Página inicial.html">Página inicial</a></li>
+                <li><a href="Nossa equipe.html">Conheça nossa equipe</a></li>
+            </ul>
+        </nav>
+
+        <div>
+            <h2>Cadastro de novas bikes no estoque</h2>
+            <p>Controle interno da Casa da Bike. Preencha o formulário para acrescentar bike no estoque.</p>
+        </div>
+
+    <br>
+        
+        <form action="http://soter.ninja/form-viewer/">
+            <label for="imagem">Link da imagem</label> <br> 
+            <input type="text" name="nome" id="nome"> <br> <br>
+            
+            <label for="nome">Nome da bike</label> <br> 
+            <input type="text" name="nome" id="nome"> <br> <br>
+
+            <label for="descrição">Descrição</label> <br> 
+            <input type="text" name="Descrição" id="Descrição"> <br> <br>
+
+            <label for="preço">Preço encontrado em outro site</label> <br> 
+            <input type="text" name="Preço" id="Preço"> <br> <br>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <footer>
+            2019 | Casa da bike - Rua dos Guajajaras, 479, Centro - Belo Horizonte
+        </footer>
+    </main>
+
+</body>
+</html>
