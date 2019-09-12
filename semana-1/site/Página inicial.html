@@ -17,29 +17,34 @@
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
         }
 
-        nav {
-            margin: 0;
-            padding: 0;
-            text-align: right
-        }
-
-        nav, ul, .menu, a, header, #logo {
+        nav, ul, .botaoMenu, a, header {
             padding: 10px 30px;
             text-decoration: none;
             color: #ffffff;
             background-color: #47c787;
         }
 
-        .menu {
+        nav {
+            margin: 0;
+            padding: 0;
+            text-align: right;
+            width: 100%;
+            height: 100px;
+            position: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .botaoMenu {
             list-style-type: none;
             display: inline;
         }
 
-        .menu a:hover {
+        .botaoMenu a:hover {
             background-color:green
         }
 
-        #logo {
+        #logo, h1 {
             float: left;
         }
 
@@ -50,7 +55,6 @@
             background-repeat: no-repeat; 
             background-size: 100% 100%;
         }
-
 
         #botaoSaibaMais {
             width: 200px;
@@ -76,16 +80,15 @@
 
 <body>
     <main>
-        <header>
-            <h1>Casa da bike</h1>
-            <img src="logo.gif" alt="Logo da loja" id="logo">
-        </header>
-
         <nav>
-            <ul>
-                <li class="menu"><a href="Conheça nossos produtos.html">Conheça nossos produtos</a></li>
-                <li class="menu"><a href="Novos produtos.html">Novos produtos</a></li>
-                <li class="menu"><a href="Nossa equipe.html">Conheça nossa equipe</a></li>
+            <header>
+                <h1>Casa da bike</h1>
+                <img src="logo.gif" alt="Logo da loja" id="logo">
+            </header>
+            <ul id="menu">
+                <li class="botaoMenu"><a href="Conheça nossos produtos.html">Conheça nossos produtos</a></li>
+                <li class="botaoMenu"><a href="Novos produtos.html">Novos produtos</a></li>
+                <li class="botaoMenu"><a href="Nossa equipe.html">Conheça nossa equipe</a></li>
             </ul>
         </nav>
         
