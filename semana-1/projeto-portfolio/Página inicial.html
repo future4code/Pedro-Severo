@@ -16,6 +16,7 @@
         body {
             margin: 0;
             background-color: #7a33f0;
+            color: aliceblue;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
         }
 
@@ -43,6 +44,24 @@
             list-style-type: none;
             display: inline;
         }
+
+        #dobra {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dobra h2 {
+            clear: both;
+        }
+
+
+        footer {
+            background-color: #222;
+            height: 400px;
+        }
     </style>
 </head>
 <body>
@@ -60,10 +79,10 @@
         <div id="dobra">
             <h2>Desenvlvedor Full Stack</h2>
             <p>Portfólio profissional do desenvolvedor full stack Pedro Severo</p>
+            <img id="fotoDePerfil" src="Foto-de-perfil.gif" alt="Foto Pedro Severo">
         </div>
 
         <div id="bio">
-            <img id="fotoDePerfil" src="Foto-de-perfil.gif" alt="Foto Pedro Severo">
             <p>
                Curioso, criativo e ávido novas experiências e novos aprendizados.<br>
                Isso permitiu que sua carreira transitasse por diversas áreas de conhecimento.<br>
@@ -75,10 +94,13 @@
         <div id="experiencias">
             <ul>
                 <li>
-                    Desenvolvimento Web Full Stack - Future4              
+                    Desenvolvimento Web Full Stack - Future4 (Formação Acadêmica) 
                 </li>
                 <li>
-                    Marketing Digital e Growth Hacking - Gama Academy
+                    Marketing Digital e Growth Hacking - Gama Academy (Formação Acadêmica)
+                </li>
+                <li>
+                    Produtor de conteúdo web (copywriting) - Freelaw (Experiência Profissional)
                 </li>  
             </ul>
         </div>
@@ -88,11 +110,34 @@
         </div>
 
         <div id="habilidades">
+            <ul>
+                <li>
+                    Desenvolvimento web full stack - mais de 1000 horas de programação no curso de front e back end da Future4.
+                </li>
+                <li>
+                    Marketing digital - com ênfase em SEO, SEM e produção de conteúdo web. Excelente copywriting.
+                </li>
+            </ul>
 
         </div>
 
         <footer>
-            
+            <h4>Me siga nas redes sociais</h4>
+            <img src="github-logo.gif" alt="Git Hub Pedro Severo">
+            <img src="linkedin.gif" alt="Linkedin Pedro Severo">
+            <img src="gmail.gif" alt="Gmail Pedro Severo">
+
+            <form action="">
+                <h4>Entre em contato</h4>
+                <label for="nome">Seu nome</label>
+                <input type="text" name="nome" id="nome">
+                
+                <label for="email">Seu email</label>
+                <input type="text" name="email" id="email">
+
+                <label for="mensagem">Escreva aqui sua mensagem</label>
+                <input type="text" name="mensagem" id="mensagem">
+            </form>
         </footer>
     </main>
 
