@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item {
+            color: white;
+        }
+        
+        .body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+
+        .header {
+            background-color: grey;
+            flex-basis: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .menu {
+            background-color: #FFDC00;
+            flex-basis: 20%;
+        }
+        
+        .mid {
+            flex-basis: 40%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .topics {
+            background-color: aqua;
+            flex-basis: 50px;
+
+        }
+        
+        .content1 {
+            background-color: #F012BE; 
+            flex-basis: 500px;
+        }
+        
+        .content2 {
+            background-color: #0074D9;
+            flex-basis: 20%;
+        }
+        
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="item header">
+            <h1>DEV</h1>
+            <input type="text" placeholder="search">
+        </div>
+        
+        <div class="body">
+            <div class="item menu">MENU</div>
+            
+            <div class="mid">
+                <div class="topics">TOPICS</div>
+                <div class="item content1">CONTENT 1</div>
+            </div>
+            <div class="item content2">CONTENT 2</div>
+        </div>
+    
+    </div>
+</body>
+</html>
