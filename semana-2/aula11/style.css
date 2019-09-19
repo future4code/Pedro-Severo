@@ -4,19 +4,85 @@ body {
     margin: 0;
 }
 
+
+.tela-inteira {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 header {
     background-color: orange;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-basis: 50px;
 }
 
+main {
+    flex-grow: 1;
+    display: flex;
+}
 
-.videos {
+.menu-vertical {
+    flex-basis: 200px;
+    border-right-style: solid;
+    border-right-width: thin;
+}
+
+.botoes-meunu-vertical {
+    list-style-type: none;
+}
+
+.painel-de-videos {
+    padding-left: 20px;
+    padding-top: 20px;
+    flex-grow: 1;
     display: grid;
-    grid-template-rows: repeat(4, 20px 270px) 20px;
-    grid-template-columns: repeat(4, 3% 21.25%) 3%;
+    grid-template-columns: repeat(4, 24.8% 0.2%);
+    grid-template-rows: repeat(4, 270px 20px);
 }
+
+.media1 {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.media2 {
+    grid-column-start: 3;
+    grid-row-start: 1;
+}
+
+.media3 {
+    grid-column-start: 5;
+    grid-row-start: 1;
+}
+
+.media4 {
+    grid-column-start: 7;
+    grid-row-start: 1;
+}
+
+.media5 {
+    grid-column-start: 1;
+    grid-row-start: 3;
+}
+
+.media6 {
+    grid-column-start: 3;
+    grid-row-start: 3;
+}
+
+.media7 {
+    grid-column-start: 5;
+    grid-row-start: 3;
+}
+
+.media8 {
+    grid-column-start: 7;
+    grid-row-start: 3;
+}
+
 
 .box {
     display: grid;
@@ -28,73 +94,18 @@ header {
     justify-items: stretch;
 }
 
-.media1 {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 2;
-    grid-column-end: 3;
-}
-
-.media2 {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 4;
-    grid-column-end: 5;
-}
-
-.media3 {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 6;
-    grid-column-end: 7;
-}
-
-.media4 {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 8;
-    grid-column-end: 9;
-}
-
-.media5 {
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start: 2;
-    grid-column-end: 3;
-}
-
-.media6 {
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start: 4;
-    grid-column-end: 5;
-}
-
-.media7 {
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start: 6;
-    grid-column-end: 7;
-}
-
-.media8 {
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start: 8;
-    grid-column-end: 9;
-}
-
 
 footer {
     background-color: grey;
     margin: 0;
     padding: 0;
-    height: 200px;
+    flex-basis: 50px;
     display: flex;
     align-items: center;
 }
 
 img {
+    width: 100%;
     height: 200px;
 }
 
