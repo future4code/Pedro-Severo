@@ -8,50 +8,58 @@
 
     <script>
         function criarTarefa() {
-            let valorDoInput = document.getElementById("tarefa").value;
+            let valorDoInput = document.getElementById("tarefaInput").value;
             let diaEscolhido = document.getElementById("diaDaSemana").value;
             document.querySelector("input").value = "";
 
 
             if (valorDoInput === "") {
-                alert("Não é possível inserir uma tarefa em branco.")
+                alert("Não é possível inserir uma tarefa em branco.");
             } 
             
 
             if (valorDoInput !== "" && diaEscolhido === "segunda") {
                 let listaDeTarefas = document.getElementById("listaDeSegunda");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
 
             } else if (valorDoInput !== "" && diaEscolhido === "terca") {
                 let listaDeTarefas = document.getElementById("listaDeTerca");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
 
             } else if (valorDoInput !== "" && diaEscolhido === "quarta") {
                 let listaDeTarefas = document.getElementById("listaDeQuarta");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
                 
             } else if (valorDoInput !== "" && diaEscolhido === "quinta") {
                 let listaDeTarefas = document.getElementById("listaDeQuinta");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
 
             } else if (valorDoInput !== "" && diaEscolhido === "sexta") {
                 let listaDeTarefas = document.getElementById("listaDeSexta");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
 
             } else if (valorDoInput !== "" && diaEscolhido === "sabado") {
                 let listaDeTarefas = document.getElementById("listaDeSabado");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
 
             } else if (valorDoInput !== "" && diaEscolhido === "domingo") {
                 let listaDeTarefas = document.getElementById("listaDeDomingo");
-                listaDeTarefas.innerHTML += "<li>" + valorDoInput + "</li>";
+                listaDeTarefas.innerHTML += '<li onclick="riscarTarefa(event)" class="tarefa">' + valorDoInput + "</li>";
             } 
         }
 
-
         function riscarTarefa(event) {
-            let tarefaRiscada = document.getElementById("listaDeSegunda")
-            element.classList.add("tarefa-pronta")
+            const element = event.target;
+            element.classList.add("done");
+        }
+
+        function limparTarefas(event) {
+            let tarefas = document.querySelector("[class='tarefa']");
+            let i = tarefas ? tarefas.parentNode : null;
+
+            if (i) {
+                i.remove(tarefas);
+            }
         }
         
     </script>
@@ -110,8 +118,8 @@
             min-height: 20vh;
         }
 
-        .tarefa-pronta {
-            color: blue;
+        .done {
+            text-decoration: line-through;
         }
 
     </style>
@@ -120,7 +128,7 @@
     <main>
         <header>
             <p>Nova Tarefa:</p>
-            <input type="text" id="tarefa" >
+            <input type="text" id="tarefaInput" >
             <select name="diaDaSemana" id="diaDaSemana">
                 <option value="segunda">Segunda-feira</option>
                 <option value="terca">Terça-Feira</option>
@@ -131,11 +139,12 @@
                 <option value="domingo">Domingo</option>
             </select>
             <button onclick="criarTarefa()">Criar Tarefa!</button>
+            <button onclick="limparTarefas(event)">Limpar Tarefas</button>
         </header>
         
         <div id="segunda">
             <h4>Segunda-Feira</h4>
-            <ul id="listaDeSegunda" onclick="riscarTarefa(event)"></ul>
+            <ul id="listaDeSegunda"></ul>
 
         </div>
         
