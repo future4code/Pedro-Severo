@@ -48,18 +48,20 @@
             } 
         }
 
+
+
         function riscarTarefa(event) {
             const element = event.target;
             element.classList.add("done");
         }
 
-        function limparTarefas(event) {
-            let tarefas = document.querySelector("[class='tarefa']");
-            let i = tarefas ? tarefas.parentNode : null;
 
-            if (i) {
-                i.remove(tarefas);
-            }
+
+        function limparTarefas() {
+           let tarefasDeSegunda = document.getElementById("listaDeSegunda").value;
+           listaDeSegunda.innerHTML += "";
+
+
         }
         
     </script>
@@ -139,7 +141,7 @@
                 <option value="domingo">Domingo</option>
             </select>
             <button onclick="criarTarefa()">Criar Tarefa!</button>
-            <button onclick="limparTarefas(event)">Limpar Tarefas</button>
+            <button onclick="limparTarefas()">Limpar Tarefas</button>
         </header>
         
         <div id="segunda">
