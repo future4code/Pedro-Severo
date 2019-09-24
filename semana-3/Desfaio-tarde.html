@@ -49,19 +49,45 @@
         }
 
 
-
         function riscarTarefa(event) {
             const element = event.target;
             element.classList.add("done");
         }
 
 
+        function limparTarefasSegunda() {
+           let tarefasDeSegunda = document.getElementById("listaDeSegunda");
+           tarefasDeSegunda.innerHTML = "";
+        }
 
-        function limparTarefas() {
-           let tarefasDeSegunda = document.getElementById("listaDeSegunda").value;
-           listaDeSegunda.innerHTML += "";
+        function limparTarefasTerca() {
+           let tarefasDeTerca = document.getElementById("listaDeTerca");
+           tarefasDeTerca.innerHTML = "";
+        }
 
+        function limparTarefasQuarta() {
+           let tarefasDeQuarta = document.getElementById("listaDeQuarta");
+           tarefasDeQuarta.innerHTML = "";
+        }
 
+        function limparTarefasQuinta() {
+           let tarefasDeQuinta = document.getElementById("listaDeQuinta");
+           tarefasDeQuinta.innerHTML = "";
+        }
+
+        function limparTarefasSexta() {
+           let tarefasDeSexta = document.getElementById("listaDeSexta");
+           tarefasDeSexta.innerHTML = "";
+        }
+
+        function limparTarefasSabado() {
+           let tarefasDeSabado = document.getElementById("listaDeSabado");
+           tarefasDeSabado.innerHTML = "";
+        }
+
+        function limparTarefasDomingo() {
+           let tarefasDeDomingo = document.getElementById("listaDeDomingo");
+           tarefasDeDomingo.innerHTML = "";
         }
         
     </script>
@@ -141,42 +167,49 @@
                 <option value="domingo">Domingo</option>
             </select>
             <button onclick="criarTarefa()">Criar Tarefa!</button>
-            <button onclick="limparTarefas()">Limpar Tarefas</button>
+
         </header>
         
         <div id="segunda">
             <h4>Segunda-Feira</h4>
+            <button onclick="limparTarefasSegunda()">Limpar Tarefas</button>
             <ul id="listaDeSegunda"></ul>
 
         </div>
         
         <div id="terca">
             <h4>Terça-Feira</h4>
+            <button onclick="limparTarefasTerca()">Limpar Tarefas</button>
             <ul id="listaDeTerca"></ul>
         </div>
         
         <div id="quarta">
             <h4>Quarta-Feira</h4>
+            <button onclick="limparTarefasQuarta()">Limpar Tarefas</button>
             <ul id="listaDeQuarta"></ul>
         </div>
         
         <div id="quinta">
             <h4>Quinta-Feira</h4>
+            <button onclick="limparTarefasQuinta()">Limpar Tarefas</button>
             <ul id="listaDeQuinta"></ul>
         </div>
         
         <div id="sexta">
             <h4>Sexta-Feira</h4>
+            <button onclick="limparTarefasSexta()">Limpar Tarefas</button>
             <ul id="listaDeSexta"></ul>
         </div>
 
         <div id="sabado">
             <h4>sabado</h4>
+            <button onclick="limparTarefasSabado()">Limpar Tarefas</button>
             <ul id="listaDeSabado"></ul>
         </div>
 
         <div id="domingo">
             <h4>Domingo</h4>
+            <button onclick="limparTarefasDomingo()">Limpar Tarefas</button>
             <ul id="listaDeDomingo"></ul>
         </div>
     </main>
