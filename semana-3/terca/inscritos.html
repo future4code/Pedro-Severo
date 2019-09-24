@@ -55,7 +55,7 @@
 
     function apresentaInscritos() {
         let caixaDeCadastro = document.querySelector(".container");
-        let dadosDoUsuario = window.localStorage;
+        let dadosDoUsuario = buscaItem(dados);
 
         caixaDeCadastro.innerHTML += "<p>" + dadosDoUsuario + "</p>" 
     }
