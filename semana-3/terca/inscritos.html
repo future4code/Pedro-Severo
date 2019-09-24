@@ -35,4 +35,31 @@
     </div>
     <a href="cadastro.html"><button id="botao-voltar">Voltar</button></a>    
 </body>
+
+<script>
+
+    
+    function salvaItem(chave, item) {
+            if(item && chave) {
+                window.localStorage.setItem(chave, JSON.stringify(item));
+            }
+        }
+
+    function buscaItem(chave) {
+        const valor = window.localStorage.getItem(chave);
+        if (valor) {
+            return JSON.parse(valor);
+        }
+        return [];  
+    }
+
+    function apresentaInscritos() {
+        let caixaDeCadastro = document.querySelector(".container");
+        let dadosDoUsuario = window.localStorage;
+
+        caixaDeCadastro.innerHTML += "<p>" + dadosDoUsuario + "</p>" 
+    }
+
+
+</script>
 </html>

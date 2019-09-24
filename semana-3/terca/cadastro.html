@@ -38,9 +38,9 @@
         <label for="idade">Email</label>
         <input type="text" id="email" name="email" placeholder="Email">
         <button onclick="cadastrar()">Cadastrar</button>
-        <!-- <a href="inscritos.html"> -->
-            <button onclick="salvaItem()"id="botao-inscritos">Inscritos</button>
-        <!-- </a> -->
+        <a href="inscritos.html">
+            <button id="botao-inscritos">Inscritos</button>
+        </a>
     </div>
 
     <script>
@@ -56,17 +56,23 @@
             }
 
             console.log(informacoes);
+
+            salvaItem("dados", informacoes)
         }
 
-        function salvaItem(dado, cadastrar) {
-            let dado = cadastrar()
-
-            if(dado && cadastrar) {
-                window.localStorage.setItem(dado, JSON.stringify(cadastrar));
+        function buscaItem(chave) {
+            const valor = window.localStorage.getItem(chave);
+            if (valor) {
+                return JSON.parse(valor);
             }
+            return [];
+        }
 
-            console.log(salvaItem)
+        function salvaItem(chave, item) {
+            if(item && chave) {
+                window.localStorage.setItem(chave, JSON.stringify(item));
             }
+        }
     </script>
 </body>
 </html>
