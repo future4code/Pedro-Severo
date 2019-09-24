@@ -38,7 +38,6 @@
 
 <script>
 
-    
     function salvaItem(chave, item) {
             if(item && chave) {
                 window.localStorage.setItem(chave, JSON.stringify(item));
@@ -53,12 +52,20 @@
         return [];  
     }
 
+    
     function apresentaInscritos() {
         let caixaDeCadastro = document.querySelector(".container");
-        let dadosDoUsuario = buscaItem(dados);
+        let dadosDoUsuario = buscaItem("dados");
+        
+        console.log(dadosDoUsuario); 
 
-        caixaDeCadastro.innerHTML += "<p>" + dadosDoUsuario + "</p>" 
+
+        caixaDeCadastro.innerHTML += "<p> nome: " + dadosDoUsuario.nome + "</p>";
+        caixaDeCadastro.innerHTML += "<p> idade: " + dadosDoUsuario.idade + "</p>";
+        caixaDeCadastro.innerHTML += "<p> email: " + dadosDoUsuario.email + "</p>";
     }
+
+    window.onload = apresentaInscritos
 
 
 </script>
