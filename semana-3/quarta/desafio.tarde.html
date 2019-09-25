@@ -17,14 +17,14 @@
             width: 100%;
         }
 
-        .cadastro {
+        #cadastro {
             padding: 20px;
             flex-basis: 40%;
             display: flex;
             flex-direction: column;
         }
 
-        article {
+        #lista-de-posts {
             padding: 20px;
             flex-basis: 60%;
         }
@@ -34,13 +34,9 @@
 </head>
 <body>
     <main>
-        <article>
-            <h2></h2>
-            <p class="autorDoPost"></p>
-            <p class="conteudoDoPost"></p>
-
-        </article>
-        <div class="cadastro">
+        <div id="lista-de-posts">
+        </div>
+        <div id="cadastro">
             <h1>Formulário de inscrição Post</h1>
             <label for="titulo">Titulo</label>
             <input type="text" id="titulo" name="titulo" placeholder="Titulo">
@@ -53,36 +49,53 @@
     </main>
 </body>
 <script>
-    const bancoDePosts = []
+    // const bancoDePosts = [];
 
     function cadastrar () {
-    let titulo = document.getElementById("titulo").value
-    let autor = document.getElementById("autor").value
-    let conteudo = document.getElementById("conteudo").value
+        let titulo = document.getElementById("titulo").value;
+        let autor = document.getElementById("autor").value;
+        let conteudo = document.getElementById("conteudo").value;
 
-    class Post {
-        constructor (titulo, autor, conteudo) {
-            this.titulo = titulo;
-            this.autor = autor;
-            this.conteudo = conteudo;
+        class Post {
+            constructor (titulo, autor, conteudo) {
+                this.titulo = titulo;
+                this.autor = autor;
+                this.conteudo = conteudo;
+            }
+
+            buscaTituloDoPostCadastrado() {
+                const tituloDoPostCadastrado = this.titulo;
+                return tituloDoPostCadastrado;
+            }
+            
+            buscaAutorDoPostCadastrado() {
+                const autorDoPostCadastrado = this.autor;
+                return autorDoPostCadastrado;
+            }
+
+            buscaConteudoDoPostCadastrado() {
+                const conteudoDoPostCadastrado = this.conteudo;
+                return conteudoDoPostCadastrado;
+            }
         }
 
-        // buscaPostCadastrado() {
-        //     const postCadastrado = this.titulo + " - " + this.autor + ": " + this.conteudo;
-        //     return postCadastrado
-        // }
-    }
+        const bancoDePosts = [];
 
-    let post = new Post (titulo, autor, conteudo);
+        let post = new Post (titulo, autor, conteudo);
 
-    bancoDePosts.push(post);
+        bancoDePosts.push(post);
 
-    document.getElementById("titulo").value = "";
-    document.getElementById("autor").value = "";
-    document.getElementById("conteudo").value = "";
+        const listaDePosts = document.getElementById("lista-de-posts");
 
-    console.log(bancoDePosts);
+        for (let posts of bancoDePosts) {
+            listaDePosts.innerHTML += "<h2 class='titulo-de-post'>" + posts.buscaTituloDoPostCadastrado() + "</h2>";
+            listaDePosts.innerHTML += "<p class='autor-do-post'>" + posts.buscaAutorDoPostCadastrado() + "</p>";
+            listaDePosts.innerHTML += "<p class='conteudo-do-post'>" + posts.buscaConteudoDoPostCadastrado() + "</p>";
+        }
 
+        document.getElementById("titulo").value = "";
+        document.getElementById("autor").value = "";
+        document.getElementById("conteudo").value = "";
     }
 
 
