@@ -28,8 +28,6 @@
             padding: 20px;
             flex-basis: 60%;
         }
-
-
     </style>
 </head>
 <body>
@@ -37,7 +35,7 @@
         <div id="lista-de-posts">
         </div>
         <div id="cadastro">
-            <h1>Formulário de inscrição Post</h1>
+            <h1>Formulário de inscrição do Post</h1>
             <label for="titulo">Titulo</label>
             <input type="text" id="titulo" name="titulo" placeholder="Titulo">
             <label for="autor">Autor</label>
@@ -51,9 +49,21 @@
     </main>
 </body>
 <script>
-    // const bancoDePosts = [];
 
-    
+    window.onload = salvarPostsAntigos
+    function salvarPostsAntigos() {
+        const listaDePosts = document.getElementById("lista-de-posts");
+        const bancoDePosts = buscaItem("posts");
+        listaDePosts.innerHTML = ""
+
+        for (let postsCadastrados of bancoDePosts) {
+            listaDePosts.innerHTML += "<h2 class='titulo-de-post'>" + postsCadastrados.titulo + "</h2>";
+            listaDePosts.innerHTML += "<p class='autor-do-post'>" + postsCadastrados.autor + "</p>";
+            listaDePosts.innerHTML += "<img src=" + postsCadastrados.imagem + ">";
+            listaDePosts.innerHTML += "<p class='conteudo-do-post'>" + postsCadastrados.conteudo + "</p>";
+        }
+    }
+ 
     function salvaItem(chave, item) {
         if(item && chave) {
             window.localStorage.setItem(chave, JSON.stringify(item));
@@ -68,8 +78,6 @@
         return [];
     }
 
-
-
     function cadastrar () {
         let titulo = document.getElementById("titulo").value;
         let autor = document.getElementById("autor").value;
@@ -83,32 +91,8 @@
                 this.imagem = imagem;
                 this.conteudo = conteudo;
             }
-
-            buscaTituloDoPostCadastrado() {
-                const tituloDoPostCadastrado = this.titulo;
-                return tituloDoPostCadastrado;
-            }
-            
-            buscaAutorDoPostCadastrado() {
-                const autorDoPostCadastrado = this.autor;
-                return autorDoPostCadastrado;
-            }
-
-            buscaImagemDoPostCadastrado() {
-                const buscaImagemDoPostCadastrado = this.imagem;
-                return buscaImagemDoPostCadastrado;
-            }
-
-            buscaConteudoDoPostCadastrado() {
-                const conteudoDoPostCadastrado = this.conteudo;
-                return conteudoDoPostCadastrado;
-            }
         }
 
-        // aqui, se eu coloco bancoDePosts = [], funciona, 
-        // se eu coloco do jeito que tá agora, 
-        // quebra o código e avisa um porblema em uma linha que não existe, maior do que o numero de linhas do código
-        
         const bancoDePosts = buscaItem("posts");
 
         let post = new Post (titulo, autor, imagem, conteudo);
@@ -116,20 +100,20 @@
         bancoDePosts.push(post);
 
         const listaDePosts = document.getElementById("lista-de-posts");
+        listaDePosts.innerHTML = ""
 
         for (let postsCadastrados of bancoDePosts) {
-            listaDePosts.innerHTML += "<h2 class='titulo-de-post'>" + postsCadastrados.buscaTituloDoPostCadastrado() + "</h2>";
-            listaDePosts.innerHTML += "<p class='autor-do-post'>" + postsCadastrados.buscaAutorDoPostCadastrado() + "</p>";
-            listaDePosts.innerHTML += "<img src=" + postsCadastrados.buscaImagemDoPostCadastrado() + ">";
-            listaDePosts.innerHTML += "<p class='conteudo-do-post'>" + postsCadastrados.buscaConteudoDoPostCadastrado() + "</p>";
+            listaDePosts.innerHTML += "<h2 class='titulo-de-post'>" + postsCadastrados.titulo + "</h2>";
+            listaDePosts.innerHTML += "<p class='autor-do-post'>" + postsCadastrados.autor + "</p>";
+            listaDePosts.innerHTML += "<img src=" + postsCadastrados.imagem + ">";
+            listaDePosts.innerHTML += "<p class='conteudo-do-post'>" + postsCadastrados.conteudo + "</p>";
         }
-
         document.getElementById("titulo").value = "";
         document.getElementById("autor").value = "";
         document.getElementById("imagem").value = "";
         document.getElementById("conteudo").value = "";
         
-        salvaItem ("posts", posts);
+        salvaItem("posts", bancoDePosts);
     }
 </script>
 </html>
