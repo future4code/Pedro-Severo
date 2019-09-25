@@ -19,6 +19,8 @@
     </div>
 
     <script>
+        const bancoDePosts = []
+
         function cadastrar () {
         let titulo = document.getElementById("titulo").value
         let autor = document.getElementById("autor").value
@@ -37,11 +39,19 @@
             }
         }
 
-        const post1 = new Post (titulo, autor, conteudo);
+        let post = new Post (titulo, autor, conteudo);
 
-        console.log(post1);
+        bancoDePosts.push(post);
+
+        document.getElementById("titulo").value = "";
+        document.getElementById("autor").value = "";
+        document.getElementById("conteudo").value = "";
+
+        console.log(bancoDePosts);
 
         }
+
+
     </script>
 </body>
 </html>
