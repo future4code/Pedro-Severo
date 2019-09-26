@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-container">
+        <section class="custom-container" id="input-despesas">
+            <h2>Controlador de Despesas</h2>
+            <h3>Cadastrar despesa</h3>
+            <div>
+                <p>Valor</p>
+                <input id="valor-da-despesa">
+                <p>Tipo (Casa, Viagem, Rolês, Outros)</p>
+                <select id="tipo-da-despesa">
+                    <option value="Casa">Casa</option>
+                    <option value="Rolê">Rolê</option>
+                    <option value="Viagem">Viagem</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <p>Descrição</p>
+                <input id="descrição-da-despesa">
+            </div>
+            <button id="cadastrar-despesa-btn" onclick="cadastrarDespesa()">Cadastrar Despesa</button>
+        </section>
+
+
+    </div>
+<script src="script.js">
+function cadastrarDespesa() {
+    document.getElementById("valor-da-despesa").value = "";
+    document.getElementById("tipo-da-despesa").value = "";
+    document.getElementById("descrição-da-despesa").value = "";
+
+}
+</script>
+</body>
+</html>
