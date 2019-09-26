@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <style>
+        .main-container {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
 </head>
 <body>
     <div class="main-container">
@@ -13,7 +20,7 @@
             <h3>Cadastrar despesa</h3>
             <div>
                 <p>Valor</p>
-                <input id="valor-da-despesa">
+                <input type="number" id="valor-da-despesa">
                 <p>Tipo (Casa, Viagem, Rolês, Outros)</p>
                 <select id="tipo-da-despesa">
                     <option value="Casa">Casa</option>
@@ -30,20 +37,25 @@
             <h2>Relação de Despesas</h2>
             <div>
                 <select id="escolha-do-tipo-da-despesa">
+                    <option value=""></option>
                     <option value="Casa">Casa</option>
                     <option value="Rolê">Rolê</option>
                     <option value="Viagem">Viagem</option>
                     <option value="Outros">Outros</option>
                 </select>
                 <p>Valor Mínimo</p>
-                <input id="valor-minimo-da-despesa">
+                <input type="number" id="valor-minimo-da-despesa">
                 <p>Valor Máximo</p>
-                <input id="valor-maximo-da-despesa">
+                <input type="number" id="valor-maximo-da-despesa">
             </div>
             <button id="botao-filtrar" onclick="filtrar()">Filtrar</button>
             <button id="botao-limpar-filtro" onclick="limparFiltro()">Limpar Filtro</button>
             <hr>
             <div id="lista-de-despesa"></div>
+        </section>
+        <section class="custom-container" id="extrato-de-despesas">
+            <h2>Extrato</h2>
+            <div id="valor-total"></div>
         </section>
 
 
