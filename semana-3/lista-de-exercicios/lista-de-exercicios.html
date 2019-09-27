@@ -235,7 +235,49 @@
         }
 
         //4
-        
+        function exerciciosDeObjetos4() {
+            class Pessoa {
+                constructor (nome, idade, email, endereco) {
+                    this.nome = nome;
+                    this.idade = idade;
+                    this.email = email;
+                    this.endereco = endereco;
+                }
+            }
+
+            const pessoa = new Pessoa ("Pedro", 24, "phsevero94@gmail.com","Rua dos Guajajaras, BH");
+            const pessoaAnonima = new Pessoa ("ANÔNIMO", "ANÔNIMO", "ANÔNIMO", "ANÔNIMO");
+        }
+
+
+        // Exercícios de Array
+        // 1
+        function exerciciosDeArray1() {
+            const pessoas = [
+                { nome: "Pedro", idade: 20 },
+                { nome: "João", idade: 10 },
+                { nome: "Paula", idade: 12 },
+                { nome: "Artur", idade: 89 } 
+            ]
+        //a)
+            const pessoasAdultas = pessoas.filter((adultos) => {
+                return adultos.idade >= 20; 
+            })
+            console.log (pessoasAdultas)
+        //b) 
+            const pessoasJovens = pessoas.filter((xovens) => {
+                return xovens.idade < 20;
+            }) 
+            console.log (pessoasJovens)
+        } 
+
+        // 2
+        const array = [1, 2, 3, 4, 5, 6];
+        // a)
+        const arrayA = array.map ((novoValor) =>{
+            return elem * 2    
+        }) 
+        c
 
 
 
