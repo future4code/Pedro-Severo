@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        function comprarCarta() {
+            // Cria array de cartas
+            const cartas = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+            // Cria array de naipes
+            const naipes = ["♦️", "♥️", "♣️", "♠️"]
+
+            // Sorteia uma carta
+            const numero = cartas[Math.floor(Math.random() * 13)]
+
+            // Sorteia um naipe
+            const naipe = naipes[Math.floor(Math.random() * 4)]
+
+            let valor
+
+            // Verifica se é uma das letras e coloca o valor correspondente na variável valor
+            if (numero === "A") {
+                valor = 11
+            } else if (numero === "J" || numero === "Q" || numero === "K") {
+                valor = 10
+            } else { // Se nao for uma das letras, só converte a string para número
+                valor = Number(numero)
+            }
+
+            // Cria um objeto da carta com as propriedades que vamos precisar: texto e valor
+            const carta = {
+                texto: numero + naipe,
+                valor: valor
+            }
+
+            return carta
+        }
+
+
+
+
+        // 5 - O usuário recebe um `confirm` que indica todas as suas cartas, a primeira carta do 
+        // computador (a segunda é oculta para o usuário). O texto do `confirm` seria algo como 
+        // `Suas cartas são 2♠️ K♥️. A carta revelada do computador é 6♣️. Deseja comprar mais uma carta?`.
+
+        // // 5a - Se o usuário decidir comprar mais cartas, uma nova carta é sorteada para ele. 
+        // Nesse momento sua pontuação pode superar 21 e, nesse caso, ele perde. Se sua pontuação for 
+        // menor ou igual a 21, repetir a etapa 5 até que o usuário decida parar ou exceda 21.
+
+        // //b - Se o usuário decidir não comprar novas cartas, é a vez do computador. O computador 
+        // compra cartas até que sua pontuação seja igual ou maior do que a pontuação do usuário. 
+        // O jogo finaliza quando o computador parar de comprar cartas.
+
+        //6 - Ao final do jogo o programa deve apresentar um `alert` com a seguinte mensagem, 
+        // ajustada de acordo com o resultado do jogo. `Suas cartas são 2♠️ 3♦️ 6♥️. Sua pontuação é 11. 
+        // As cartas do computador são 6♦️ K♠️. A pontuação do computador é 16. O computador ganhou!`
+
+        alert("Bem vindo ao jogo de Blackjack!");
+
+        let querJogar = true
+
+
+        while (querJogar) {
+            querJogar = confirm("Você quer iniciar uma nova partida?");
+            
+            if (querJogar === true) {  
+                const carta1 = comprarCarta();
+                const carta2 = comprarCarta();
+                const carta3 = comprarCarta();
+                const carta4 = comprarCarta();
+
+
+                //Arrays indicando a mão e os valores de cada carta dos jogadores. 
+                //Aqui precisa ser acrescentado novas cartas e valores a cada novo saque. 
+                let maoUsuario = [carta1.texto, carta2.texto];
+                let valoresUsuario = [carta1.valor, carta2.valor];
+
+                let maoComputador = [carta3.texto, carta4.texto];
+                let valoresComputador = [carta3.valor, carta4.valor];
+
+                //Indicação de qual é a soma de valores das cartas que estão na mão de cada jogador
+                let somaDaMaoDoUsuario = 0;
+                let somaDaMaoDoComputador = 0;
+
+                for (let valorAtualUsuario of valoresUsuario) {
+                somaDaMaoDoUsuario += valorAtualUsuario
+                };
+                
+                for (let valorAtualComputador of valoresComputador) {
+                somaDaMaoDoComputador += valorAtualComputador
+                };
+
+                // Idicação de quais são as cartas que estão na mão de cada jogador
+                let somaDasCartasDoUsuario = "";
+                let somaDasCartasDoComputador = "";
+                
+                for (let cartaAtualUsuario of maoUsuario) {
+                somaDasCartasDoUsuario += cartaAtualUsuario
+                }
+
+                for (let cartaAtualComputador of maoComputador) {
+                somaDasCartasDoComputador += cartaAtualComputador
+                }
+
+                // vez do usuário 
+
+                let querComprar = true
+
+                querComprar = confirm("Suas cartas são " + somaDasCartasDoUsuario + ". A carta revelada pelo computador é " + carta3.texto + ". Deseja comprar outra carta?");
+
+                if (querComprar === true) {
+                    maoUsuario.push(comprarCarta().texto);
+                    valoresUsuario.push(comprarCarta().valor);
+                    
+                    let querComprarMais = true
+
+                    while (somaDaMaoDoUsuario <= 21 && querComprarMais === true) {
+
+                    querComprarMais = confirm("Suas cartas são " + somaDasCartasDoUsuario + ". A carta revelada pelo computador é " + carta3.texto + ". Deseja comprar outra carta?");
+                                        
+                    if (querComprarMais === true) {
+                    maoUsuario.push(comprarCarta().texto);
+                    valoresUsuario.push(comprarCarta().valor);
+                    }
+
+                    }
+                } else
+                    
+                
+
+                // vez do computador
+
+                if (somaDaMaoDoUsuario <= 21) {
+                    while (somaDaMaoDoComputador <= somaDaMaoDoUsuario) {
+                    maoComputador.push(comprarCarta().texto);
+                    valoresComputador.push(comprarCarta().valor);
+                    }
+                } else
+
+                // Resultados
+
+                if (somaDaMaoDoUsuario === somaDaMaoDoComputador) {
+                    console.log("Suas cartas são", somasDasCartasDoUsuario, ". Sua pontuação é", somaDaMaoDoUsuario, ". As cartas do computador são", somaDasCartasDoComputador, ". A pontuação do computador é ", somaDaMaoDoComputador, ". Rolou empate.");
+                } else if (somaDaMaoDoUsuario < somaDaMaoDoComputador || somaDaMaoDoUsuario > 21) {
+                    console.log("Suas cartas são", somaDasCartasDoUsuario, ". Sua pontuação é", somaDaMaoDoUsuario, ". As cartas do computador são", somaDasCartasDoComputador, ". A pontuação do computador é", somaDaMaoDoComputador, ". O computador ganhou.");
+                } else if (somaDaMaoDoComputador > 21) {
+                    console.log("Suas cartas são", somasDasCartasDoUsuario, ". Sua pontuação é", somaDaMaoDoUsuario, ". As cartas do computador são", somaDasCartasDoComputador, ". A pontuação do computador é ", somaDaMaoDoComputador, ". O usuário ganhou.");
+                }
+            querJogar = false
+            }  else {
+                console.log("O jogo acabou.")
+            }
+            }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

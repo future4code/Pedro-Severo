@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Exercicios</title>
+    <script>
+        // Exercíios de Interpretação de código 
+
+        // 1
+        // A função recebe um valor em dolar, por meio de uma variável,
+        // pergunta ao usuário qual é o valor da cotação do dolar, o usuário informa,
+        // e a função realiza a operação de multiplicação do valor em dolar recebeido e a cotação,
+        // retornando o valor em real. 
+
+        // 2
+        // A função recebe de uma variável o tipo de investimento pretendido e o valor a ser investido, 
+        // depois, caso o ivestimento escolhido seja Poupança, a função multiplica o valor por 1.03,
+        // caso seja Renda Fixa, multiplica por 1.05, CDB, multiplica por 1.06 e Ações, 1.1. Caso a variável
+        // indique um investimento que não existe, a função retorna mensagem de erro. Por fim, como há duas variáveis,
+        // indicando as entradas da função, novoMontante e segundoMontante, rolou um console loge do resultado de cada uma.  
+
+        // 3 
+        // A função pega o array numero e o varre por meio do "for of". Durante essa varrida,
+        // os números pares são incluídos em um novo array de nome array1,
+        // os números não pares (ou seja, impar), são incluídos em outro array, o array2. Depois disso, 
+        // rolou um console.log para indicar o tamanha de cada array: o primeiro, com todos os números, e os 
+        // outros dois criados pela função.  
+
+        // 4
+        // Rolou uma varrida na variável numeros e, enquanto rola a varrida, ela define o valor de outras duas variáveis. 
+        // Primiero, a variável numero1, que vai assumir o valor dos elementos do array, caso o elemento seja menor do que infinito,
+        // (ou seja, sempre), e segundo, a variável numero2, que vai assumir o valor do elemento do array, caso o elemento seja maior que 0.
+
+
+        // Exercícios de Lógica de Programação
+        
+        // 1 
+        // É possivel percorrer e iterar uma lista por meio de forEach, map e filter:
+        function logicaDeProgramacao1() {
+            const brejas = [
+                { tipo: "IPA", amargor: "alto", copo: 0 },
+                { tipo: "Session IPA", amargor: "médio", copo: 0 },
+                { tipo: "Weizen", amargor: "baixo", copo: 0 },
+            ];
+            // forEach
+            brejas.forEach((breja, index, array) => {
+                chopp.copo = 100; 
+            });
+            // map 
+            const tipoDasBrejas = brejas.map( breja => {
+                return breja.tipo;
+            });
+            // filter
+            const amargorDasBrejas = brejas.filter( breja => {
+                return breja.amargor === "alto"; 
+            });
+        }
+
+        // 2
+        // booleano3 === true
+        // booleano4 === false 
+        // a) true e false e true
+        // b) (true e false) ou false
+        // c) (false ou true) e (false ou true)
+        // d) (true e false) ou (false e false)
+        // e) (false) e (false) ou (true e true e true)
+
+        // 3
+        function logicaDeProgramacao3() {
+            const quantidadeDeNumerosPares
+            let i = 0
+            while(i < quantidadeDeNumerosPares) {
+                console.log(i*2)
+                i = i + 1
+            }
+        }
+
+        //4
+        function logicaDeProgramacao4 () {
+            let lado1 = 8
+            let lado2 = 3
+            let lado3 = 6
+            if (lado1 === lado2 && lado1 === lado3) {
+                alert("equilatero")
+            } else if (lado1 === lado2 || lado1 === lado3 || lado2 === lado3) {
+                alert("isósceles")
+            } else {
+                alert("escaleno")
+            } 
+            }
+
+        //5
+        function logicaDeProgramacao5 () {
+            let numero1 = Number(prompt("indique um número: "));
+            let numero2 = Number(prompt("indique outro número: "));
+            if (numero1 >= numero2) {
+                alert("O maior é: " + numero1);
+            } else if (numero1 === numero2) {
+                alert ("São iguais e divisíveis e a diferença é 0"); 
+            } else {
+                alert ("O maior é: " + numero2);
+            }
+
+            if (numero1 % numero2 === 0) {
+                alert(numero1 + "é divisível por " + numero2);
+            } else {
+                alert(numero1 + "não é divisível por " + numero2);
+            }
+
+            if (numero2 % numero1 === 0) {
+                alert(numero2 + "é divisível por " + numero1);
+            } else {
+                alert(numero2 + "não é divisível por " + numero1);
+            }
+        }
+
+
+        // Exercícios de Funções
+        // 1
+        function exerciciosDeFuncoes1 () {
+            const numeros = [1, 2, 3, 4];
+
+            let maiorNumero = numeros[0]
+            let segundoMaiorNumero = numeros[0]
+
+
+            for (let numeroAtual of numeros) {
+                if (numeroAtual > maiorNumero) {
+                    maiorNumero = numeroAtual
+                }
+            }
+
+            for (let numeroAtual of numeros) {
+                if (numeroAtual > segundoMaiorNumero && numeroAtual < maiorNumero) {
+                    segundoMaiorNumero = numeroAtual
+                } 
+            }
+
+            if (segundoMaiorNumero === maiorNumero) {
+                segundoMaiorNumero = numeros [1] 
+                for (let numeroAtual of numeros) {
+                    if (numeroAtual > segundoMaiorNumero && numeroAtual < maiorNumero) {
+                        segundoMaiorNumero = numeroAtual
+                    }
+                }
+            }
+
+            console.log(segundoMaiorNumero)
+
+            let menorNumero = numeros[0]
+            let segundoMenorNumero = numeros[0]
+
+            for (let numeroAtual of numeros) {
+                if (numeroAtual < menorNumero) {
+                    menorNumero = numeroAtual
+                }
+            }
+
+            for (let numeroAtual of numeros) {
+                if (numeroAtual < segundoMenorNumero && numeroAtual > menorNumero) {
+                    segundoMenorNumero = numeroAtual
+                } 
+            }
+
+            if (segundoMenorNumero === menorNumero) {
+                segundoMenorNumero = numeros [1] 
+                for (let numeroAtual of numeros) {
+                    if (numeroAtual < segundoMenorNumero && numeroAtual > menorNumero) {
+                        segundoMenorNumero = numeroAtual
+                    }
+                }
+            }
+
+            console.log(segundoMenorNumero);
+
+            exerciciosDeFuncoes1()
+        }
+
+        //2
+        function exerciciosDeFuncoes2() {
+        const nome = function () {
+            alert("Hello Future4!")
+        }
+        nome()
+        }
+
+
+        // Exercícios de Objetos
+        // 1
+        // Arrays são um tipo de variável que é definida por uma lista de elementos, os quais são chamados de gavetas.
+        // Tais elementos podem ser de qualquer natureza, strings, números, boleanos, etc. Já objetos são variávei definidas
+        // por um elemento que possui diversos valores/informações.
+
+
+        // 2
+        function exerciciosDeObjetos2 () {
+            class Retangulo {
+                constructor (lado1, lado2) {
+                    this.largura = lado1;
+                    this.altura = lado2;
+                    this.perimetro = (2*(lado1 + lado2));
+                    this.area = (lado1 * lado2);
+                }
+            }
+            function criaRetangulo () {
+                let lado1 = Number(prompt("diga o tamanho do lado 1>"));
+                let lado2 = Number(prompt("diga o tamanho do lado 2:"))
+
+                const retangulo = new Retangulo (lado1, lado2);
+
+                console.log(retangulo);
+            }
+        }
+
+        // 3 
+        function exerciciosDeObjetos3 () {
+            class Filme {
+                constructor (titulo, ano, diretor, elenco) {
+                    this.titulo = titulo;
+                    this.ano = ano;
+                    this.diretor = diretor;
+                    this.elenco = elenco;
+                }
+                    informaFilmeFavorito() {
+                        const filmeFavorito = "Venha assistir ao filme " +  this.titulo + ", de " + this.ano + ", dirigido por " + this.diretor + " e estrelado por " + this.elenco;
+                        return filmeFavorito;  
+                    }
+            }
+
+        const filme = new Filme ("Cães de Aluguel", 1992, "Quentin Tarantino", ["Quantin Tarantino", "Michael Madsen", "Tim Roth"]);
+
+        filme.informaFilmeFavorito();
+        }
+
+        //4
+        function exerciciosDeObjetos4() {
+            class Pessoa {
+                constructor (nome, idade, email, endereco) {
+                    this.nome = nome;
+                    this.idade = idade;
+                    this.email = email;
+                    this.endereco = endereco;
+                }
+            }
+
+            const pessoa = new Pessoa ("Pedro", 24, "phsevero94@gmail.com","Rua dos Guajajaras, BH");
+            const pessoaAnonima = new Pessoa ("ANÔNIMO", "ANÔNIMO", "ANÔNIMO", "ANÔNIMO");
+        }
+
+
+        // Exercícios de Array
+        // 1
+        function exerciciosDeArray1() {
+            const pessoas = [
+                { nome: "Pedro", idade: 20 },
+                { nome: "João", idade: 10 },
+                { nome: "Paula", idade: 12 },
+                { nome: "Artur", idade: 89 } 
+            ]
+        //a)
+            const pessoasAdultas = pessoas.filter((adultos) => {
+                return adultos.idade >= 20; 
+            })
+            console.log (pessoasAdultas)
+        //b) 
+            const pessoasJovens = pessoas.filter((xovens) => {
+                return xovens.idade < 20;
+            }) 
+            console.log (pessoasJovens)
+        } 
+
+        // 2
+        const array = [1, 2, 3, 4, 5, 6];
+        // a)
+        const arrayA = array.map ((novoValor) =>{
+            return elem * 2    
+        }) 
+        c
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
