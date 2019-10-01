@@ -1,0 +1,7 @@
+footer {
+    height: 50px;
+    background: grey;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
