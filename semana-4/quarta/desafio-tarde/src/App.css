@@ -1,0 +1,16 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.box-post { 
+  width: 20vw;
+  height: 25vw;
+  margin: 20px;
+  border-style: solid;
+  border-width: thin;
+  display: flex;
+  flex-direction: column;  
+}
