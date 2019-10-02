@@ -35,7 +35,7 @@ class App extends React.Component {
   }
   
   
-  
+
   render (){  
     let numeroDeCurtidas = 0;
     let caixaDeComentarios;
@@ -46,7 +46,7 @@ class App extends React.Component {
 
     if (this.state.comentario) {
       caixaDeComentarios = (<div>
-                              <input></input>
+                              <input id="caixaDeComentario"></input>
                               <button onClick={this.onClickButton}>Comentar</button>
                             </div>)
     }
