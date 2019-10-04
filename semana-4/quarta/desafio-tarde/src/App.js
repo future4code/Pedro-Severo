@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Post } from "./components/Post";
 
 
+
 const Body = styled.div `
   display: flex;
   text-align: center;
