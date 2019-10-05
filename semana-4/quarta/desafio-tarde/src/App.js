@@ -38,7 +38,8 @@ class App extends React.Component {
     }
   }
 
-  adicionarPost = () => {
+  adicionarPost = (event) => {
+    event.preventDefault()
     console.log('Adicionando post: ', this.state.valorNome, this.state.valorUrlDoPerfil, this.state.valorUrlDoPost)
     const novoPost = {
       seuNome: this.state.valorNome,
