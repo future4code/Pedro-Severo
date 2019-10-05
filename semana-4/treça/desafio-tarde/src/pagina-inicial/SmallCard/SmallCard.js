@@ -1,12 +1,22 @@
 import React from 'react';
-import './SmallCard.css';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Body = styled.div `
+    border-style: solid;
+    width: 45vw;
+    margin-top: 20px;
+`
+
+const ImageIcon = styled.img `
+`
 
 export function SmallCard(props) {
     return (
-        <div id="dados">
+        <Body>
+            <ImageIcon src="" />
             <p>{props.dados}</p>
-        </div>
+        </Body>
     )
 }
 

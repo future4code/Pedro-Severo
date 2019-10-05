@@ -1,18 +1,48 @@
 import React from 'react';
-import './BigCard.css';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Body = styled.div `
+    width: 45vw;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+`
+
+const TituloBigCard = styled.h2 `
+`
+const ContentBigCard = styled.div `
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: initial;
+`
+
+const Text = styled.article `
+    width: 35vw;
+`
+
+const CircleImage = styled.img `
+    height: 5vw;
+    width: 5vw;
+    border-radius: 50%;
+    display: inline-block;
+`
 
 export function BigCard(props) {
     return (
-        <div id='bigCard'>
-            <h2>{props.subtitulo}</h2>
-            <div>
-                <img src={props.imagem} alt="" />
-                <article>
+        <Body>
+            <TituloBigCard>{props.subtitulo}</TituloBigCard>
+            <ContentBigCard>
+                <CircleImage src={props.imagem} alt="" />
+                <Text>
                     <p id='descricao'>{props.texto}</p>
-                </article>
-            </div>
-        </div>
+                </Text>
+            </ContentBigCard>
+        </Body>
     )
 }
 
