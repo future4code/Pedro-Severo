@@ -20,6 +20,25 @@ export class Tarefa extends React.Component {
         }
     }
 
+    criarNovaTarefa = (event) => {
+        event.preventDefault()
+        const novaEdicao = {
+            tarefaEditada: this.state.valorTarefaEditada,
+        }
+
+        const copiaNovaTarefa = [...this.state.novaTarefa, novaEdicao]
+
+        this.setState ({
+            novaTarefa: copiaNovaTarefa,
+            valorTarefaEditada: '',
+        })
+    }
+
+    onChangeNovaTarefa = (event) => {
+        this.setState({valorTarefaEditada: event.target.value})
+      }
+    
+
     abrirCaixaDeEdicao = () => {
         const caixaDeEdicaoFechada = this.state.edicao;
         const caixaDeEdicaoAberta = {
@@ -30,11 +49,18 @@ export class Tarefa extends React.Component {
 
 
     render () {
+        let tarefaAposEdicao = this.state.novaTarefa.map((item, index) => {
+            return <p key={index} tarefaEditada={item.tarefaEditada}>{this.tarefaEditada}</p>
+        })
+
+
         let caixaDeEdicao;
 
         if (this.state.edicao) {
-            caixaDeEdicao = (<input type="text" value='' />
-                                )
+            caixaDeEdicao = (<div>
+                             <input type="text" value='' onChange={this.onChangeNovaTarefa} />
+                             <button onClick={this.criarNovaTarefa}>Finalizar Edição</button>
+                             </div>)
         }
 
         return (
@@ -42,6 +68,8 @@ export class Tarefa extends React.Component {
                 <input type="checkbox" />
                 <p>{this.props.tarefa}</p>
                 <button onClick={this.abrirCaixaDeEdicao}>Editar</button>
+                {caixaDeEdicao}
+                {tarefaAposEdicao}
             </BoxTarefa>
         )
     }
