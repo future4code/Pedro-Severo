@@ -11,23 +11,57 @@ const Select = styled.select `
 const Escolaridade = styled.option `
 `
 
+const H2 = styled.h2 `
+`
+
+const Input = styled.input `
+`
+
+
+
 class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      
+      etapa1Concluida: false,
+      escolha: 0,
     }
   }
+
+  aparecerEtapa2 = () => {
+    return (
+      <Body>
+        <H2>Estapa 2 - Informações do Ensino Superior</H2>
+        <Input type="text" placeholder="Nome"></Input>
+        <Input type="text" placeholder="Nome"></Input>
+      </Body>
+    )
+  }
   
-  escolherEscolaridade = () => {
-    let escolha = Escolaridade.value
+  aparecerEtapa3 = () => {
+    return (
+      <Body>
+        <H2>Estapa 3 - Informações do Ensino Superior</H2>
+        <Input type="text" placeholder="Nome"></Input>
+        <Input type="text" placeholder="Nome"></Input>
+      </Body>
+    )
+  }  
 
-    const segundoFormulario = escolha ? "sem" : "com"
+  escolherEscolaridade = (event) => {
+    let novaEscolha = Number(event.target.value) 
+    this.setState({ escolha: novaEscolha });
 
-    console.log(segundoFormulario)
+    if (novaEscolha === 1) {
+      return (this.aparecerEtapa2())
+    } else if (novaEscolha === 2) {
+      return (this.aparecerEtapa3())
+    } else {}
   }
 
+
   render () {
+
     return (
 
       // Criar uma página inicial que retorna um componente com três inputs e um botão
@@ -52,15 +86,13 @@ class App extends React.Component {
           placeholder="E-mail" 
         />
         <Select onChange={this.escolherEscolaridade}>
-          <Escolaridade value={0}>Ensino Médio Incompleto</Escolaridade>
-          <Escolaridade value={0}>Ensino Médio Completo</Escolaridade>
-          <Escolaridade value={1}>Ensino Superior Completo</Escolaridade>
-          <Escolaridade value={1}>Ensino Superior Incompleto</Escolaridade>
+          <Escolaridade></Escolaridade>
+          <Escolaridade value={1}>Ensino Médio Incompleto</Escolaridade>
+          <Escolaridade value={1}>Ensino Médio Completo</Escolaridade>
+          <Escolaridade value={2}>Ensino Superior Completo</Escolaridade>
+          <Escolaridade value={2}>Ensino Superior Incompleto</Escolaridade>
         </Select>
-
-        <hr>
-          {this.escolherEscolaridade}
-        </hr>
+        <button onClick={this.state.onClickButton}></button>
       </Body>
     );
   }
