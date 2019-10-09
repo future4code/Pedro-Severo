@@ -17,7 +17,13 @@ const ListaDespesas = styled.ul`
 
 `
 
-export function Extrato (){
+export class Extrato extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            listaDeDespesas = props.listaDeDespesas,
+        }
+    }
     return (
         <FormExtrato>
             <Filtro>
@@ -37,7 +43,7 @@ export function Extrato (){
             </Filtro>
             <hr />
             <ListaDespesas>
-                
+
             </ListaDespesas>
         </FormExtrato>
     )

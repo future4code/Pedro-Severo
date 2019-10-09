@@ -17,7 +17,7 @@ export class Cadastro extends React.Component{
                 tipo: '',
                 descricao: '',
             }],
-            valorEmBranco: '',
+            valorEmBranco: 0,
             tipoEmBranco: '',
             descricaoEmBranco: '',     
         }
@@ -27,8 +27,18 @@ export class Cadastro extends React.Component{
         event.preventDefault ();
         console.log (this.state.listaDeDespesas)
         const novaDespesa = {
-
+            valor: this.state.valorEmBranco,
+            tipo: this.state.tipoEmBranco,
+            descricao: this.state.descricaoEmBranco,
         }
+
+        const copiaListaDeDespesas = [...this.state.listaDeDespesas, novaDespesa]
+
+        this.setState ({
+            listaDeDespesas: copiaListaDeDespesas,
+            valorEmBranco: 0,
+            descricaoEmBranco: ''
+        })
     }
 
     onChangeValor = (event) => {
