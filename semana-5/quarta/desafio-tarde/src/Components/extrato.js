@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const FormExtrato = styled.section `
     height: 100%;
     display: flex;
@@ -17,13 +18,9 @@ const ListaDespesas = styled.ul`
 
 `
 
-export class Extrato extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            listaDeDespesas = props.listaDeDespesas,
-        }
-    }
+export function Extrato (props) {
+    const despesasListadas = props.listaDespesas 
+
     return (
         <FormExtrato>
             <Filtro>
@@ -43,9 +40,9 @@ export class Extrato extends React.Component {
             </Filtro>
             <hr />
             <ListaDespesas>
-
+                {despesasListadas}
             </ListaDespesas>
         </FormExtrato>
-    )
+    );
 }
     

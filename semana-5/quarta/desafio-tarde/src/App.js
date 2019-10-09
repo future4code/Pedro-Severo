@@ -15,8 +15,15 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      listaDeDespesas: props.listaDeDespesas,
       apareceTelaExtrato: false
     }
+  }
+
+  adicionarDespesa = (novaDespesa) => {
+    const copiaListaDeDespesas = [novaDespesa, ...this.state.listaDeDespesas]
+
+    this.setState({listaDeDespesas: copiaListaDeDespesas})
   }
 
   trocarTelaInicial = () => {
@@ -24,7 +31,14 @@ class App extends React.Component {
   }
   
   render () {
-    const telaAtual = this.state.apareceTelaExtrato ? (<Extrato />) : (<Cadastro />)
+    const listaDespesas = this.state.listaDeDespesas.map (cadaDespesa => {
+      return  <div>
+                  <li>{cadaDespesa.valor}</li>
+                  <li>{cadaDespesa.tipo}</li>
+                  <li>{cadaDespesa.descricao}</li>
+              </div>
+    })
+    const telaAtual = this.state.apareceTelaExtrato ? (<Extrato listaDespesas={listaDespesas}/>) : (<Cadastro criarDespesa={this.adicionarDespesa}/>)
     const nomeDoBotao = this.state.apareceTelaExtrato ? "Ver Extrato" : "Voltar"
     
     return (

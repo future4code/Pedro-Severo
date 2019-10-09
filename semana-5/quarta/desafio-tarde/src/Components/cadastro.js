@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const FormCadastro = styled.section `
     height: 100%;
     display: flex;
@@ -33,6 +34,7 @@ export class Cadastro extends React.Component{
         }
 
         const copiaListaDeDespesas = [...this.state.listaDeDespesas, novaDespesa]
+        this.props.criarDespesa(novaDespesa)
 
         this.setState ({
             listaDeDespesas: copiaListaDeDespesas,
