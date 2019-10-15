@@ -21,6 +21,8 @@ class App extends React.Component {
     }
   }
 
+  // Criar aqui a função de cadastrar novo usuário
+
   aparecerSegundaTela = () => {
     this.setState ({primeiraTela: !this.state.primeiraTela})
   }
