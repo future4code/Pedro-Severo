@@ -23,28 +23,34 @@ export class Cadastro extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            valorNome: '',
-            valorEmail: '',
         }
     }
 
-    onChangeValorNome = (event) => {
-        this.setState({valorNome: event.target.value})
-    }
 
-    onChangeValorEmail = (event) => {
-        this.setState({valorEmail: event.target.value})
-    }
 
     render () {
         return (
             <CadastroContainer>
                 <h4>Nome:</h4>
-                <Input type="text" placeholder="Coloque seu nome" onChange={this.onChangeValorNome} value={this.state.valorNome}></Input>
+                <Input 
+                    type="text" 
+                    placeholder="Coloque seu nome" 
+                    onChange={this.props.onChangeValorNome} 
+                    value={this.props.valorNome}>
+                </Input>
                 <h4>E-mail:</h4>
-                <Input type="text" placeholder="Coloque seu e-mail" onChange={this.onChangeValorEmail} value={this.state.valorEmail}></Input>
-                <button>Salvar</button>
-                <ChangeButton onClickTrocarTela={this.props.onClickTrocarTela}></ChangeButton>
+                <Input 
+                    type="text" 
+                    placeholder="Coloque seu e-mail" 
+                    onChange={this.props.onChangeValorEmail} 
+                    value={this.props.valorEmail}>
+                </Input>
+                <button onClick={this.props.addNewUser}>
+                    Salvar
+                </button>
+                <ChangeButton 
+                    onClickTrocarTela={this.props.onClickTrocarTela}>
+                </ChangeButton>
             </CadastroContainer>
         );
     }

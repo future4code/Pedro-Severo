@@ -36,28 +36,28 @@ export class DataList extends React.Component {
     // Portanto, voltar nela depois que a função de criar novo usuário
     // estiver criada.
 
-    getAllUsers = () => {
-        const request = axios.get (
-            'https://us-central1-future4-users.cloudfunctions.net/api/users/getAllUsers',
-            {
-                headers: {
-                    auth: '8dd1b538c4caee7ad4c6021c21eb1957'
-                }
-            }
-        );
+    // getAllUsers = () => {
+    //     const request = axios.get (
+    //         'https://us-central1-future4-users.cloudfunctions.net/api/users/getAllUsers',
+    //         {
+    //             headers: {
+    //                 auth: '8dd1b538c4caee7ad4c6021c21eb1957'
+    //             }
+    //         }
+    //     );
 
-        request
-            .then (response => {
-                console.log(response);
-                this.setState({listaDeUsuarios: response});
-            })
-            .catch(error => {
-                console.log(error);
-                this.setState({
-                    errorMessage: "Ocorreu um erro!"
-                });
-            });
-    };
+    //     request
+    //         .then (response => {
+    //             console.log(response);
+    //             this.setState({listaDeUsuarios: response});
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.setState({
+    //                 errorMessage: "Ocorreu um erro!"
+    //             });
+    //         });
+    // };
 
 
     render () {
