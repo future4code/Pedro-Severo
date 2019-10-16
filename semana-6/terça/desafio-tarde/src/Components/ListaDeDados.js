@@ -60,16 +60,23 @@ export class DataList extends React.Component {
     };
 
     onDeleteClick = (id) => {
-        axios.delete(`https://us-central1-future4-users.cloudfunctions.net/api/users/deleteUser?id=${id}`,
-        {
-            headers: {
-                'api-token': '8dd1b538c4caee7ad4c6021c21eb1957' 
-            }
-        })
+        const confirmacao = window.confirm ("Tem certeza que quer deletar esse item?")
+        console.log(confirmacao)
 
-        
-        this.getAllUsers()
-        window.alert("O usuário foi eleiminado com sucesso")
+        if (confirmacao === true) {
+            axios.delete(`https://us-central1-future4-users.cloudfunctions.net/api/users/deleteUser?id=${id}`,
+            {
+                headers: {
+                    'api-token': '8dd1b538c4caee7ad4c6021c21eb1957' 
+                }
+            })
+
+            
+            this.getAllUsers()
+            window.alert("O usuário foi eleiminado com sucesso")
+        } else {
+            window.alert("O usuário não foi deletado!")
+        }
     }
 
 
