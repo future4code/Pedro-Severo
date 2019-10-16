@@ -38,27 +38,29 @@ class App extends React.Component {
   }
 
   addNewUser = () => {
-    const data = {
+    const usuario = {
       name: this.state.valorNome,
       email: this.state.valorEmail,
     }
 
     const request = axios.post (
       'https://us-central1-future4-users.cloudfunctions.net/api/users/createUser',
-      data,
+      usuario,
       {
         headers: {
-          auth: '8dd1b538c4caee7ad4c6021c21eb1957'
+          'api-token': '8dd1b538c4caee7ad4c6021c21eb1957'
         }
       }
     );
 
     request
       .then(response => {
+        window.alert("Boa, xovem!")
         console.log(response);
       })
       .catch(error => {
-        console.log(error);
+        window.alert("Não foi possível cadastrar esse usuário")
+        console.log(error.message);
       });
   };
 

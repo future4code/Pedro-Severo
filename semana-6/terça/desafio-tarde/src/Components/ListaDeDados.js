@@ -17,6 +17,10 @@ const Usuario = styled.li `
     justify-content: space-between;
 `
 
+const DeleteButton = styled.p `
+    color: red;
+`
+
 
 export class DataList extends React.Component {
     constructor(props) {
@@ -28,51 +32,63 @@ export class DataList extends React.Component {
     }
 
     componentDidMount () {
-        // this.getAllUsers()
+        this.getAllUsers()
+    };
+
+
+    getAllUsers = () => {
+        const request = axios.get (
+            'https://us-central1-future4-users.cloudfunctions.net/api/users/getAllUsers',
+            {
+                headers: {
+                    'api-token': '8dd1b538c4caee7ad4c6021c21eb1957'
+                }
+            }
+        );
+
+        request
+            .then (response => {
+                console.log(response)
+                this.setState({listaDeUsuarios: response.data.result});
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({
+                    errorMessage: "Ocorreu um erro!"
+                });
+            });
+    };
+
+    onDeleteClick = (id) => {
+        axios.delete(`https://us-central1-future4-users.cloudfunctions.net/api/users/deleteUser?id=${id}`,
+        {
+            headers: {
+                'api-token': '8dd1b538c4caee7ad4c6021c21eb1957' 
+            }
+        })
+
+        
+        this.getAllUsers()
+        window.alert("O usuário foi eleiminado com sucesso")
     }
 
-    // Essa função não está funcionando, muito provavelmente
-    // por que eu ainda não criei a função de adicionar novo usuário.
-    // Portanto, voltar nela depois que a função de criar novo usuário
-    // estiver criada.
-
-    // getAllUsers = () => {
-    //     const request = axios.get (
-    //         'https://us-central1-future4-users.cloudfunctions.net/api/users/getAllUsers',
-    //         {
-    //             headers: {
-    //                 auth: '8dd1b538c4caee7ad4c6021c21eb1957'
-    //             }
-    //         }
-    //     );
-
-    //     request
-    //         .then (response => {
-    //             console.log(response);
-    //             this.setState({listaDeUsuarios: response});
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             this.setState({
-    //                 errorMessage: "Ocorreu um erro!"
-    //             });
-    //         });
-    // };
 
 
     render () {
+        const todosUsuarios = this.state.listaDeUsuarios.map((user, index) => {
+            return (
+                <Usuario key={index}>
+                    <p>{user.name}</p>
+                    <DeleteButton onClick={ () => {this.onDeleteClick(user.id)}}>X</DeleteButton>
+                </Usuario>
+            )
+        }) 
+
         return (
             <DataListContainer>
                 <h3>Usuários cadastrados</h3>
                 <ListaDeUsuarios>
-                    <Usuario>
-                        <p>Pedro Severo</p>
-                        <p>X</p>
-                    </Usuario>
-                    <Usuario>
-                        <p>Pedro Severo</p>
-                        <p>X</p>
-                    </Usuario>
+                    {todosUsuarios}
                 </ListaDeUsuarios>
                 <ChangeButton onClickTrocarTela={this.props.onClickTrocarTela}></ChangeButton>
             </DataListContainer>
