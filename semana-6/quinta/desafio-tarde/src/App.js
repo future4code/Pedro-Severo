@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormBored } from './Components/FormBored';
-import { Activity } from './Components/Activity';
+
 
 const Body = styled.div `
 `
@@ -21,7 +21,6 @@ class App extends React.Component {
     return (
       <Body>
         <FormBored></FormBored>
-        <Activity></Activity>
       </Body>
     );
   }
