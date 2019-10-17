@@ -41,6 +41,8 @@ export class Cadastro extends React.Component{
             valorEmBranco: 0,
             descricaoEmBranco: ''
         })
+
+        this.props.criarDespesa(copiaListaDeDespesas)
     }
 
     onChangeValor = (event) => {
@@ -56,9 +58,7 @@ export class Cadastro extends React.Component{
     }
     
 
-
     render () {
-    
         return (
             <FormCadastro>
                 <h1>Cadastro de despesas</h1>
@@ -83,7 +83,7 @@ export class Cadastro extends React.Component{
                     value={this.state.descricaoEmBranco}
                     onChange={this.onChangeDescricao} 
                 />
-                <button onClick={this.adicionarNovaDespesa}>Salvar Despesa</button>
+                <button onClick={this.props.adicionarNovaDespesa}>Salvar Despesa</button>
             </FormCadastro>
         );
     }

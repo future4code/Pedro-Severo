@@ -1,22 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
 
-const BotaoDeNavegacao = styled.button `
+const ButtonContainer = styled.button `
     display: flex;
     flex-direction: column;
 `
 
-export function Botao (props){
+export function Button (props){
     return (
-        <BotaoDeNavegacao onClick={props.onClick}>
+        <ButtonContainer onClick={props.onClick}>
             {props.nome}
-        </BotaoDeNavegacao>
+        </ButtonContainer>
     )
 }
-
-
-Botao.propTypes = {
-    nome: PropTypes.string.isRequired,
-}
-

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Cadastro } from './Components/cadastro';
 import { Extrato } from './Components/extrato';
-import { Botao } from './Components/botaoDeNavegacao'
+import { Button } from './Components/botaoDeNavegacao'
 
 const Body = styled.div `
   display: flex;
@@ -15,15 +15,13 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      listaDeDespesas: props.listaDeDespesas,
+      listaDespesas: [],
       apareceTelaExtrato: false
     }
   }
 
-  adicionarDespesa = (novaDespesa) => {
-    const copiaListaDeDespesas = [novaDespesa, ...this.state.listaDeDespesas]
-
-    this.setState({listaDeDespesas: copiaListaDeDespesas})
+  adicionarDespesa = (copiaListaDeDespesas) => {
+    this.setState({listaDespesas: copiaListaDeDespesas})
   }
 
   trocarTelaInicial = () => {
@@ -31,20 +29,14 @@ class App extends React.Component {
   }
   
   render () {
-    const listaDespesas = this.state.listaDeDespesas.map (cadaDespesa => {
-      return  <div>
-                  <li>{cadaDespesa.valor}</li>
-                  <li>{cadaDespesa.tipo}</li>
-                  <li>{cadaDespesa.descricao}</li>
-              </div>
-    })
-    const telaAtual = this.state.apareceTelaExtrato ? (<Extrato listaDespesas={listaDespesas}/>) : (<Cadastro criarDespesa={this.adicionarDespesa}/>)
-    const nomeDoBotao = this.state.apareceTelaExtrato ? "Ver Extrato" : "Voltar"
+    console.log(this.state.listaDespesas)
+    const telaAtual = this.state.apareceTelaExtrato ? (<Extrato/>) : (<Cadastro adicionarNovaDespesa={this.adicionarDespesa}/>)
+    const nomeDoBotao = this.state.apareceTelaExtrato ? "Voltar" : "Ver Extrato"
     
     return (
       <Body>
         {telaAtual}
-        <Botao onClick={this.trocarTelaInicial} nome={nomeDoBotao.nome}></Botao>
+        <Button onClick={this.trocarTelaInicial} nome={nomeDoBotao}></Button>
       </Body>
     );
   }
