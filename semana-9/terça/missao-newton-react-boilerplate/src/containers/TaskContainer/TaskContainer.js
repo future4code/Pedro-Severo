@@ -34,7 +34,7 @@ export const TaskContainer = props => {
     return (
         <StyledList>
             <ListItem>
-                <ListItemText primary="Inbox" />
+                Teste
             </ListItem>
             <Avatar>
                 <DeleteIcon />

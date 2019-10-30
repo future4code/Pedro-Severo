@@ -68,6 +68,7 @@ export const CardTasksContainer = props => {
                     type="text"
                     placeholder="Task"
                 />
+                <Button>Criar task</Button>
                 <TaskContainer />
                 <ButtonsContainer>
                     <Button>Marcar todas como completas</Button>
