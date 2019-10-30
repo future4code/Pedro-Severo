@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Typography from '@material-ui/core/Typography'
-import Button from '../../components/Button'
-import Divider from '@material-ui/core/Divider'
-import TaskContainer from '../TaskContainer/TaskContainer'
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import Button from '../../components/Button';
+import Divider from '@material-ui/core/Divider';
+import TaskContainer from '../TaskContainer/TaskContainer';
+import { addTask } from '../../actions/index';
 
 const styles = {
 	card: {
@@ -58,6 +58,10 @@ export class CardTasksContainer extends React.Component {
     	this.setState ({textValue: event.target.value})
     }
 
+    onClickEnviar = () => {
+        this.props.addTask(this.state.textValue)
+    }
+
     render () {
     	return (
     		<StyledCard>
@@ -82,9 +86,9 @@ export class CardTasksContainer extends React.Component {
     				type="text"
     				placeholder="Task"
     			/>
-    			<Button>Criar task</Button>
+    			<Button onClick={this.onClickEnviar}>Criar task</Button>
     			<TaskContainer />
-                <h1>{this.props.textValue}</h1>
+                <h1>{this.props.taskValue}</h1>
     			<ButtonsContainer>
     				<Button>Marcar todas como completas</Button>
     				<Button>Todas</Button>
@@ -99,8 +103,17 @@ export class CardTasksContainer extends React.Component {
 
 function mapStateToProps (state) {
 	return {
-		textValue: state.tasks,
+		taskValue: state.tasks,
 	}
 }
 
-export default connect(mapStateToProps)(CardTasksContainer)
+const mapDispatchToProps = dispatch => {
+    return {
+        addTask: (text) => dispatch(addTask(text))
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CardTasksContainer)

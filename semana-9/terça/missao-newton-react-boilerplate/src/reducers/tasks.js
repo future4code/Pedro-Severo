@@ -5,12 +5,13 @@ const initialState = [{
 }]
 
 const tasks = (state = initialState, action) => {
-	switch (action.type) {
+    console.log(action)
+    switch (action.type) {
 	case ADD_TODO:
 		return { ...state, inicialText: action.playload.text }
 	default:
 		return state 
-	}
+    }
 }
 
 export default tasks
