@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -48,40 +49,49 @@ const ButtonsContainer = styled.div `
 
 export const CardTasksContainer = props => {
     return (
-            <StyledCard>
-                <CardActionArea>
-                    <CardMedia
-                        image=""
-                        title=""
-                    />
-                    <StyledCardContent>
-                        <Typography gutterBottom variant="h4" component="h2">
-                            Tasks
-                        </Typography>
-                        <Typography component="p">
-                            Coloque aqui as suas atividades diárias
-                        </Typography>
-                    </StyledCardContent>
-                </CardActionArea>
-                <StyledDivider />
-                <Input
-                    type="text"
-                    placeholder="Task"
+        <StyledCard>
+            <CardActionArea>
+                <CardMedia
+                    image=""
+                    title=""
                 />
-                <Button>Criar task</Button>
-                <TaskContainer />
-                <ButtonsContainer>
-                    <Button>Marcar todas como completas</Button>
-                    <Button>Todas</Button>
-                    <Button>Pendentes</Button>
-                    <Button>Completas</Button>
-                </ButtonsContainer>
-            </StyledCard>            
+                <StyledCardContent>
+                    <Typography gutterBottom variant="h4" component="h2">
+                        Tasks
+                    </Typography>
+                    <Typography component="p">
+                        Coloque aqui as suas atividades diárias
+                    </Typography>
+                </StyledCardContent>
+            </CardActionArea>
+            <StyledDivider />
+            <Input
+                type="text"
+                placeholder="Task"
+            />
+            <Button>Criar task</Button>
+            <TaskContainer />
+            <ButtonsContainer>
+                <Button>Marcar todas como completas</Button>
+                <Button>Todas</Button>
+                <Button>Pendentes</Button>
+                <Button>Completas</Button>
+            </ButtonsContainer>
+        </StyledCard>            
     )
 } 
 
+const mapStateToProps = state => {
+    return {
+        idTaskDeleted: state.ids.idTaskDeleted,
+        textValue: state.textTasks.textValue,
+        selectedFilterTask: state.filterTasks.filterTasks
+    }
+};
+
+export default connect(mapStateToProps)(CardTasksContainer)
+
+// Talvez isso não seja necessário. Verificar quando a lógica estiver implementada:
 CardTasksContainer.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(CardTasksContainer);
+};
