@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CardTasksContainer } from '../CardTasksContainer/CardTasksContainer';
+import React from 'react'
+import styled from 'styled-components'
+import { CardTasksContainer } from '../CardTasksContainer/CardTasksContainer'
 
 const Body = styled.div `
 	display: flex;

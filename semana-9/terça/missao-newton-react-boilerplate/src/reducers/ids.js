@@ -1,7 +1,7 @@
 import { DELETE_TODO } from './actionTypes';
 
 const initialState = {
-    idTaskDeleted = -1
+    idTaskDeleted = 0
 };
 
 const ids = (state = initialState, action) => {

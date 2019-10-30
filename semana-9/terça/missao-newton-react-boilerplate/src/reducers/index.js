@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import ids from './ids';
-import textTasks from './textTasks';
-import filterTasks from './filterTasks';
+import ids from './ids'
+import tasks from './tasks'
+import filterTasks from './filterTasks'
 
 const rootReducer = combineReducers ({
-    ids: ids,
-    textTasks: textTasks,
-    filterTasks: filterTasks,
-});
+	ids: ids,
+	tasks: tasks,
+	filterTasks: filterTasks,
+})
 
-export default rootReducer;
+export default rootReducer
