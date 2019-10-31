@@ -1,5 +1,7 @@
 import React from 'react'
 import JssProvider from 'react-jss/lib/JssProvider'
+import store from './store'
+import { Provider } from 'react-redux'
 import { create } from 'jss'
 import { MuiThemeProvider, createGenerateClassName, jssPreset } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
@@ -17,12 +19,14 @@ const theme = createMuiTheme()
 
 function App() {
 	return (
-		<JssProvider jss={jss} generateClassName={generateClassName}>
-			<MuiThemeProvider theme={theme}>
-				<CssBaseline />
-				<AppContainer />
-			</MuiThemeProvider>
-		</JssProvider>
+		<Provider store={store}>
+			<JssProvider jss={jss} generateClassName={generateClassName}>
+				<MuiThemeProvider theme={theme}>
+					<CssBaseline />
+					<AppContainer />
+				</MuiThemeProvider>
+			</JssProvider>
+		</Provider>
 	)
 }
 
