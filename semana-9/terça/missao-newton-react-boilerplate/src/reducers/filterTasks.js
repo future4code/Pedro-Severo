@@ -1,4 +1,4 @@
-import { SET_VISIBILITY_FILTER } from './actionTypes'
+import { SET_VISIBILITY_FILTER } from '../actions/actionTypes'
 
 const initialState = {
 	selectedFilterTask: 'show_all'

@@ -73,7 +73,6 @@
                 const carta3 = comprarCarta();
                 const carta4 = comprarCarta();
 
-
                 //Arrays indicando a mão e os valores de cada carta dos jogadores. 
                 //Aqui precisa ser acrescentado novas cartas e valores a cada novo saque. 
                 let maoUsuario = [carta1.texto, carta2.texto];
@@ -86,58 +85,67 @@
                 let somaDaMaoDoUsuario = 0;
                 let somaDaMaoDoComputador = 0;
 
-                for (let valorAtualUsuario of valoresUsuario) {
-                somaDaMaoDoUsuario += valorAtualUsuario
-                };
-                
-                for (let valorAtualComputador of valoresComputador) {
-                somaDaMaoDoComputador += valorAtualComputador
-                };
-
                 // Idicação de quais são as cartas que estão na mão de cada jogador
                 let somaDasCartasDoUsuario = "";
                 let somaDasCartasDoComputador = "";
                 
-                for (let cartaAtualUsuario of maoUsuario) {
-                somaDasCartasDoUsuario += cartaAtualUsuario
+                function organizandoMaos() {
+                    let maoUsuario = [carta1.texto, carta2.texto];
+                    let valoresUsuario = [carta1.valor, carta2.valor];
+
+                    let maoComputador = [carta3.texto, carta4.texto];
+                    let valoresComputador = [carta3.valor, carta4.valor];
+                    
+                    somaDaMaoDoUsuario = 0;
+                    somaDaMaoDoComputador = 0;
+
+                    somaDasCartasDoUsuario = "";
+                    somaDasCartasDoComputador = "";
+                    
+                    for (let valorAtualUsuario of valoresUsuario) {
+                    somaDaMaoDoUsuario += valorAtualUsuario
+                    };
+                    
+                    for (let valorAtualComputador of valoresComputador) {
+                    somaDaMaoDoComputador += valorAtualComputador
+                    };
+
+                    for (let cartaAtualUsuario of maoUsuario) {
+                    somaDasCartasDoUsuario += cartaAtualUsuario
+                    }
+
+                    for (let cartaAtualComputador of maoComputador) {
+                    somaDasCartasDoComputador += cartaAtualComputador
+                    }
                 }
 
-                for (let cartaAtualComputador of maoComputador) {
-                somaDasCartasDoComputador += cartaAtualComputador
-                }
+                organizandoMaos();
 
                 // vez do usuário 
 
-                let querComprar = true
+                let querComprar = confirm("Suas cartas são " + somaDasCartasDoUsuario + ". A carta revelada pelo computador é " + carta3.texto + ". Deseja comprar outra carta?")
 
-                querComprar = confirm("Suas cartas são " + somaDasCartasDoUsuario + ". A carta revelada pelo computador é " + carta3.texto + ". Deseja comprar outra carta?");
-
-                if (querComprar === true) {
-                    maoUsuario.push(comprarCarta().texto);
-                    valoresUsuario.push(comprarCarta().valor);
+                while (somaDaMaoDoUsuario <= 21 && querComprar === true) {        
+                    let novaCarta = comprarCarta()
                     
-                    let querComprarMais = true
+                    maoUsuario.push(novaCarta.texto);
+                    valoresUsuario.push(novaCarta.valor);
 
-                    while (somaDaMaoDoUsuario <= 21 && querComprarMais === true) {
+                    organizandoMaos()
 
-                    querComprarMais = confirm("Suas cartas são " + somaDasCartasDoUsuario + ". A carta revelada pelo computador é " + carta3.texto + ". Deseja comprar outra carta?");
-                                        
-                    if (querComprarMais === true) {
-                    maoUsuario.push(comprarCarta().texto);
-                    valoresUsuario.push(comprarCarta().valor);
-                    }
-
-                    }
-                } else
-                    
+                    querComprar = confirm("Suas cartas são " + somaDasCartasDoUsuario + ". A carta revelada pelo computador é " + carta3.texto + ". Deseja comprar outra carta?") 
+                }
+                
                 
 
                 // vez do computador
 
                 if (somaDaMaoDoUsuario <= 21) {
                     while (somaDaMaoDoComputador <= somaDaMaoDoUsuario) {
-                    maoComputador.push(comprarCarta().texto);
-                    valoresComputador.push(comprarCarta().valor);
+                        novaCartDoComputador = comprarCarta()
+
+                        maoComputador.push(novaCartDoComputador.texto);
+                        valoresComputador.push(novaCartDoComputador.valor);
                     }
                 } else
 

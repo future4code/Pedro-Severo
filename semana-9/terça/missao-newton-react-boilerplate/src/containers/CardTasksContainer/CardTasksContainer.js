@@ -59,7 +59,7 @@ export class CardTasksContainer extends React.Component {
     }
 
     onClickEnviar = () => {
-        this.props.addTask(this.state.textValue)
+		this.props.addTask(this.state.textValue)
     }
 
     render () {
@@ -86,7 +86,7 @@ export class CardTasksContainer extends React.Component {
     				type="text"
     				placeholder="Task"
     			/>
-    			<Button onClick={this.onClickEnviar}>Criar task</Button>
+    			<Button onClick={this.onClickEnviar}>Criar tarefa</Button>
     			<TaskContainer />
                 <h1>{this.props.taskValue}</h1>
     			<ButtonsContainer>
@@ -101,7 +101,7 @@ export class CardTasksContainer extends React.Component {
 }
 
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
 	return {
 		taskValue: state.tasks,
 	}

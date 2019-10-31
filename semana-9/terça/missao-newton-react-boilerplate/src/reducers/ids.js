@@ -1,7 +1,7 @@
-import { DELETE_TODO } from './actionTypes';
+import { DELETE_TODO } from '../actions/actionTypes';
 
 const initialState = {
-    idTaskDeleted = 0
+    idTaskDeleted: 0
 };
 
 const ids = (state = initialState, action) => {
