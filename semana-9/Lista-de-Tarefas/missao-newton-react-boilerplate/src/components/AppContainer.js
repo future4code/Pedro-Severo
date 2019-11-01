@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Form } from './Form';
+import Form from './Form';
 import { TaskList } from './TaskList';
 import { AllCompletedButton } from './AllCompletedButton'
 

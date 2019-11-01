@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { addTask } from '../actions/index';
 
 const FormContainer = styled.div `
     display: flex;
@@ -20,7 +21,12 @@ export class Form extends React.Component {
         this.setState({textValue: event.target.value})
     }
 
+    onClickCreateTask = () => {
+        this.props.addTask(this.state.textValue)
+    }
+
     render () {
+        console.log(this.props)
         return (
             <FormContainer>
                 <h3>Tasks</h3>
@@ -29,14 +35,16 @@ export class Form extends React.Component {
                     value={this.textValue}
                     onChange={this.onChangeTextTaskValue}
                 />
-                <button>Criar Task</button>   
+                <button onClick={this.onClickCreateTask}>Criar Task</button>   
             </FormContainer>
         )
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    
+    return {
+        addTask: (text) => dispatch(addTask(text))
+    }
 }
 
-export default connect (null, mapDispatchToProps)(Form)
+export default connect(null, mapDispatchToProps)(Form)

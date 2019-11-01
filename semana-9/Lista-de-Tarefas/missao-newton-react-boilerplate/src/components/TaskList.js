@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { addTask } from '../actions/index';
 
 const TaskListContainer = styled.div `
     display: flex;
@@ -27,9 +28,9 @@ export class TaskList extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        taskList: state.tasks 
-    }
+    // return {
+    //     addTask: text => taskList: state.tasks 
+    // }
 }
 
 

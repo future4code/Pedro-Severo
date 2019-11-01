@@ -15,5 +15,6 @@ export const tasks = (state = initialState, action) => {
     //     default:
     //         return state;        
     // }
+    console.log(action)
     return state;
 }
