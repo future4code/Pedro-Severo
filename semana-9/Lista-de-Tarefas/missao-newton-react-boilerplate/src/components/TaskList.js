@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const TaskListContainer = styled.div `
     display: flex;
@@ -18,9 +19,19 @@ export class TaskList extends React.Component {
     render () {
         return (
             <TaskListContainer>
-                <p>Teste</p>
+                <p>{this.props.taskList}</p>
                 <button>Delete</button>
             </TaskListContainer>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        taskList: state.tasks 
+    }
+}
+
+
+
+export default connect (mapStateToProps) (TaskList)

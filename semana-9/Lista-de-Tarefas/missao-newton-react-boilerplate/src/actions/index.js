@@ -8,4 +8,4 @@ export const addTask = (text, id, completed) => ({
         id: id,
         completed: completed,
     }
-})
+});

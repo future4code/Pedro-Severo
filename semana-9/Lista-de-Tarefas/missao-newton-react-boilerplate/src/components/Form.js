@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const FormContainer = styled.div `
     display: flex;
@@ -33,3 +34,9 @@ export class Form extends React.Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    
+}
+
+export default connect (null, mapDispatchToProps)(Form)
