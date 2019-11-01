@@ -15,7 +15,9 @@ export class Form extends React.Component {
         }
     }
 
-
+    onChangeTextTaskValue = (event) => {
+        this.setState({textValue: event.target.value})
+    }
 
     render () {
         return (
@@ -23,6 +25,8 @@ export class Form extends React.Component {
                 <h3>Tasks</h3>
                 <input 
                     type="text"
+                    value={this.textValue}
+                    onChange={this.onChangeTextTaskValue}
                 />
                 <button>Criar Task</button>   
             </FormContainer>
