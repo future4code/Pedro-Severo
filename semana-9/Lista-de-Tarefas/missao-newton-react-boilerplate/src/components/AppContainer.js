@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Form from './Form';
-import { TaskList } from './TaskList';
-import { AllCompletedButton } from './AllCompletedButton'
+import TaskList from './TaskList';
+import AllCompletedButton from './AllCompletedButton'
 
 const Container = styled.div `
 	display: flex;

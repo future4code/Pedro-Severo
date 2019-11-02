@@ -22,3 +22,5 @@ export class AllCompletedButton extends React.Component {
         )
     }
 }
+
+export default (AllCompletedButton)

@@ -26,7 +26,6 @@ export class Form extends React.Component {
     }
 
     render () {
-        console.log(this.props)
         return (
             <FormContainer>
                 <h3>Tasks</h3>

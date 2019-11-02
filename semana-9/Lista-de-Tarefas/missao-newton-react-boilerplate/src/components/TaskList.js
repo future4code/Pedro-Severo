@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { addTask } from '../actions/index';
+import { completeTask } from '../actions/index';
 
 const TaskListContainer = styled.div `
     display: flex;
     align-items: center;
+`
+
+const TaskCompleted = styled.p `
+    text-decoration: line-through;
 `
 
 export class TaskList extends React.Component {
@@ -16,22 +20,37 @@ export class TaskList extends React.Component {
     }
 
 
-
     render () {
-        return (
+
+        return ( this.props.tasksList.map (task => (
+            task.completed ? 
+            (
             <TaskListContainer>
-                <p>{this.props.taskList}</p>
+                <div>
+                    <TaskCompleted>{task.text}</TaskCompleted>
+                </div>
                 <button>Delete</button>
-            </TaskListContainer>
-        )
+            </TaskListContainer>) : (
+                <TaskListContainer>
+                    <div>
+                        <p>{task.text}</p>
+                    </div>
+                    <button>Delete</button>
+                </TaskListContainer>
+                )
+        )))
     }
 }
 
-function mapStateToProps(state) {
-    // return {
-    //     addTask: text => taskList: state.tasks 
-    // }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         completedTask: (id, complete) => dispatch(completeTask(id))
+//     }
+// }
+
+const mapStateToProps = state => ({
+    tasksList: state.tasks
+})
 
 
 
