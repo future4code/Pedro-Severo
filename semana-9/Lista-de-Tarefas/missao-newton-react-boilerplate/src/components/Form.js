@@ -22,7 +22,7 @@ export class Form extends React.Component {
     }
 
     onClickCreateTask = () => {
-        this.props.addTask(this.state.textValue)
+        this.props.addTask(this.state.textValue,)
     }
 
     render () {

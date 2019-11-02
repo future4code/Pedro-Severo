@@ -13,10 +13,15 @@ export const tasks = (state = initialState, action) => {
                 id: Date.now(),
                 completed: false,
             }
-            return [...state, newTask];
+            return [...state, newTask] ;
         case COMPLETE_TASK:
-            return [...state]
+            const indexToEdit = state.tasks.findIndex(task => task.id === action.payload.id);
+            const newState = [...state.tasks];
+
+            newState[indexToEdit].completed = true
+            return [newState]
         default:
             return state;        
     }
+    
 }

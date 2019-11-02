@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { completeTask } from '../actions/index';
+import { completeTask, deleteTask } from '../actions/index';
 
 const TaskListContainer = styled.div `
     display: flex;
@@ -19,8 +19,22 @@ export class TaskList extends React.Component {
         }
     }
 
+    onDelete = (id) => {
+        this.props.completeTask(id)
+    }
+
+    onComplete = (id) => {
+        this.props.completeTask(id)
+    }
 
     render () {
+        const handleComplete = (id) => {
+            this.onComplete(id)
+        };
+
+        const handleDelete = (id) => {
+            this.onDelete(id)
+        };
 
         return ( this.props.tasksList.map (task => (
             task.completed ? 
@@ -29,24 +43,29 @@ export class TaskList extends React.Component {
                 <div>
                     <TaskCompleted>{task.text}</TaskCompleted>
                 </div>
-                <button>Delete</button>
+                <button onClick={
+                    () => {handleDelete(task.id)}
+                }>Delete</button>
             </TaskListContainer>) : (
-                <TaskListContainer>
-                    <div>
-                        <p>{task.text}</p>
-                    </div>
-                    <button>Delete</button>
-                </TaskListContainer>
-                )
+            <TaskListContainer>
+                <div onClick={
+                    () => {handleComplete(task.id)}
+                }>
+                    <p>{task.text}</p>
+                </div>
+                <button onClick={
+                    () => {handleDelete(task.id)}
+                }>Delete</button>
+            </TaskListContainer>
+            )
         )))
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         completedTask: (id, complete) => dispatch(completeTask(id))
-//     }
-// }
+const mapDispatchToProps = dispatch => ({
+    completeTask: id => dispatch(completeTask(id)),
+    deteleTask: id => dispatch(deleteTask(id)),
+})
 
 const mapStateToProps = state => ({
     tasksList: state.tasks
@@ -54,4 +73,4 @@ const mapStateToProps = state => ({
 
 
 
-export default connect (mapStateToProps) (TaskList)
+export default connect (mapStateToProps, mapDispatchToProps) (TaskList)
