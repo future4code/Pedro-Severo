@@ -14,7 +14,7 @@ const LoginWrapper = styled.form`
   display: grid;
 `;
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,5 +53,10 @@ class LoginPage extends Component {
     );
   }
 }
+
+
+// mapDispatchToProps = dispatch => ({
+//   // goToLoginPage: () => dispatch(push(routes.root))
+// })
 
 export default LoginPage;
