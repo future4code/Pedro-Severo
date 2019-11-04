@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
+import { push, replace } from "connected-react-router";
+import { routes } from "../Router/index";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
@@ -29,6 +30,10 @@ export class LoginPage extends Component {
     });
   };
 
+  onClickLogin = () => {
+    this.props.goToHome()
+  }
+
   render() {
     const { email, password } = this.state;
 
@@ -48,15 +53,21 @@ export class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button>Login</Button>
+        <Button onClick={this.onClickLogin}>Login</Button>
       </LoginWrapper>
     );
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+      goToHome: () => dispatch(push(routes.home))
+  };
+};
 
-// mapDispatchToProps = dispatch => ({
-//   // goToLoginPage: () => dispatch(push(routes.root))
-// })
 
-export default LoginPage;
+
+export default connect (
+  null,
+  mapDispatchToProps
+)(LoginPage)
