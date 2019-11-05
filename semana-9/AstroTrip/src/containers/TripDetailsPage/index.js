@@ -10,11 +10,15 @@ export const TripDetailsPage = (props) => {
     console.log(props.trip.name)
     return (
         <div>
+            {/* Aqui precisa de melhorar o layout */}
            <h2>Detalhes da viagem</h2>
            <p>{props.trip.description}</p>
            <p>{props.trip.planet}</p>
            <p>{props.trip.durationInDays}</p>
            <p>{props.trip.date}</p>
+
+           {/* Aqui precisa de colocar uma função 
+            map pra abrir o array dos candidatos */}
         </div>
     )
 };

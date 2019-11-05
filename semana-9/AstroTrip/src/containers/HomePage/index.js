@@ -8,6 +8,7 @@ import { getTrips, getTripDetail } from "../../actions/trips";
 export const HomePage = (props) => {
     return (
         <div>
+            {/* a Home page precisa ser a primeira página, que leva para o formulário de inscrição ou para o painel do ADM */}
             <p>Home Page</p>
             <button onClick={props.goToTriperForms}>Formulário de inscrição</button>
             <button onClick={props.goToTripsList}>Lista de todas as viagens</button>

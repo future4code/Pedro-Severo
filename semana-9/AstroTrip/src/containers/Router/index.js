@@ -20,6 +20,7 @@ function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
+        {/* a Home page precisa ser a primeira página, que leva para o formulário de inscrição ou para o painel do ADM */}
         <Route path={routes.home} component={HomePage} />
         <Route path={routes.triperForm} component={ApplicationForm} />
         <Route path={routes.tripsCreation} component={HomePage} />
