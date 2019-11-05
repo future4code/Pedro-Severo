@@ -1,11 +1,13 @@
 import React from "react";
-
+import { connect } from 'react-redux';
+import { push } from "connected-react-router";
+import { routes } from "../Router/index";
 
 export const ListTripsPage = () => {
     return (
-        <div>
+        <button>
             List Trip Page
-        </div>
+        </button>
     )
 };
 

@@ -20,12 +20,12 @@ function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
-        <Route path={routes.root} component={LoginPage} />
         <Route path={routes.home} component={HomePage} />
         <Route path={routes.triperForm} component={ApplicationForm} />
         <Route path={routes.tripsCreation} component={HomePage} />
         <Route path={routes.tripsList} component={ListTripsPage} />
         <Route path={routes.tripsDetails} component={TripDetailsPage} />
+        <Route path={routes.root} component={LoginPage} />
       </Switch>
     </ConnectedRouter>
   );

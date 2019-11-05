@@ -1,12 +1,35 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { push } from "connected-react-router";
+import { routes } from "../Router/index";
+import { getTrips, getTripDetail } from "../../actions/trips"
 
 
-export const HomePage = () => {
+export const HomePage = (props) => {
     return (
         <div>
-            Home Page
+            <p>Home Page</p>
+            <button onClick={props.goToTriperForms}>Formulário de inscrição</button>
+            <button onClick={props.goToTripsList}>Lista de todas as viagens</button>
+            <button onClick={props.goToTripsCreation}>Criar Viagem</button>
+            <button onClick={props.goToTripsDetails}>Detalhe das viagens</button>
         </div>
     )
 };
 
-export default HomePage
+function mapDispatchToProps (dispatch) {
+    return {
+        goToTriperForms: () => dispatch(push(routes.triperForm)),
+        goToTripsList: () => dispatch(push(routes.tripsList)),
+        goToTripsCreation: () => dispatch(push(routes.tripsCreation)),
+        goToTripsDetails: () => dispatch(push(routes.tripsDetails)),
+        getTrips: () => dispatch(getTrips()),
+        getTripDetail: () => dispatch(getTripDetail())
+    };
+};
+  
+
+export default connect(
+    null, 
+    mapDispatchToProps
+)(HomePage)
