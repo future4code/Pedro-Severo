@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
-import { getTrips, getTripDetail } from "../../actions/trips"
+import { getTrips, getTripDetail } from "../../actions/trips";
 
 
 export const HomePage = (props) => {
@@ -23,8 +23,6 @@ function mapDispatchToProps (dispatch) {
         goToTripsList: () => dispatch(push(routes.tripsList)),
         goToTripsCreation: () => dispatch(push(routes.tripsCreation)),
         goToTripsDetails: () => dispatch(push(routes.tripsDetails)),
-        getTrips: () => dispatch(getTrips()),
-        getTripDetail: () => dispatch(getTripDetail())
     };
 };
   

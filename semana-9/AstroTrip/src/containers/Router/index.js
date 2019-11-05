@@ -5,15 +5,15 @@ import LoginPage from "../LoginPage/index";
 import HomePage from "../HomePage/index";
 import ApplicationForm from "../ApplicationForm/index";
 import ListTripsPage from "../ListTripsPage/index";
-import TripDetailsPage from "../TripDetailsPage/index"
+import TripDetailsPage from "../TripDetailsPage/index";
 
 export const routes = {
   root: "/",
   home: "/home",
   triperForm: "/application-form",
-  tripsList: "trips/list",
-  tripsCreation: "trips/create",
-  tripsDetails: "trips/details",
+  tripsList: "/trips/list",
+  tripsCreation: "/trips/create",
+  tripsDetails: "/trips/details",
 };
 
 function Router(props) {

@@ -13,11 +13,6 @@ export class ApplicationForm extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.getTrips()
-        this.props.getTripDetail()
-    }
-
     render () {
         return (
             <div>
@@ -29,14 +24,4 @@ export class ApplicationForm extends Component {
     };
 };
 
-function mapDispatchToProps (dispatch) {
-    return {
-        getTrips: () => dispatch(getTrips()),
-        getTripDetail: () => dispatch(getTripDetail())
-    };
-};
-
-export default connect (
-    null,
-    mapDispatchToProps
-  )(ApplicationForm)
+export default ApplicationForm
