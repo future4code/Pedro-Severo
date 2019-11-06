@@ -44,3 +44,29 @@ export const getTripDetail = (id) => async (dispatch) => {
 
     dispatch(setTripDetail(response.data.trip))
 }
+
+export const createTrip = (name, age, applicationText, profession, country, tripId) => async () => {
+    const candidate = {
+        name: name,
+        age: age,
+        applicationText: applicationText,
+        profession: profession,
+        country: country
+    };
+
+    const request = axios.post (
+        `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips/${tripId}/apply`,
+        candidate,
+    );
+
+
+    request
+        .then(response => {
+            window.alert("Boa, xovem!");
+            console.log(response);
+        })
+        .catch(error => {
+            window.alert("Não foi possível se cadastrar");
+            console.log(error.message);
+        });
+}

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
-import { getTrips, getTripDetail } from "../../actions/trips";
+import { applyToTrip } from "../../actions/candidates";
+import { } from "../../actions/trips";
 import SelectCountry from '../../components/Selects/SelectCountry';
 import SelectTrip from '../../components/Selects/SelectTrip'; 
 
@@ -36,13 +37,21 @@ export class ApplicationForm extends Component {
     handleOnSubmit = event => {
         event.preventDefault();
         console.log(this.state);
+        this.props.applyToTrip(
+            this.state.applicationForm.name,
+            this.state.applicationForm.age,
+            this.state.applicationForm.applicationText,
+            this.state.applicationForm.profession,
+            this.state.applicationForm.country,
+            this.state.applicationForm.tripId
+        );
       };
 
     render () {
         return (
             <div>
                 <Form>
-                    <label>Primeiro nome:</label>
+                    <label>Nome:</label>
                     <Input 
                         required 
                         id="name" 
@@ -103,4 +112,13 @@ export class ApplicationForm extends Component {
     };
 };
 
-export default ApplicationForm
+function mapDispatchToProps (dispatch) {
+    return {
+        applyToTrip: (name, age, applicationText, profession, country, tripId) => dispatch(applyToTrip(name, age, applicationText, profession, country, tripId))                                
+    };
+};
+
+export default connect (
+    null, 
+    mapDispatchToProps
+)(ApplicationForm)

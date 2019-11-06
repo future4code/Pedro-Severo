@@ -30,6 +30,7 @@ export class TripCreationForm extends Component {
     handleOnSubmit = event => {
         event.preventDefault();
         console.log(this.state);
+        
     };
 
 
