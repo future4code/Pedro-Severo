@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 
-export const SelectPlanet = () => {
+export const SelectPlanet = (props) => {
     return (
-        <select id="planet" name="Planet" class="form-control">
+        <select 
+            id="planet" 
+            name={props.name} 
+            class="form-control" 
+            onChange={props.handleInputChange}
+        >
             <option value="mercury">Mercúrio</option>
             <option value="venus">Vênus</option>
             <option value="earth">Terra</option>

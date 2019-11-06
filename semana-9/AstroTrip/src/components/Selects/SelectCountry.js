@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
+import { checkPropTypes } from "prop-types";
 
-export const SelectCountry = () => {
+export const SelectCountry = (props) => {
     return (
-        <select id="country" name="country" class="form-control">
+        <select 
+            id="country" 
+            name={props.name} 
+            class="form-control" 
+            onChange={props.handleInputChange}
+            // value={props.value}
+        >
+            <option value=""></option>
             <option value="Brazil">Brazil</option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="Åland Islands">Åland Islands</option>

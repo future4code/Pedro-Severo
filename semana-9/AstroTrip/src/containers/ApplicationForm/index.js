@@ -24,32 +24,79 @@ export class ApplicationForm extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            name:"",
-            age:"",
-            applicationText: "",
-            profession: "",
-            country: "",
-            tripWanted: "",
-        }
+            applicationForm: {},
+        };
+    };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({ applicationForm: {...this.state.applicationForm, [name]: value } })
     }
+
+    handleOnSubmit = event => {
+        event.preventDefault();
+        console.log(this.state);
+      };
 
     render () {
         return (
             <div>
                 <Form>
                     <label>Primeiro nome:</label>
-                    <Input required name="name" type="text" pattern="^[a-zA-Z]{3,}" required />
+                    <Input 
+                        required 
+                        id="name" 
+                        name="name" 
+                        type="text" 
+                        pattern="^[a-zA-Z]{3,}" 
+                        value={this.state.applicationForm["name"] || ""}
+                        onChange={this.handleInputChange} 
+                    />
                     <label>Idade:</label>
-                    <Input required name="idade" min="18" type="number" required/>
+                    <Input 
+                        required 
+                        id="age" 
+                        name="age" 
+                        min="18" 
+                        type="number" 
+                        value={this.state.applicationForm["age"] || ""}
+                        onChange={this.handleInputChange}
+                    />
                     <label>Por que você deve ser aprovado? (Mínimo: 30 caracteres)</label>
-                    <Input required name="applicationText" type="text" pattern=".{0}|.{30,100}"/>
+                    <Input 
+                        required 
+                        id="applicationText" 
+                        name="applicationText" 
+                        type="text" 
+                        pattern="[a-zA-Z\s]{30,}"
+                        value={this.state.applicationForm["applicationText"] || ""}
+                        onChange={this.handleInputChange}
+                    />
                     <label>Profissão (Mínimo: 10 caracteres)</label>
-                    <Input required name="profession" type="text" pattern=".{0}|.{10,30}" />
+                    <Input 
+                        required 
+                        id="profession" 
+                        name="profession" 
+                        type="text" 
+                        pattern="[a-zA-Z\s]{10,}" 
+                        value={this.state.applicationForm["profession"] || ""}
+                        onChange={this.handleInputChange}
+                    />
                     <label>País de origem</label>
-                    <SelectCountry />
+                    <SelectCountry 
+                        // não estou conseguindo colocar requisito de necessiade de mudança no select,
+                        // o que permite que o submit seja feito com os dois campos de select em branco
+                        name="country"
+                        handleInputChange={this.handleInputChange}
+                        // value={this.state.applicationForm["country"] || ""}
+                    />
                     <label>Viagem desejada</label>
-                    <SelectTrip />
-                    <button type="submit">Enviar</button>
+                    <SelectTrip 
+                        name="tripId"
+                        handleInputChange={this.handleInputChange} 
+                        // value={this.state.applicationForm["tripId"] || ""}
+                    />
+                    <button type="submit" onClick={this.handleOnSubmit}>Enviar</button>
                 </Form>
             </div>
         );
