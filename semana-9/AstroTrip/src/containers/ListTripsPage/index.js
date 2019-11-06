@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
 import { getTrips, setID } from "../../actions/trips"
+import TripCreationForm from "../../components/TripCreationForm";
 
 
 
@@ -14,10 +15,13 @@ export const ListTripsPage = (props) => {
     props.getTrips()
     return (
         <div>
-            <h2>Lista de viagens</h2>
-            {props.tripsList.map(trip => (
-                <li onClick={() => {returnTripDetail(trip.id)}}>{trip.name}</li>
-            ))}
+            <div>
+                <h2>Lista de viagens</h2>
+                {props.tripsList.map(trip => (
+                    <li onClick={() => {returnTripDetail(trip.id)}}>{trip.name}</li>
+                ))}
+            </div>
+            <TripCreationForm />
         </div>
     )
 };
