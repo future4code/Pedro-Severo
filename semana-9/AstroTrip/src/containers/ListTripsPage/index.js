@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
@@ -7,23 +7,43 @@ import TripCreationForm from "../../components/TripCreationForm";
 
 
 
-export const ListTripsPage = (props) => {
-    const returnTripDetail = id => {
-        props.setID(id);
-        props.goToTripsDetails();
+export class ListTripsPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+
+        }
     }
-    props.getTrips()
-    return (
-        <div>
+
+    componentDidMount = () => {
+        this.props.getTrips()
+        const token = window.localStorage.getItem("token");
+
+        if (!token) {
+            this.props.goToHome();
+        }
+    }
+
+    returnTripDetail = id => {
+        this.props.setID(id);
+        this.props.goToTripsDetails();        
+    }
+
+
+    render () {
+
+        return (
             <div>
-                <h2>Lista de viagens</h2>
-                {props.tripsList.map(trip => (
-                    <li onClick={() => {returnTripDetail(trip.id)}}>{trip.name}</li>
-                ))}
+                <div>
+                    <h2>Lista de viagens</h2>
+                    {this.props.tripsList.map(trip => (
+                        <li onClick={() => {this.returnTripDetail(trip.id)}}>{trip.name}</li>
+                    ))}
+                </div>
+                <TripCreationForm />
             </div>
-            <TripCreationForm />
-        </div>
-    )
+        )
+    }
 };
 
 const mapStateToProps = state => ({
@@ -34,6 +54,7 @@ function mapDispatchToProps (dispatch) {
     return {
         getTrips: () => dispatch(getTrips()),
         setID: (id) => dispatch(setID(id)),
+        goToHome: () => dispatch(push(routes.root)),
         goToTripsDetails: () => dispatch(push(routes.tripsDetails)),
     };
 };

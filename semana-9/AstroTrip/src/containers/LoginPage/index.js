@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push, replace } from "connected-react-router";
 import { routes } from "../Router/index";
+import { doLogin } from "../../actions/adm";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
@@ -31,7 +32,8 @@ export class LoginPage extends Component {
   };
 
   onClickLogin = () => {
-    this.props.goToHome()
+    const { email, password } = this.state 
+    this.props.doLogin(email, password)
   }
 
   render() {
@@ -61,7 +63,7 @@ export class LoginPage extends Component {
 
 function mapDispatchToProps (dispatch) {
   return {
-      goToHome: () => dispatch(push(routes.home))
+    doLogin: (email, password) => dispatch(doLogin(email, password))
   };
 };
 

@@ -9,7 +9,7 @@ import TripDetailsPage from "../TripDetailsPage/index";
 
 export const routes = {
   root: "/",
-  home: "/home",
+  loginPage: "/login-page",
   triperForm: "/application-form",
   tripsList: "/trips/list",
   tripsCreation: "/trips/create",
@@ -20,13 +20,12 @@ function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
-        {/* a Home page precisa ser a primeira página, que leva para o formulário de inscrição ou para o painel do ADM */}
-        <Route path={routes.home} component={HomePage} />
+        <Route path={routes.loginPage} component={LoginPage} />
         <Route path={routes.triperForm} component={ApplicationForm} />
         <Route path={routes.tripsCreation} component={HomePage} />
         <Route path={routes.tripsList} component={ListTripsPage} />
         <Route path={routes.tripsDetails} component={TripDetailsPage} />
-        <Route path={routes.root} component={LoginPage} />
+        <Route path={routes.root} component={HomePage} />
       </Switch>
     </ConnectedRouter>
   );
