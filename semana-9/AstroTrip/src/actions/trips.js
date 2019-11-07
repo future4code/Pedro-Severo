@@ -36,12 +36,15 @@ export const getTrips = () => async (dispatch) => {
 }
 
 export const getTripDetail = (id) => async (dispatch) => {
+    const token = window.localStorage.getItem("token");
     const response = await axios.get(
-        `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trip/${id}`
-    )
-
-    console.log(response)
-
+        `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trip/${id}`,
+        {
+            headers: {
+                auth: token
+            }
+        })
+        
     dispatch(setTripDetail(response.data.trip))
 }
 
