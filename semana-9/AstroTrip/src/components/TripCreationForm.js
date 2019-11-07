@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { createTrip } from '../actions/trips';
 import SelectPlanet from './Selects/SelectPlanet';
 
 const Form = styled.form `
@@ -30,7 +32,7 @@ export class TripCreationForm extends Component {
     handleOnSubmit = event => {
         event.preventDefault();
         console.log(this.state);
-        
+        this.props.createTrip(this.state.newTrip)
     };
 
 
@@ -88,4 +90,13 @@ export class TripCreationForm extends Component {
     };
 };
 
-export default TripCreationForm
+function mapDispatchToProps (dispatch) {
+    return {
+        createTrip: (newTrip) => dispatch(createTrip(newTrip))                                
+    };
+};
+
+export default connect (
+    null, 
+    mapDispatchToProps
+)(TripCreationForm)
