@@ -29,6 +29,6 @@ function Router(props) {
       </Switch>
     </ConnectedRouter>
   );
-}
+};
 
 export default Router;

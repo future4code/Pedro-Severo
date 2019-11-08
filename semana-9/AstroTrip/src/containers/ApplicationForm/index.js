@@ -19,7 +19,6 @@ const Input = styled.input `
     width: 300px;
 `
 
-
 export class ApplicationForm extends Component {
     constructor (props) {
         super(props);

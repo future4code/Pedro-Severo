@@ -6,7 +6,6 @@ import { getTrips, setID } from "../../actions/trips"
 import TripCreationForm from "../../components/TripCreationForm";
 
 
-
 export class ListTripsPage extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +17,6 @@ export class ListTripsPage extends Component {
     componentDidMount = () => {
         this.props.getTrips()
         const token = window.localStorage.getItem("token");
-
         if (!token) {
             this.props.goToHome();
         }
@@ -31,7 +29,6 @@ export class ListTripsPage extends Component {
 
 
     render () {
-
         return (
             <div>
                 <div>

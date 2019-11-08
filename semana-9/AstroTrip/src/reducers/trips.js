@@ -6,5 +6,5 @@ export const tripsReducer = (state = initialState, action) => {
             return action.payload.tripsList;
         default:
             return state
-    }
-}
+    };
+};

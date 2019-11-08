@@ -6,7 +6,7 @@ const initialState = {
     durationInDays: "",
     date: "",
     candidates: []
-}
+};
 
 export const tripDetailReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -14,5 +14,5 @@ export const tripDetailReducer = (state = initialState, action) => {
             return action.payload.trip;
         default:
             return state;
-    }
-}
+    };
+};

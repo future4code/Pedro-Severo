@@ -23,7 +23,7 @@ export class LoginPage extends Component {
       email: "",
       password: ""
     };
-  }
+  };
 
   handleFieldChange = event => {
     this.setState({
@@ -32,9 +32,9 @@ export class LoginPage extends Component {
   };
 
   onClickLogin = () => {
-    const { email, password } = this.state 
-    this.props.doLogin(email, password)
-  }
+    const { email, password } = this.state;
+    this.props.doLogin(email, password);
+  };
 
   render() {
     const { email, password } = this.state;
@@ -72,4 +72,4 @@ function mapDispatchToProps (dispatch) {
 export default connect (
   null,
   mapDispatchToProps
-)(LoginPage)
+)(LoginPage);

@@ -7,5 +7,5 @@ export const idReducer = (state = initialState, action) => {
             return action.payload.id;
         default:
             return state
-    }
-}
+    };
+};
