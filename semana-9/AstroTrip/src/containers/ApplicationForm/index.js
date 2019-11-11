@@ -1,23 +1,24 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { push } from "connected-react-router";
-import { routes } from "../Router/index";
 import { applyToTrip } from "../../actions/candidates";
 import SelectCountry from '../../components/Selects/SelectCountry';
 import SelectTrip from '../../components/Selects/SelectTrip'; 
+import TextField from "@material-ui/core/TextField";
+
 
 const Form = styled.form `
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    height: 80vh;
 `
 
-const Input = styled.input `
-    margin: 5px 0;
-    width: 300px;
+const StyledTextField = styled(TextField)`
+    width: 30vw;
 `
+
 
 export class ApplicationForm extends Component {
     constructor (props) {
@@ -42,45 +43,45 @@ export class ApplicationForm extends Component {
         return (
             <div>
                 <Form>
-                    <label>Nome:</label>
-                    <Input 
+                    <StyledTextField
                         required 
-                        id="name" 
-                        name="name" 
-                        type="text" 
-                        pattern="^[a-zA-Z]{3,}" 
                         value={this.state.applicationForm["name"] || ""}
                         onChange={this.handleInputChange} 
+                        id="name"
+                        name="name"
+                        type="text" 
+                        pattern="^[a-zA-Z]{3,}" 
+                        label="Nome"
                     />
-                    <label>Idade:</label>
-                    <Input 
+                    <StyledTextField 
                         required 
+                        value={this.state.applicationForm["age"] || ""}
+                        onChange={this.handleInputChange}
                         id="age" 
                         name="age" 
                         min="18" 
                         type="number" 
-                        value={this.state.applicationForm["age"] || ""}
-                        onChange={this.handleInputChange}
+                        label="Idade"
                     />
-                    <label>Por que você deve ser aprovado? (Mínimo: 30 caracteres)</label>
-                    <Input 
-                        required 
-                        id="applicationText" 
-                        name="applicationText" 
-                        type="text" 
-                        pattern="[a-zA-Z\s]{30,}"
-                        value={this.state.applicationForm["applicationText"] || ""}
-                        onChange={this.handleInputChange}
+                    <StyledTextField 
+                       required 
+                       value={this.state.applicationForm["applicationText"] || ""}
+                       onChange={this.handleInputChange}
+                       id="applicationText" 
+                       name="applicationText" 
+                       type="text" 
+                       pattern="[a-zA-Z\s]{30,}"
+                       label="Por que você deve ir? (Mínimo 30 caracteres)"
                     />
-                    <label>Profissão (Mínimo: 10 caracteres)</label>
-                    <Input 
+                    <StyledTextField  
                         required 
+                        value={this.state.applicationForm["profession"] || ""}
+                        onChange={this.handleInputChange}
                         id="profession" 
                         name="profession" 
                         type="text" 
                         pattern="[a-zA-Z\s]{10,}" 
-                        value={this.state.applicationForm["profession"] || ""}
-                        onChange={this.handleInputChange}
+                        label="Profissão: (Mínimo 10 caracteres)"
                     />
                     <label>País de origem</label>
                     <SelectCountry 
