@@ -67,8 +67,6 @@ describe ("Post Actions-Creators", () => {
 
     it("Get Posts", async () => {
         axios.get = jest.fn();
-        const mockedDispatch = jest.fn();
-
         expect(axios.get).toHaveBeenCalledWith('https://us-central1-missao-newton.cloudfunctions.net/fourEddit/posts', {
             headers: {
                 auth: null
