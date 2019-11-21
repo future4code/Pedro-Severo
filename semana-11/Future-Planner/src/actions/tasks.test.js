@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createTask } from "./tasks"
+import { getTasks } from "./tasks"
 
 describe("Task Actions", () => {
 
@@ -23,6 +24,7 @@ describe("Task Actions", () => {
             await createTask(text, day)(mockDispatch);
             expect(axios.post).toHaveBeenCalledWith("https://us-central1-missao-newton.cloudfunctions.net/generic/:planner-pedro", mockTask)
             expect(mockDispatch).toHaveBeenCalledTimes(1)
+            expect(mockDispatch).toHaveBeenCalledWith(getTasks())
         })
     })
 })
