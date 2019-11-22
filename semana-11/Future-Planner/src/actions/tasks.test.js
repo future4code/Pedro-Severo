@@ -1,6 +1,8 @@
 import axios from "axios";
-import { createTask } from "./tasks"
-import { getTasks } from "./tasks"
+import { createTask, setTasks } from "./tasks";
+import { getTasks } from "./tasks";
+import { baseURL } from "../api/constants";
+
 
 describe("Task Actions", () => {
 
@@ -15,16 +17,46 @@ describe("Task Actions", () => {
     }
 
     describe("CreateTask", () => {
-        it("axios correct response is being handled", async () => {
+        it("axios correct response is being handled and dispatch has being called with correct action", async () => {
             axios.post = jest.fn(() => ({
                 status: 200
             }));
             
             const {text, day} = mockTask
             await createTask(text, day)(mockDispatch);
-            expect(axios.post).toHaveBeenCalledWith("https://us-central1-missao-newton.cloudfunctions.net/generic/:planner-pedro", mockTask)
+            expect(axios.post).toHaveBeenCalledWith(baseURL + "pedro", mockTask)
             expect(mockDispatch).toHaveBeenCalledTimes(1)
-            expect(mockDispatch).toHaveBeenCalledWith(getTasks())
+        })
+    })
+
+    describe("SetTasks", () => {
+        it("action creator is being called with a correct parameter", () => {
+            const {text, day} = mockTask
+            const mockTasks = [text, day]
+            
+            setTasks(mockTasks)
+            expect(["text", "monday"]).toEqual(expect.arrayContaining(mockTasks))
+        })
+    })
+
+    describe("GetTasks", () => {
+        it("dispatch is being called with correct action", async () => {
+            const mockTasks = [mockTask]
+            
+            axios.get = jest.fn(() => ({
+                data: mockTasks
+            }))
+            
+            const expectAction = {
+                type: "SET_TASKS",
+                payload: {
+                    tasks: mockTasks
+                }
+            }
+
+            await getTasks()(mockDispatch);
+            expect(axios.get).toHaveBeenCalledWith(baseURL + "pedro")
+            expect(mockDispatch).toHaveBeenCalledWith(expectAction)
         })
     })
 })

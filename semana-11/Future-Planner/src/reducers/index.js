@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import { tasksReducer } from "./tasks";
 
 export const rootReducer = combineReducers({
-  // Seus reducers aqui
+  tasks: tasksReducer,
 });
