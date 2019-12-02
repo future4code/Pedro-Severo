@@ -4,7 +4,8 @@
   "description": "calculator with operations\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C 4 operations",
   "main": "myCalculator.js",
   "scripts": {
-    "test": "npm run start "
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "author": "Pedro Severo",
   "license": "ISC"
