@@ -1,0 +1,11 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "calculator with operations\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C 4 operations",
+  "main": "myCalculator.js",
+  "scripts": {
+    "test": "npm run start "
+  },
+  "author": "Pedro Severo",
+  "license": "ISC"
+}
