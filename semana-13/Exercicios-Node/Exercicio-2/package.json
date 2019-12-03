@@ -4,7 +4,8 @@
   "description": "Aplication to create daily tasks",
   "main": "gestorDeTarefas.js",
   "scripts": {
-    "test": "npm run start"
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "author": "Pedro Severo",
   "license": "ISC"

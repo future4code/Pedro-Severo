@@ -4,7 +4,7 @@ const secondNumber = Number(process.argv[4]);
 
 
 if (firstNumber === false || secondNumber === false) {
-    console.log("É necessário colocar um número válido.");
+    console.log("É necessário colocar um número válido.")
 } else if (operation !== "add" || operation !== "sub" || operation !== "mult" || operation !== "div") {
     console.log("É necessário colocar uma operação matemática válida.");
 } else {
