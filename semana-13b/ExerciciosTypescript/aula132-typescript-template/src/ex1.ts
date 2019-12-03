@@ -10,20 +10,20 @@ type result = {
 function takeArray(numbers: number[]): result {
     const justOddNumbers: number[] = numbers.filter((el: number) => {
         return el%2 !== 0;
-    })
+    });
     
     let sum: number = 0
     for(let i = 0; i < numbers.length; i++) {
         sum += numbers[i]
-    }
+    };
     
     const result: result = {
         amount: numbers.length,
         oddNumbers: justOddNumbers.length,
         arraySum: sum
-    }
+    };
 
-    return result
-}
+    return result;
+};
 
-takeArray(array)
+takeArray(array);

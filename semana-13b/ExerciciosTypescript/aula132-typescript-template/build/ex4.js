@@ -30,7 +30,7 @@ const products = [
         priceWithOff: 0,
     },
     {
-        name: "Sutia",
+        name: "Samba-canção",
         price: 15.00,
         tag: "intim",
         priceWithOff: 0,
