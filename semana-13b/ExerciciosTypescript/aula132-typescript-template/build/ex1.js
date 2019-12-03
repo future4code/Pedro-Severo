@@ -7,6 +7,7 @@ function takeArray(numbers) {
     for (let i = 0; i < numbers.length; i++) {
         sum += numbers[i];
     }
+    ;
     const result = {
         amount: numbers.length,
         oddNumbers: justOddNumbers.length,
@@ -14,5 +15,6 @@ function takeArray(numbers) {
     };
     return result;
 }
+;
 takeArray(array);
 //# sourceMappingURL=ex1.js.map
