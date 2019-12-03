@@ -1,0 +1,12 @@
+{
+  "name": "gerenciador-de-tarefas",
+  "version": "1.0.0",
+  "description": "Aplication to create daily tasks",
+  "main": "gestorDeTarefas.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "author": "Pedro Severo",
+  "license": "ISC"
+}
