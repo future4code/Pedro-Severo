@@ -1,6 +1,8 @@
-const num = -54;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const num = 6;
 let numbers = [];
-function createArrayNumber(num) {
+function createFactorial(num) {
     if (num > 0) {
         for (let i = num; i > 0; i = i - 1) {
             numbers.push(i);
@@ -20,6 +22,6 @@ function createArrayNumber(num) {
         return undefined;
     }
 }
+exports.createFactorial = createFactorial;
 ;
-console.log(createArrayNumber(num));
 //# sourceMappingURL=ex8.js.map

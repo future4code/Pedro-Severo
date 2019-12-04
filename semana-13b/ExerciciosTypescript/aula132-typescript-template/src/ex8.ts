@@ -2,7 +2,7 @@
 const num: number = 6;
 let numbers: number[] = [];
 
-function createArrayNumber(num: number): number | undefined {
+export function createFactorial(num: number): number | undefined {
     if (num > 0) {
         for (let i = num; i > 0; i = i - 1) {
             numbers.push(i)
@@ -18,5 +18,3 @@ function createArrayNumber(num: number): number | undefined {
         return 1;
     } else {return undefined}
 }; 
-
-console.log(createArrayNumber(num))
