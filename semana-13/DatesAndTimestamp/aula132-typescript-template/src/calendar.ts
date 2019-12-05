@@ -1,23 +1,41 @@
 import * as moment from "moment";
-import { readFile } from 'fs';
-
+import { readFile, writeFile } from 'fs';
 
 type event = {
     name: string,
     description: string, 
-    date: Date,
+    date: any,
 };
 
-const events: string = "events.json";
+const event1: event = {
+    name: "comprar pão",
+    description: "comprar pão no supermercado",
+    date: moment.now()
+}
 
-const getEvents = (err: Error, data:Buffer) => {
+const fileName: string = "events.json";
+
+let events: event[] = [];
+
+const createEvent = (event: event, err: any, data:Buffer): event[] => {
+    if(err){
+        console.error(err);
+        return;
+    }
+    
+    events = [...events, event]
+    readFile(fileName, getEvents);
+    return events
+}
+
+const getEvents = (err: any, data:Buffer) => {
     if(err){
         console.error(err);
         return;
     }
 
-    const eventsJSONContent:string = data.toString();
+    const eventsJSONContent: any = [...events, data.toString()];
     console.log("Arquivo lido com sucesso:", eventsJSONContent);
-}
+};
 
-readFile(events, getEvents);
+writeFile(fileName, event1, createEvent)
