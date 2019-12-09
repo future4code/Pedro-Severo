@@ -31,6 +31,4 @@ class UserAccount {
 }
 exports.UserAccount = UserAccount;
 ;
-const newUser = new UserAccount("Pedro", "120.438.916-00", 25);
-const newTransaction = new Transaction("120.438.916-00", 10, "depósito");
 //# sourceMappingURL=users.js.map

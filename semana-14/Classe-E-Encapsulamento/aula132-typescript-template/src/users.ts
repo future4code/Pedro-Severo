@@ -34,7 +34,3 @@ export class UserAccount {
         this.transactions.push(transaction);
     };
 };
-
-const newUser: UserAccount = new UserAccount("Pedro", "120.438.916-00", 25);
-const newTransaction: Transaction = new Transaction("120.438.916-00", 10, "depósito");
-

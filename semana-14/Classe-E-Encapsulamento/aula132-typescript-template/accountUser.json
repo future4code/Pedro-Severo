@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Pedro",
+    "cpf": "120.438.916-00",
+    "age": 25,
+    "balance": 0,
+    "transactions": [
+      {
+        "cpf": "120.438.916-00",
+        "value": 10,
+        "description": "depósito"
+      }
+    ]
+  },
+  {
+    "name": "Severo",
+    "cpf": "120.438.916-01",
+    "age": 23,
+    "balance": 0,
+    "transactions": []
+  }
+]
