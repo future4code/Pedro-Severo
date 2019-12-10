@@ -1,15 +1,18 @@
 export abstract class Dish {
-    price: number
+    name: string;
+    price: number;
     protected cost: number;
     protected ingredients: string[];
     protected timeToCook: number;
   
     constructor(
+        name: string,
         price: number,
         cost: number,
         ingredients: string[],
         timeToCook: number
     ) {
+        this.name = name;
         this.price = price; 
         this.cost = cost;
         this.ingredients = ingredients;

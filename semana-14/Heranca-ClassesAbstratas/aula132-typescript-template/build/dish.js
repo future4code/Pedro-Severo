@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Dish {
-    constructor(price, cost, ingredients, timeToCook) {
+    constructor(name, price, cost, ingredients, timeToCook) {
+        this.name = name;
         this.price = price;
         this.cost = cost;
         this.ingredients = ingredients;

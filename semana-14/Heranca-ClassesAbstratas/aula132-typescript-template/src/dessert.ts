@@ -3,20 +3,20 @@ import { Dish } from "./dish";
 export class Dessert extends Dish {
   public slicesNumber: number;
   public slicePrice: number;
-  public price: number;
   constructor(
+    name: string,
     price: number,
     cost: number,
     ingredients: string[],
     timeToCook: number,
     slicesNumber: number,
   ) {
-    super(price, cost, ingredients, timeToCook);
+    super(name, price, cost, ingredients, timeToCook);
     this.slicesNumber = slicesNumber;
   };
 
-  public getSlicePrice(): number {
-    return this.price / this.slicesNumber;
+  public getTotalPrice(): number {
+    return this.price * this.slicesNumber;
   };
 
   public cook(): void {
