@@ -6,7 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node build/test.js --target es6"
+    "start": "tsc && node build/test.js --target es6",
+    "index": "tsc && node build/index.js --target es6",
+    "menu": "tsc && node build/menu.js --target es6",
+    "employees": "tsc && node build/employees.js --target es6"
   },
   "author": "",
   "license": "ISC",
