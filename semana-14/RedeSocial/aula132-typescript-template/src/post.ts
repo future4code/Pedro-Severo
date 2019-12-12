@@ -1,3 +1,4 @@
+import { JSONFileManager } from './JSONFileManager';
 import * as moment from "moment";
 
 export class Post {
@@ -10,13 +11,24 @@ export class Post {
         this.text = text;
         this.date = moment();
     };
+
+
 };
 
-export class Error {
-    constructor(protected date: moment.Moment) {}
+interface Creator {
+    createPost (): void;
+};
 
-    getError(): void {
-        console.log("Mensagem de erro");
+export class PostCreator extends Post implements Creator  {
+    createPost(): Post {
+        if (this.name.indexOf('&') === 0) {
+            this.name = this.name.replace("&", "").toUpperCase();
+        } 
+        
+        if (this.text.indexOf('&') === 0) {
+            this.text = this.text.replace("&", "").toUpperCase();
+        };
+
+        return new Post(this.name, this.text) 
     };
-
 };
