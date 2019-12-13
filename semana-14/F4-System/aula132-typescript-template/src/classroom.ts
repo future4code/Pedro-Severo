@@ -1,6 +1,7 @@
 import { Teacher } from './teachers';
 import { Student } from './students';
 import * as moment from "moment";
+moment.locale("pt-br")
 
 export abstract class Classroom {
     constructor (

@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const JSONFileManager_1 = require("./JSONFileManager");
+const classroom_1 = require("./classroom");
+const students_1 = require("./students");
+const moment = require("moment");
+moment.locale("pt-br");
+const studentsFileManager = new JSONFileManager_1.JSONFileManager("students.json");
+const webFSStudents = [];
+const mobileStudents = [];
+const teachers = [];
+const yodaWebFS = new classroom_1.WebFSClassroom(moment("02/01/2020", "DD/MM/YYYY"), moment("02/07/2020", "DD/MM/YYYY"), webFSStudents, teachers, "Mestre Yoda");
+const turma1Mobile = new classroom_1.MobileClassroom(moment("02/06/2020", "DD/MM/YYYY"), moment("23/12/2020", "DD/MM/YYYY"), mobileStudents, teachers, 1);
+const student1 = new students_1.Student("Pedro", moment("06/12/1994", "DD/MM/YYYY"), "phsevero@gmail", yodaWebFS);
+const student2 = new students_1.Student("Pedro", moment("14/10/1995", "DD/MM/YYYY"), "amanda@gmail", yodaWebFS);
+const student3 = new students_1.Student("Daniel", moment("22/01/1990", "DD/MM/YYYY"), "daniel@gmail", turma1Mobile);
+const student4 = new students_1.Student("Kelson", moment("30/07/1992", "DD/MM/YYYY"), "kelson@gmail", turma1Mobile);
+console.log(student1);
+console.log(student2);
+console.log(student3);
+console.log(student4);
+//# sourceMappingURL=index.js.map

@@ -1,6 +1,8 @@
-import * as moment from "moment";
 import { Person } from "./person";
 import { Classroom } from "./classroom";
+import * as moment from "moment";
+moment.locale("pt-br")
+
 
 export class Student implements Person {
     constructor (
@@ -10,7 +12,7 @@ export class Student implements Person {
         public classroom: Classroom
     ) {};
 
-    createNew (): void {
-
+    createNew (students: Student[]): Student[] {
+        return students
     };
 };
