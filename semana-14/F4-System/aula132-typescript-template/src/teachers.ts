@@ -1,8 +1,7 @@
-import { Person } from "./person";
+import { JSONFileManager } from './JSONFileManager';
+import { Person, PeopleManager } from "./person";
 import * as moment from "moment";
-
-moment.locale("pt-br")
-
+moment.locale("pt-br");
 
 export class Teacher implements Person {
     constructor (
@@ -11,8 +10,24 @@ export class Teacher implements Person {
         public email: string, 
         public expertises: string[]
     ) {};
+};
 
-    createNew (teachers: Teacher[]): Teacher[] {
-        return teachers
+export class Teachers implements PeopleManager {
+    all: Teacher[];
+    fileManager: JSONFileManager;
+
+    constructor(fileManager: JSONFileManager) {
+        this.all = [];
+        this.fileManager = fileManager;
+    };
+
+    createNew(teacher: Teacher) {
+        this.all.push(teacher);
+    };
+
+    saveStudents() {
+        for (let student of this.all) {
+            return student
+        };
     };
 };

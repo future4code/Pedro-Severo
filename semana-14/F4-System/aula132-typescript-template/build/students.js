@@ -10,11 +10,27 @@ class Student {
         this.classroom = classroom;
     }
     ;
-    createNew(students) {
-        return students;
+}
+exports.Student = Student;
+;
+class Students {
+    constructor(fileManager) {
+        this.all = [];
+        this.fileManager = fileManager;
+    }
+    ;
+    createNew(student) {
+        this.all.push(student);
+    }
+    ;
+    saveStudents() {
+        for (let student of this.all) {
+            return student;
+        }
+        ;
     }
     ;
 }
-exports.Student = Student;
+exports.Students = Students;
 ;
 //# sourceMappingURL=students.js.map
