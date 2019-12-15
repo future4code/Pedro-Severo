@@ -3,7 +3,7 @@ import { WebFSClassroom, MobileClassroom, Classroom } from './classroom';
 import { Teacher, Teachers } from './teachers';
 import { Student, Students } from './students';
 import * as moment from "moment";
-moment.locale("pt-br")
+moment.locale("pt-br");
 
 const studentsFileManager = new JSONFileManager("students.json");
 const teachersFileManager = new JSONFileManager("teachers.json");
@@ -23,15 +23,16 @@ const student4: Student = new Student("Kelson",moment("30/07/1992", "DD/MM/YYYY"
 
 const teacher1: Teacher = new Teacher("Soter", moment("05/05/1995"), "soter@gmail", ["caçador de bugs", "react", "css", "front-end"]);
 const teacher2: Teacher = new Teacher("Darvas", moment("05/05/1998"), "darvas@gmail", ["node", "react", "fullstack"]);
-const teacher3: Teacher = new Teacher("Goli", moment("05/05/1996"), "goli@gmail", ["node", "poo", "back-end"]);
+const teacher3: Teacher = new Teacher("Goli", moment("05/05/1996"), "goli@gmail", ["node", "oo", "back-end"]);
+const teacher4: Teacher = new Teacher("Paulinha", moment("05/05/1996"), "paulinha@gmail", ["AI","JavaScript", "back-end"]);
 
 const saveStudents = (): void => {
-    students.createNew(student1)
-    students.createNew(student2)
-    students.createNew(student3)
-    students.createNew(student4)
+    students.createNew(student1);
+    students.createNew(student2);
+    students.createNew(student3);
+    students.createNew(student4);
 
-    studentsFileManager.saveToJSON(students.all)
+    studentsFileManager.saveToJSON(students.all);
 };
 
 saveStudents();
@@ -40,16 +41,13 @@ const saveTeachers = (): void => {
     teachers.createNew(teacher1);
     teachers.createNew(teacher2);
     teachers.createNew(teacher3);
+    teachers.createNew(teacher4);
 
     teachersFileManager.saveToJSON(teachers.all);
 };
 
 saveTeachers();
 
-// const saveStudents = () => {
-//     studentsFileManager.saveToJSON(student1);
-//     const studentsFromJSON: any = studentsFileManager.getObjectFromFile();
-//     studentsFileManager.saveToJSON(bank.saveAccounts(newTransaction, user1, accountsFromJSON));
-
-
-// };
+teachers.print(teachers.all);
+students.print(students.all);
+teachers.print(teacher2);

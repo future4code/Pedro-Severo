@@ -25,9 +25,7 @@ export class Teachers implements PeopleManager {
         this.all.push(teacher);
     };
 
-    saveStudents() {
-        for (let student of this.all) {
-            return student
-        };
+    print(teachers: Teacher[] | Teacher): void {
+        console.log(teachers);
     };
 };

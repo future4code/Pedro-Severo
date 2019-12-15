@@ -13,4 +13,5 @@ export interface PeopleManager {
     fileManager: JSONFileManager;
 
     createNew (person: Person): void;
+    print(person: Person | Person[]): void;
 };

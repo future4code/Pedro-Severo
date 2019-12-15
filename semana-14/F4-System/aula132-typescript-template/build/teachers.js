@@ -23,11 +23,8 @@ class Teachers {
         this.all.push(teacher);
     }
     ;
-    saveStudents() {
-        for (let student of this.all) {
-            return student;
-        }
-        ;
+    print(teachers) {
+        console.log(teachers);
     }
     ;
 }

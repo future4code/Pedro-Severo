@@ -20,7 +20,8 @@ const student3 = new students_1.Student("Daniel", moment("22/01/1990", "DD/MM/YY
 const student4 = new students_1.Student("Kelson", moment("30/07/1992", "DD/MM/YYYY"), "kelson@gmail", turma1Mobile);
 const teacher1 = new teachers_1.Teacher("Soter", moment("05/05/1995"), "soter@gmail", ["caçador de bugs", "react", "css", "front-end"]);
 const teacher2 = new teachers_1.Teacher("Darvas", moment("05/05/1998"), "darvas@gmail", ["node", "react", "fullstack"]);
-const teacher3 = new teachers_1.Teacher("Goli", moment("05/05/1996"), "goli@gmail", ["node", "poo", "back-end"]);
+const teacher3 = new teachers_1.Teacher("Goli", moment("05/05/1996"), "goli@gmail", ["node", "oo", "back-end"]);
+const teacher4 = new teachers_1.Teacher("Paulinha", moment("05/05/1996"), "paulinha@gmail", ["AI", "JavaScript", "back-end"]);
 const saveStudents = () => {
     students.createNew(student1);
     students.createNew(student2);
@@ -33,7 +34,11 @@ const saveTeachers = () => {
     teachers.createNew(teacher1);
     teachers.createNew(teacher2);
     teachers.createNew(teacher3);
+    teachers.createNew(teacher4);
     teachersFileManager.saveToJSON(teachers.all);
 };
 saveTeachers();
+teachers.print(teachers.all);
+students.print(students.all);
+teachers.print(teacher2);
 //# sourceMappingURL=index.js.map

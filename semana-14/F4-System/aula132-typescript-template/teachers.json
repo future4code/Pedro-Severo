@@ -26,7 +26,17 @@
     "email": "goli@gmail",
     "expertises": [
       "node",
-      "poo",
+      "oo",
+      "back-end"
+    ]
+  },
+  {
+    "name": "Paulinha",
+    "birth": "1996-05-05T03:00:00.000Z",
+    "email": "paulinha@gmail",
+    "expertises": [
+      "AI",
+      "JavaScript",
       "back-end"
     ]
   }
