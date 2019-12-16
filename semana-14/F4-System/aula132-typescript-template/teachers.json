@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Soter",
+    "birth": "1995-05-05T03:00:00.000Z",
+    "email": "soter@gmail",
+    "expertises": [
+      "caçador de bugs",
+      "react",
+      "css",
+      "front-end"
+    ]
+  },
+  {
+    "name": "Darvas",
+    "birth": "1998-05-05T03:00:00.000Z",
+    "email": "darvas@gmail",
+    "expertises": [
+      "node",
+      "react",
+      "fullstack"
+    ]
+  },
+  {
+    "name": "Goli",
+    "birth": "1996-05-05T03:00:00.000Z",
+    "email": "goli@gmail",
+    "expertises": [
+      "node",
+      "oo",
+      "back-end"
+    ]
+  },
+  {
+    "name": "Paulinha",
+    "birth": "1996-05-05T03:00:00.000Z",
+    "email": "paulinha@gmail",
+    "expertises": [
+      "AI",
+      "JavaScript",
+      "back-end"
+    ]
+  }
+]
