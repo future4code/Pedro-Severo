@@ -183,3 +183,648 @@ Fetching table and column names from `exercicios` for auto-completion... Press ^
  MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL >
 
 
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT primeiro_nome, ultimo_nome, email
+                                                                                   -> FROM correntistas
+                                                                                   -> WHERE pais = "Brazil" AND conta_corrente < 0;
++---------------+-------------+--------------------------------+
+| primeiro_nome | ultimo_nome | email                          |
++---------------+-------------+--------------------------------+
+| Sonja         | Suggey      | ssuggey8@discovery.com         |
+| Ave           | Binden      | abindenb@behance.net           |
+| Flora         | Clowton     | fclowton1f@house.gov           |
+| Benson        | Kineton     | bkineton2f@si.edu              |
+| Alyson        | Jura        | ajura2q@goo.ne.jp              |
+| Caleb         | Coultar     | ccoultar34@zimbio.com          |
+| Cathlene      | Andrysiak   | candrysiak3b@icio.us           |
+| Ancell        | Boggs       | aboggs3j@epa.gov               |
+| Bettine       | Lillicrop   | blillicrop41@yahoo.com         |
+| Cordey        | Accombe     | caccombe47@bbc.co.uk           |
+| Robbie        | Frankis     | rfrankis4y@devhub.com          |
+| Liesa         | Bulle       | lbulle55@ezinearticles.com     |
+| Rosene        | Densell     | rdensell5s@bbc.co.uk           |
+| Stan          | Wickersley  | swickersley69@jimdo.com        |
+| Kerstin       | Eagleston   | keagleston6l@feedburner.com    |
+| Vonni         | Jeffes      | vjeffes6r@huffingtonpost.com   |
+| Yolande       | Pauncefort  | ypauncefort79@skype.com        |
+| Gerrard       | Samber      | gsamber7b@bizjournals.com      |
+| Imojean       | Vickars     | ivickars8c@mtv.com             |
+| Fayth         | Feasby      | ffeasby99@time.com             |
+| Mayer         | Shimwell    | mshimwellb7@bbb.org            |
+| Dorothy       | Gregorio    | dgregoriobi@aol.com            |
+| Eudora        | Clemensen   | eclemensenbm@hud.gov           |
+| Giustino      | Eaglen      | geagleng3@livejournal.com      |
+| Amil          | Probart     | aprobartg7@prnewswire.com      |
+| Laurene       | Maber       | lmabergp@toplist.cz            |
+| Wilbur        | Emps        | wempsh7@redcross.org           |
+| Lisbeth       | Woliter     | lwoliterhy@virginia.edu        |
+| Vinnie        | Aitkin      | vaitkini4@tamu.edu             |
+| Matilde       | Britian     | mbritianif@columbia.edu        |
+| Hammad        | Hartnup     | hhartnupj4@oakley.com          |
+| Carolee       | Kimblen     | ckimblenji@amazonaws.com       |
+| Emmit         | Ivanitsa    | eivanitsakl@howstuffworks.com  |
+| Ty            | Bolin       | tbolinkr@angelfire.com         |
+| Ricki         | Shopcott    | rshopcottli@instagram.com      |
+| Berenice      | Genders     | bgenderslm@earthlink.net       |
+| Ulick         | Labrow      | ulabrowmf@berkeley.edu         |
+| Clemens       | Rideout     | crideoutnl@ameblo.jp           |
+| Tarah         | Walch       | twalchnp@gnu.org               |
+| Walton        | Pien        | wpieno1@nationalgeographic.com |
+| Rusty         | Echalie     | rechalieod@youku.com           |
+| Ulric         | Gertz       | ugertzpg@vinaora.com           |
+| Calida        | Syalvester  | csyalvesterpw@wikispaces.com   |
+| Judi          | Pumphrey    | jpumphreyq2@youtu.be           |
+| Quill         | Loidl       | qloidlqa@dailymail.co.uk       |
+| Moshe         | Golsby      | mgolsbyr8@privacy.gov.au       |
+| Vivie         | Pimblett    | vpimblettrg@twitpic.com        |
+| Fabiano       | Lody        | flodyrp@yellowbook.com         |
++---------------+-------------+--------------------------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT primeiro_nome, ultimo_nome, genero FROM correntistas WHERE pais = "Peru" OR aniversario < "1900-01-01";
++---------------+---------------+--------+
+| primeiro_nome | ultimo_nome   | genero |
++---------------+---------------+--------+
+| Arvie         | Wilks         | M      |
+| Modestia      | Mattussevich  | F      |
+| Clair         | Gelly         | F      |
+| Tasha         | Kapelhof      | F      |
+| Briant        | Janko         | M      |
+| Teddi         | Pimblotte     | F      |
+| Rafa          | Bowcock       | F      |
+| Britt         | Chateau       | F      |
+| Cammie        | Swancock      | F      |
+| Nara          | Merner        | F      |
+| Stevy         | Osgarby       | M      |
+| Felipa        | Venour        | F      |
+| Klemens       | MacGhee       | M      |
+| Laurent       | Kilpin        | M      |
+| Shepperd      | Ismay         | M      |
+| Cassie        | Allmark       | M      |
+| Derry         | Kimble        | M      |
+| Rozelle       | Aguirre       | F      |
+| April         | Aynscombe     | F      |
+| Adriano       | Sallarie      | M      |
+| Franz         | Kaley         | M      |
+| Trevar        | Maddinon      | M      |
+| Allan         | Caroli        | M      |
+| Hobey         | Letson        | M      |
+| Chris         | Andersch      | F      |
+| Myrtia        | Pude          | F      |
+| Tasia         | Charteris     | F      |
+| Amy           | Kochel        | F      |
+| Anatola       | Cottie        | F      |
+| Carrol        | Byers         | M      |
+| Nicolis       | Sleightholm   | M      |
+| Bevin         | Gallihawk     | M      |
+| Sammie        | Wise          | M      |
+| Georgena      | Annis         | F      |
+| Stan          | Francis       | M      |
+| Drucill       | Gilford       | F      |
+| Conrado       | Doughtery     | M      |
+| Fraser        | Jackalin      | M      |
+| Pietra        | Gircke        | F      |
+| Silvano       | Goodram       | M      |
+| Ilyse         | Simacek       | F      |
+| Maurie        | Beardmore     | M      |
+| Priscilla     | Suggitt       | F      |
+| Nixie         | Osment        | F      |
+| Hazel         | Book          | F      |
+| Brigida       | Kiera         | F      |
+| Cole          | Blaza         | M      |
+| Wilfrid       | Brahm         | M      |
+| Rani          | Ebdin         | F      |
+| Chalmers      | Laden         | M      |
+| Haywood       | Hull          | M      |
+| Kennith       | Codd          | M      |
+| Daune         | Gumary        | F      |
+| Quincy        | Thornally     | M      |
+| Granville     | Tointon       | M      |
+| Napoleon      | Folan         | M      |
+| Teresina      | Bome          | F      |
+| Essy          | Sindell       | F      |
+| Freddy        | Galiero       | F      |
+| Cherey        | Ryle          | F      |
+| Gretal        | Flanne        | F      |
+| Minor         | Sambles       | M      |
+| Jeramie       | Hills         | M      |
+| Nolly         | Coveley       | M      |
+| Ulises        | Hales         | M      |
+| Alva          | Odda          | M      |
+| Venita        | Caddens       | F      |
+| Olympie       | Czajkowski    | F      |
+| Lotty         | Preskett      | F      |
+| Seana         | Reddoch       | F      |
+| Winona        | Weinham       | F      |
+| Brooke        | Peers         | F      |
+| Hasty         | Dufoure       | M      |
+| Merv          | Lurriman      | M      |
+| Vaclav        | Pochon        | M      |
+| Gothart       | Lamb-shine    | M      |
+| Giacobo       | Liepina       | M      |
+| Mil           | Tidey         | F      |
+| Bondie        | Origin        | M      |
+| Corny         | Hanway        | M      |
+| Trudey        | Redwall       | F      |
+| Lucretia      | Frostdicke    | F      |
+| Lorene        | Blance        | F      |
+| Marilin       | Paladini      | F      |
+| Ambrosius     | Menilove      | M      |
+| Belle         | Durn          | F      |
+| Heidie        | Moule         | F      |
+| Philippine    | Gannicott     | F      |
+| Amabelle      | Langworthy    | F      |
+| Janette       | Jolliff       | F      |
+| Jeth          | Hopfner       | M      |
+| Sashenka      | Lannin        | F      |
+| Ariella       | Giannasi      | F      |
+| Sidonia       | Steels        | F      |
+| Zeb           | Barbier       | M      |
+| Vaughan       | Jancar        | M      |
+| Burtie        | Hymor         | M      |
+| Kinny         | Quayle        | M      |
+| Loutitia      | Iashvili      | F      |
+| Chlo          | Dixon         | F      |
+| Teresita      | Michin        | F      |
+| Findley       | Isenor        | M      |
+| Aylmer        | Lahrs         | M      |
+| Gard          | Gunthorp      | M      |
+| Randall       | Lukianov      | M      |
+| Margret       | Thurborn      | F      |
+| Ethelin       | Humphrey      | F      |
+| Marijn        | Mateiko       | M      |
+| Gonzalo       | Claisse       | M      |
+| Ichabod       | O'Corr        | M      |
+| Royal         | Eggleston     | M      |
+| Sutton        | Courtin       | M      |
+| Adiana        | Garretson     | F      |
+| Even          | Perchard      | M      |
+| Raina         | Easey         | F      |
+| Alfi          | Greengrass    | F      |
+| Elberta       | McLauchlin    | F      |
+| Malinda       | Gentle        | F      |
+| Odille        | Yerill        | F      |
+| Kennedy       | Selcraig      | M      |
+| Dyann         | Mullard       | F      |
+| Emelyne       | Eburah        | F      |
+| Stephanus     | Troman        | M      |
+| Emile         | Sandells      | M      |
+| Sydney        | Paffot        | M      |
+| Hernando      | Life          | M      |
+| Odelle        | Jeanes        | F      |
+| Archy         | Ledwitch      | M      |
+| Abel          | Spick         | M      |
+| Adelbert      | Denisyuk      | M      |
+| Elvin         | Vasyutichev   | M      |
+| Ivor          | Rabb          | M      |
+| Antonietta    | Pattingson    | F      |
+| Rockey        | Gauld         | M      |
+| Alic          | Alan          | M      |
+| Lottie        | O'Driscoll    | F      |
+| Uriah         | Rawsthorne    | M      |
+| Andra         | Cardall       | F      |
+| Brig          | Stolze        | M      |
+| Marnie        | Deinhardt     | F      |
+| Genny         | Lamps         | F      |
+| Silvanus      | Fawks         | M      |
+| Grange        | Marc          | M      |
+| Corenda       | Hache         | F      |
+| Maximilianus  | Vaines        | M      |
+| Hanni         | Hedlestone    | F      |
+| Harp          | Gorioli       | M      |
+| Mil           | Twaite        | F      |
+| Hailee        | Froome        | F      |
+| Nadeen        | Paramor       | F      |
+| Faber         | Conachie      | M      |
+| Tabor         | Bartozzi      | M      |
+| Romeo         | Camili        | M      |
+| Gusty         | Cromarty      | F      |
+| Sayres        | Peyntue       | M      |
+| Lorelle       | Bartot        | F      |
+| Brynne        | Cashen        | F      |
+| Tiffanie      | Kruschov      | F      |
+| Adam          | Buttler       | M      |
+| Mohandis      | Scourge       | M      |
+| Silvano       | Mathieu       | M      |
+| Celesta       | Habergham     | F      |
+| Christie      | Whittuck      | M      |
+| Lemar         | Kilfether     | M      |
+| Krystyna      | Dowles        | F      |
+| Gilligan      | Jansen        | F      |
+| Malinda       | O'Hagan       | F      |
+| Chev          | Self          | M      |
+| Edsel         | McVittie      | M      |
+| Darby         | Birk          | M      |
+| Maura         | Torri         | F      |
+| Leslie        | Kett          | M      |
+| Joseito       | Roles         | M      |
+| Clayton       | Titchmarsh    | M      |
+| Aleksandr     | Beldan        | M      |
+| Philippe      | Hoyles        | F      |
+| Ave           | Wear          | M      |
+| Tamas         | Jenton        | M      |
+| Dru           | Pau           | F      |
+| Larissa       | Oliveto       | F      |
+| Herman        | Esome         | M      |
+| Augie         | Ashman        | M      |
+| Robbie        | Yerborn       | M      |
+| Brenn         | Van Baaren    | F      |
+| Ely           | Covolini      | M      |
+| Der           | Scading       | M      |
+| Catrina       | Vanyushin     | F      |
+| Della         | Cadogan       | F      |
+| Ryun          | Aisthorpe     | M      |
+| Rena          | Albers        | F      |
+| Tanny         | Gonoude       | M      |
+| Devy          | Bullan        | M      |
+| Dannie        | Tofful        | M      |
+| Halsy         | Husselbee     | M      |
+| Husain        | MacCallam     | M      |
+| Valida        | Pales         | F      |
+| Andris        | Loines        | M      |
+| Joy           | Fenlon        | F      |
+| Chloe         | D'Antoni      | F      |
+| Bentley       | Dallow        | M      |
+| Launce        | Squelch       | M      |
+| Shamus        | Nuccitelli    | M      |
+| Casey         | Dy            | M      |
+| Brandy        | Greeding      | M      |
+| Deerdre       | Stoop         | F      |
+| Maurise       | McAvey        | F      |
+| Ulises        | Lieb          | M      |
+| Debbi         | Goodier       | F      |
+| Skipper       | Chalcroft     | M      |
+| Ralina        | Gildersleaves | F      |
+| Dollie        | Hyndley       | F      |
+| Errick        | Tierney       | M      |
+| Prince        | Rabidge       | M      |
+| Letta         | Lightbody     | F      |
+| Benoit        | Dobeson       | M      |
+| Eddy          | Comfort       | M      |
+| Florella      | Boyen         | F      |
+| Vincent       | Fife          | M      |
+| Ceil          | Robertsson    | F      |
+| Madella       | Straneo       | F      |
+| Abigail       | Petschelt     | F      |
+| Lynette       | Giordano      | F      |
+| Levy          | Schapero      | M      |
+| Shanta        | Le Monnier    | F      |
+| Marcus        | Rubinfeld     | M      |
+| Welby         | Fakeley       | M      |
+| Kaila         | Begbie        | F      |
+| Herc          | Mitchell      | M      |
+| Etta          | Ipsly         | F      |
+| Jeffry        | Sketch        | M      |
+| Reginald      | Peracco       | M      |
+| Loralee       | Goodsell      | F      |
+| Les           | O'Toole       | M      |
+| Boone         | Neligan       | M      |
+| Raven         | Leyman        | F      |
+| Alvina        | Kolczynski    | F      |
+| Brigitta      | Ticehurst     | F      |
+| Hugibert      | Kentwell      | M      |
+| Ashly         | Dreelan       | F      |
+| Trista        | Forcade       | F      |
+| Karlen        | Jahnig        | F      |
+| Chaim         | Woolham       | M      |
+| Marina        | Wilkennson    | F      |
+| Madison       | Foden         | M      |
+| Temp          | Upton         | M      |
+| Beaufort      | Roches        | M      |
+| Morgen        | McBratney     | M      |
+| Jyoti         | Reavey        | F      |
+| Gui           | O'Hederscoll  | F      |
+| Deana         | Luckman       | F      |
+| Avram         | Duffett       | M      |
+| Dickie        | Riepel        | M      |
+| Konstanze     | Comelini      | F      |
+| Prudence      | Duchenne      | F      |
+| Aaron         | DelaField     | M      |
++---------------+---------------+--------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT ultimo_nome
+                                                                                   -> FROM correntistas
+                                                                                   -> WHERE SUBSTRING(primeiro_nome,1,1) = "A";
++-------------+
+| ultimo_nome |
++-------------+
+| Wilks       |
+| Binden      |
+| Kapiloff    |
+| McHaffy     |
+| Goodnow     |
+| Aynscombe   |
+| Sallarie    |
+| Pochet      |
+| Comello     |
+| Caroli      |
+| Jura        |
+| O'Lynn      |
+| Kochel      |
+| Cottie      |
+| Boggs       |
+| Iiannone    |
+| Kehri       |
+| Bumford     |
+| Cust        |
+| McCarney    |
+| Coombes     |
+| Dullingham  |
+| Motton      |
+| Denerley    |
+| Baldick     |
+| Genney      |
+| Odda        |
+| Lanphere    |
+| Shrive      |
+| Yosifov     |
+| Walling     |
+| Menilove    |
+| Langworthy  |
+| Giannasi    |
+| Godspeede   |
+| Lahrs       |
+| Knowler     |
+| Garretson   |
+| Varvell     |
+| Greengrass  |
+| Priscott    |
+| Spottiswood |
+| Ledwitch    |
+| Bullas      |
+| Spick       |
+| Denisyuk    |
+| Spurrier    |
+| Pattingson  |
+| Alan        |
+| Cardall     |
+| Inglesfield |
+| Probart     |
+| Victoria    |
+| Dossetter   |
+| Millson     |
+| Buttler     |
+| Claasen     |
+| Lobbe       |
+| Mewett      |
+| Beldan      |
+| Hanbidge    |
+| Wear        |
+| Ashman      |
+| Brazur      |
+| Vreede      |
+| Loines      |
+| Tremelling  |
+| Wolfendale  |
+| Hansman     |
+| Gerb        |
+| Gasnell     |
+| Petschelt   |
+| Reburn      |
+| Bossel      |
+| Ben-Aharon  |
+| Cunniam     |
+| Antognelli  |
+| Norquay     |
+| Christofol  |
+| Kolczynski  |
+| Dreelan     |
+| Duffett     |
+| Biffen      |
+| Thorsby     |
+| Melluish    |
+| DelaField   |
+| McPhaden    |
+| Elnaugh     |
++-------------+
+88 rows in set (0.0480 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT primeiro_nome, ultimo_nome FROM correntistas WHERE SUBSTRING(primeiro_nome,1,1) = "A";
++---------------+-------------+
+| primeiro_nome | ultimo_nome |
++---------------+-------------+
+| Arvie         | Wilks       |
+| Ave           | Binden      |
+| Amabelle      | Kapiloff    |
+| Alla          | McHaffy     |
+| Aldrich       | Goodnow     |
+| April         | Aynscombe   |
+| Adriano       | Sallarie    |
+| Aretha        | Pochet      |
+| Aryn          | Comello     |
+| Allan         | Caroli      |
+| Alyson        | Jura        |
+| Alexis        | O'Lynn      |
+| Amy           | Kochel      |
+| Anatola       | Cottie      |
+| Ancell        | Boggs       |
+| Antony        | Iiannone    |
+| Ashli         | Kehri       |
+| Angelo        | Bumford     |
+| Anselma       | Cust        |
+| Aylmer        | McCarney    |
+| Abbe          | Coombes     |
+| Abbye         | Dullingham  |
+| Allsun        | Motton      |
+| Arlen         | Denerley    |
+| Alexis        | Baldick     |
+| Anita         | Genney      |
+| Alva          | Odda        |
+| Avictor       | Lanphere    |
+| Alyda         | Shrive      |
+| Angelle       | Yosifov     |
+| Anderea       | Walling     |
+| Ambrosius     | Menilove    |
+| Amabelle      | Langworthy  |
+| Ariella       | Giannasi    |
+| Anica         | Godspeede   |
+| Aylmer        | Lahrs       |
+| Ania          | Knowler     |
+| Adiana        | Garretson   |
+| Albie         | Varvell     |
+| Alfi          | Greengrass  |
+| Annie         | Priscott    |
+| Augustus      | Spottiswood |
+| Archy         | Ledwitch    |
+| Amara         | Bullas      |
+| Abel          | Spick       |
+| Adelbert      | Denisyuk    |
+| Alejandro     | Spurrier    |
+| Antonietta    | Pattingson  |
+| Alic          | Alan        |
+| Andra         | Cardall     |
+| Ava           | Inglesfield |
+| Amil          | Probart     |
+| Antonius      | Victoria    |
+| Alexis        | Dossetter   |
+| Anna-diana    | Millson     |
+| Adam          | Buttler     |
+| Adoree        | Claasen     |
+| Adelheid      | Lobbe       |
+| Art           | Mewett      |
+| Aleksandr     | Beldan      |
+| Abigail       | Hanbidge    |
+| Ave           | Wear        |
+| Augie         | Ashman      |
+| Ashla         | Brazur      |
+| Arlen         | Vreede      |
+| Andris        | Loines      |
+| Alfredo       | Tremelling  |
+| Alta          | Wolfendale  |
+| Arlee         | Hansman     |
+| Amory         | Gerb        |
+| Ashla         | Gasnell     |
+| Abigail       | Petschelt   |
+| Angelika      | Reburn      |
+| Ali           | Bossel      |
+| Ammamaria     | Ben-Aharon  |
+| Alec          | Cunniam     |
+| Adamo         | Antognelli  |
+| Aaren         | Norquay     |
+| Aube          | Christofol  |
+| Alvina        | Kolczynski  |
+| Ashly         | Dreelan     |
+| Avram         | Duffett     |
+| Augusta       | Biffen      |
+| Arron         | Thorsby     |
+| Aguste        | Melluish    |
+| Aaron         | DelaField   |
+| Allissa       | McPhaden    |
+| Alvy          | Elnaugh     |
++---------------+-------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT primeiro_nome, aniversario
+                                                                                   -> FROM correntistas
+                                                                                   -> WHERE aniversario > "2000-12-31" AND conta_corrente > 1000;
++---------------+-------------+
+| primeiro_nome | aniversario |
++---------------+-------------+
+| Elianore      | 2001-09-10  |
+| Bidget        | 2001-02-01  |
+| Winna         | 2001-08-01  |
+| Jaquith       | 2001-02-28  |
+| Steven        | 2001-02-06  |
+| Timothee      | 2001-06-19  |
+| Hobey         | 2001-05-27  |
+| Horten        | 2001-10-26  |
+| Yule          | 2001-11-17  |
+| Lynelle       | 2001-01-22  |
+| Dennie        | 2001-05-11  |
+| Ermentrude    | 2001-09-03  |
+| Seana         | 2001-04-16  |
+| Reinhold      | 2001-04-28  |
+| Heidie        | 2001-11-22  |
+| Burtie        | 2001-09-30  |
+| Sande         | 2001-10-19  |
+| Cindie        | 2001-02-25  |
+| Gonzalo       | 2001-01-08  |
+| Stavro        | 2001-10-25  |
+| Kennan        | 2001-05-26  |
+| Feodor        | 2001-10-03  |
+| Ripley        | 2001-09-13  |
+| Sander        | 2001-11-14  |
+| Darby         | 2001-11-21  |
+| Leslie        | 2001-06-20  |
+| Herman        | 2001-03-11  |
+| Sawyer        | 2001-05-27  |
+| Bobbette      | 2001-01-04  |
+| Harv          | 2001-02-07  |
+| Constanta     | 2001-02-18  |
++---------------+-------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > DESCRIBE correntistas;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int(11)     | NO   | PRI | NULL    |       |
+| primeiro_nome  | varchar(50) | YES  |     | NULL    |       |
+| ultimo_nome    | varchar(50) | YES  |     | NULL    |       |
+| email          | varchar(50) | YES  |     | NULL    |       |
+| genero         | varchar(50) | YES  |     | NULL    |       |
+| conta_corrente | double      | NO   |     | NULL    |       |
+| pais           | varchar(50) | YES  |     | NULL    |       |
+| aniversario    | date        | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+8 rows in set (0.0349 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > USE pedro;
+Default schema set to `pedro`.
+Fetching table and column names from `pedro` for auto-completion... Press ^C to stop.
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > CREATE TABLE novos_correntistas (
+                                                                              -> id int PRIMARY KEY,
+                                                                              -> primeiro_nome varchar(255) NOT NULL,
+                                                                              -> segundo_nome varchar(255) NOT NULL,
+                                                                              -> email varchar(50) NOT NULL,
+                                                                              -> genero varchar(1),
+                                                                              -> conta_corrent double NOT NULL DEFAULT 0,
+                                                                              -> pais varchar(50) NOT NULL,
+                                                                              -> aniversario date
+                                                                              -> );
+Query OK, 0 rows affected (0.1439 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > DESCRIBE novos_correntistas
+                                                                              -> ;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| id            | int(11)      | NO   | PRI | NULL    |       |
+| primeiro_nome | varchar(255) | NO   |     | NULL    |       |
+| segundo_nome  | varchar(255) | NO   |     | NULL    |       |
+| email         | varchar(50)  | NO   |     | NULL    |       |
+| genero        | varchar(1)   | YES  |     | NULL    |       |
+| conta_corrent | double       | NO   |     | 0       |       |
+| pais          | varchar(50)  | NO   |     | NULL    |       |
+| aniversario   | date         | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+8 rows in set (0.0385 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, genero, pais, aniversario);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, genero, pais, aniversario)
+                                                                              -> VALUES (1, "Pedro", "Severo", "pedro@gmail.com", "M", "Brazil", "1994-12-06");
+Query OK, 1 row affected (0.0479 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > SELECT * FROM novos_usuarios;
+ERROR: 1146 (42S02): Table 'pedro.novos_usuarios' doesn't exist
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > SELECT * FROM novos_correntistas;
++----+---------------+--------------+-----------------+--------+---------------+--------+-------------+
+| id | primeiro_nome | segundo_nome | email           | genero | conta_corrent | pais   | aniversario |
++----+---------------+--------------+-----------------+--------+---------------+--------+-------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com | M      |             0 | Brazil | 1994-12-06  |
++----+---------------+--------------+-----------------+--------+---------------+--------+-------------+
+1 row in set (0.0343 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, genero, pais, aniversario)
+                                                                              -> VALUES (2, "Correntista", "2", "correntista2@gmail.com, "F", "Argentina", "1990-03-19");
+                                                                              "> ;
+                                                                              ">
+                                                                              "> ^C
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, genero, pais, aniversario) VALUES (2, "Correntista", "2", "correntista2@gmail.com", "F", "Brazil", "1990-10-06");
+Query OK, 1 row affected (0.0414 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > SELECT * FROM novos_correntistas;
++----+---------------+--------------+------------------------+--------+---------------+--------+-------------+
+| id | primeiro_nome | segundo_nome | email                  | genero | conta_corrent | pais   | aniversario |
++----+---------------+--------------+------------------------+--------+---------------+--------+-------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com        | M      |             0 | Brazil | 1994-12-06  |
+|  2 | Correntista   | 2            | correntista2@gmail.com | F      |             0 | Brazil | 1990-10-06  |
++----+---------------+--------------+------------------------+--------+---------------+--------+-------------+
+2 rows in set (0.0279 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, genero, pais, aniversario) VALUES (3, "Correntista", "3", "correntista3@gmail.com", "F", "Argentina", "1990-10-06");
+Query OK, 1 row affected (0.0476 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > SELECT * FROM novos_correntistas;
++----+---------------+--------------+------------------------+--------+---------------+-----------+-------------+
+| id | primeiro_nome | segundo_nome | email                  | genero | conta_corrent | pais      | aniversario |
++----+---------------+--------------+------------------------+--------+---------------+-----------+-------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com        | M      |             0 | Brazil    | 1994-12-06  |
+|  2 | Correntista   | 2            | correntista2@gmail.com | F      |             0 | Brazil    | 1990-10-06  |
+|  3 | Correntista   | 3            | correntista3@gmail.com | F      |             0 | Argentina | 1990-10-06  |
++----+---------------+--------------+------------------------+--------+---------------+-----------+-------------+
+3 rows in set (0.1362 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, genero, pais, aniversario) VALUES (4, "Correntista", "4", "correntista4@gmail.com", "M", "EUA", "1990-10-06");
+Query OK, 1 row affected (0.0439 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO novos_correntistas(id, primeiro_nome, segundo_nome, email, pais, aniversario) VALUES (5, "Correntista", "5", "correntista5@gmail.com", "EUA", "1990-10-06");
+Query OK, 1 row affected (0.0491 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > SELECT * FROM novos_correntistas;
++----+---------------+--------------+------------------------+--------+---------------+-----------+-------------+
+| id | primeiro_nome | segundo_nome | email                  | genero | conta_corrent | pais      | aniversario |
++----+---------------+--------------+------------------------+--------+---------------+-----------+-------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com        | M      |             0 | Brazil    | 1994-12-06  |
+|  2 | Correntista   | 2            | correntista2@gmail.com | F      |             0 | Brazil    | 1990-10-06  |
+|  3 | Correntista   | 3            | correntista3@gmail.com | F      |             0 | Argentina | 1990-10-06  |
+|  4 | Correntista   | 4            | correntista4@gmail.com | M      |             0 | EUA       | 1990-10-06  |
+|  5 | Correntista   | 5            | correntista5@gmail.com | NULL   |             0 | EUA       | 1990-10-06  |
++----+---------------+--------------+------------------------+--------+---------------+-----------+-------------+
+5 rows in set (0.0525 sec)
+
