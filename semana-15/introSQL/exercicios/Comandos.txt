@@ -1,0 +1,185 @@
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws... SQL > SELECT nome, salario
+                                                            -> FROM funcionarios
+                                                            -> WHERE genero = "F" AND salario > 2000;
++--------------------+---------+
+| nome               | salario |
++--------------------+---------+
+| Sybille Georgescu  |    2298 |
+| Cayla Yggo         |    2131 |
+| Lisetta Winney     |    2369 |
+| Clarine Colam      |    2172 |
+| Julianne Dunnett   |    2245 |
+| Matti Clampe       |    2255 |
+| Betty Filippucci   |    2498 |
+| Robina Lasselle    |    2304 |
+| Gusty McElrea      |    2368 |
+| Carol-jean Scholes |    2800 |
+| Dotty Bus          |    2509 |
+| Carilyn Horsley    |    2347 |
++--------------------+---------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT nome, data_contratacao 
+										      FROM funcionarios 
+										      WHERE local_de_trabalho = "salao" AND data_contratacao < "2005-01-01" ;
++-----------------+------------------+
+| nome            | data_contratacao |
++-----------------+------------------+
+| Stirling Sowray | 2002-06-21       |
+| Clarine Colam   | 2002-07-19       |
++-----------------+------------------+
+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT nome, data_nascimento
+                                                                                   -> FROM funcionarios
+                                                                                   -> WHERE nome LIKE "%ei%";
++----------------+-----------------+
+| nome           | data_nascimento |
++----------------+-----------------+
+| Allie Goodreid | 1981-08-01      |
++----------------+-----------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT nome, salario, data_nascimento
+                                                                                   -> FROM funcionarios
+                                                                                   -> WHERE data_nascimento < "1998-12-16" AND salario > 1300;
++--------------------+---------+-----------------+
+| nome               | salario | data_nascimento |
++--------------------+---------+-----------------+
+| Sybille Georgescu  |    2298 | 1992-03-06      |
+| Peyter Candish     |    1579 | 1984-03-28      |
+| Cayla Yggo         |    2131 | 1985-05-12      |
+| Buddy Phidgin      |    2013 | 1987-08-25      |
+| Lonnard Middup     |    1379 | 1983-06-29      |
+| Magnum Denisovich  |    2405 | 1990-12-22      |
+| Ario Fussie        |    1617 | 1986-08-25      |
+| Lisetta Winney     |    2369 | 1998-10-02      |
+| Allie Goodreid     |    1523 | 1981-08-01      |
+| Alie Brugden       |    1889 | 1993-07-18      |
+| Clarine Colam      |    2172 | 1986-10-14      |
+| Deni Eakley        |    1987 | 1994-03-30      |
+| Oran Pearch        |    2314 | 1987-09-28      |
+| Julianne Dunnett   |    2245 | 1985-11-30      |
+| Matti Clampe       |    2255 | 1992-09-17      |
+| Betty Filippucci   |    2498 | 1986-09-16      |
+| Mikey Ethridge     |    3094 | 1990-07-12      |
+| Quint Deegin       |    1606 | 1997-07-25      |
+| Demott Luigi       |    2603 | 1988-04-22      |
+| Robina Lasselle    |    2304 | 1984-04-08      |
+| Sara-ann Terney    |    1947 | 1981-04-05      |
+| Isidor Swales      |    1405 | 1998-05-07      |
+| Murry Simnel       |    1615 | 1995-10-19      |
+| Flemming Barrasse  |    1957 | 1992-10-16      |
+| Chas Pixton        |    2365 | 1997-01-04      |
+| Merralee Kearn     |    1942 | 1990-11-28      |
+| Noble Haseman      |    1696 | 1997-09-26      |
+| Gusty McElrea      |    2368 | 1985-04-11      |
+| Mic Jiggens        |    1903 | 1981-11-19      |
+| Carol-jean Scholes |    2800 | 1987-02-19      |
+| Dotty Bus          |    2509 | 1998-11-14      |
+| Carilyn Horsley    |    2347 | 1983-06-03      |
++--------------------+---------+-----------------+
+
+ DESCRIBE funcionarios;
++-------------------+--------------+------+-----+------------+-------+
+| Field             | Type         | Null | Key | Default    | Extra |
++-------------------+--------------+------+-----+------------+-------+
+| id                | int(11)      | NO   | PRI | NULL       |       |
+| nome              | varchar(100) | NO   |     | NULL       |       |
+| salario           | double       | NO   |     | NULL       |       |
+| local_de_trabalho | varchar(100) | NO   |     | NULL       |       |
+| genero            | varchar(1)   | NO   |     | NULL       |       |
+| data_nascimento   | date         | NO   |     | 2019-01-01 |       |
+| data_contratacao  | date         | NO   |     | 2019-01-01 |       |
++-------------------+--------------+------+-----+------------+-------+
+7 rows in set (0.0275 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > USE pedro;
+Default schema set to `pedro`.
+Fetching table and column names from `pedro` for auto-completion... Press ^C to stop.
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > CREATE TABLE funcionarios (
+                                                                              -> id int PRIMARY KEY,
+                                                                              -> nome varchar(255) NOT NULL,
+                                                                              -> salario double NOT NULL,
+                                                                              -> local_de_trabalho varchar(255) NOT NULL,
+                                                                              -> genero varchar(1),
+                                                                              -> data_nascimento date NOT NULL,
+                                                                              -> data_contratacao date NOT NULL
+                                                                              -> );
+Query OK, 0 rows affected (0.1371 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > DESCRIBE funcionarios;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| id                | int(11)      | NO   | PRI | NULL    |       |
+| nome              | varchar(255) | NO   |     | NULL    |       |
+| salario           | double       | NO   |     | NULL    |       |
+| local_de_trabalho | varchar(255) | NO   |     | NULL    |       |
+| genero            | varchar(1)   | YES  |     | NULL    |       |
+| data_nascimento   | date         | NO   |     | NULL    |       |
+| data_contratacao  | date         | NO   |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+7 rows in set (0.0632 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > INSERT INTO funcionarios (id, nome, salario, local_de_trabalho, genero, data_nascimento, data_contratacao)
+                                                                              -> VALUES (1, "Pedro", 100000, "local","M","1994-12-06", "2019-12-16"),
+                                                                              -> (2, "Severo", 12000, "outro local", "M","1993-10-12", "2000-04-21");
+Query OK, 2 rows affected (0.0770 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > SELECT * FROM funcionarios;
++----+--------+---------+-------------------+--------+-----------------+------------------+
+| id | nome   | salario | local_de_trabalho | genero | data_nascimento | data_contratacao |
++----+--------+---------+-------------------+--------+-----------------+------------------+
+|  1 | Pedro  |  100000 | local             | M      | 1994-12-06      | 2019-12-16       |
+|  2 | Severo |   12000 | outro local       | M      | 1993-10-12      | 2000-04-21       |
++----+--------+---------+-------------------+--------+-----------------+------------------+
+2 rows in set (0.0282 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > USE exercicios
+Default schema set to `exercicios`.
+Fetching table and column names from `exercicios` for auto-completion... Press ^C to stop.
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT * FROM funcionarios;
++----+--------------------+---------+-------------------+--------+-----------------+------------------+
+| id | nome               | salario | local_de_trabalho | genero | data_nascimento | data_contratacao |
++----+--------------------+---------+-------------------+--------+-----------------+------------------+
+|  1 | Tannie Guest       |    2034 | estacionamento    | M      | 1999-03-18      | 2006-09-27       |
+|  2 | Sybille Georgescu  |    2298 | salao             | F      | 1992-03-06      | 2011-11-02       |
+|  3 | Peyter Candish     |    1579 | escritorio        | M      | 1984-03-28      | 2016-02-12       |
+|  4 | Cayla Yggo         |    2131 | estacionamento    | F      | 1985-05-12      | 2004-09-19       |
+|  5 | Buddy Phidgin      |    2013 | cozinha           | M      | 1987-08-25      | 2003-03-28       |
+|  6 | Lonnard Middup     |    1379 | cozinha           | M      | 1983-06-29      | 2013-11-10       |
+|  7 | Stirling Sowray    |    1802 | salao             | M      | 1999-03-20      | 2002-06-21       |
+|  8 | Magnum Denisovich  |    2405 | escritorio        | M      | 1990-12-22      | 2012-02-03       |
+|  9 | Ario Fussie        |    1617 | salao             | M      | 1986-08-25      | 2007-03-07       |
+| 10 | Nadean Olin        |    1757 | salao             | F      | 2001-05-14      | 2009-05-01       |
+| 11 | Lisetta Winney     |    2369 | caixa             | F      | 1998-10-02      | 2015-11-26       |
+| 12 | Allie Goodreid     |    1523 | salao             | M      | 1981-08-01      | 2017-10-23       |
+| 13 | Alie Brugden       |    1889 | deposito          | F      | 1993-07-18      | 2009-09-26       |
+| 14 | Clarine Colam      |    2172 | salao             | F      | 1986-10-14      | 2002-07-19       |
+| 15 | Maddy Sammon       |    1695 | deposito          | M      | 2001-02-07      | 2010-08-22       |
+| 16 | Deni Eakley        |    1987 | estacionamento    | F      | 1994-03-30      | 2000-12-18       |
+| 17 | Oran Pearch        |    2314 | caixa             | M      | 1987-09-28      | 2005-12-23       |
+| 18 | Julianne Dunnett   |    2245 | deposito          | F      | 1985-11-30      | 2005-11-06       |
+| 19 | See Smithyman      |    2375 | deposito          | M      | 2000-03-27      | 2018-03-21       |
+| 20 | Matti Clampe       |    2255 | escritorio        | F      | 1992-09-17      | 2013-12-11       |
+| 21 | Betty Filippucci   |    2498 | cozinha           | F      | 1986-09-16      | 2005-11-15       |
+| 22 | Mikey Ethridge     |    3094 | salao             | M      | 1990-07-12      | 2009-03-11       |
+| 23 | Quint Deegin       |    1606 | deposito          | M      | 1997-07-25      | 2007-01-08       |
+| 24 | Demott Luigi       |    2603 | deposito          | M      | 1988-04-22      | 2017-11-13       |
+| 25 | Robina Lasselle    |    2304 | escritorio        | F      | 1984-04-08      | 2010-09-24       |
+| 26 | Micheal MacMeanma  |    2106 | cozinha           | M      | 2000-08-11      | 2011-07-16       |
+| 27 | Sara-ann Terney    |    1947 | salao             | F      | 1981-04-05      | 2009-10-31       |
+| 28 | Isidor Swales      |    1405 | deposito          | M      | 1998-05-07      | 2008-06-26       |
+| 29 | Tessy Copley       |     984 | caixa             | F      | 1989-08-24      | 2001-09-11       |
+| 30 | Madel Cockle       |    1340 | deposito          | F      | 2000-08-05      | 2016-11-26       |
+| 31 | Murry Simnel       |    1615 | estacionamento    | M      | 1995-10-19      | 2016-05-21       |
+| 32 | Flemming Barrasse  |    1957 | caixa             | M      | 1992-10-16      | 2004-10-20       |
+| 33 | Chas Pixton        |    2365 | escritorio        | M      | 1997-01-04      | 2018-01-04       |
+| 34 | Merralee Kearn     |    1942 | cozinha           | F      | 1990-11-28      | 2017-07-01       |
+| 35 | Noble Haseman      |    1696 | cozinha           | M      | 1997-09-26      | 2006-04-26       |
+| 36 | Gusty McElrea      |    2368 | estacionamento    | F      | 1985-04-11      | 2001-10-07       |
+| 37 | Mic Jiggens        |    1903 | salao             | M      | 1981-11-19      | 2012-09-18       |
+| 38 | Carol-jean Scholes |    2800 | escritorio        | F      | 1987-02-19      | 2001-06-06       |
+| 39 | Dotty Bus          |    2509 | estacionamento    | F      | 1998-11-14      | 2017-08-19       |
+| 40 | Carilyn Horsley    |    2347 | estacionamento    | F      | 1983-06-03      | 2010-07-12       |
++----+--------------------+---------+-------------------+--------+-----------------+------------------+
+40 rows in set (0.0499 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL >
+
+
