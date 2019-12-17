@@ -1,0 +1,336 @@
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT nome, salario
+                                                                                   -> FROM funcionarios
+                                                                                   -> ORDER BY salario DESC
+                                                                                   -> LIMIT 5;
++--------------------+---------+
+| nome               | salario |
++--------------------+---------+
+| Mikey Ethridge     |    3094 |
+| Carol-jean Scholes |    2800 |
+| Demott Luigi       |    2603 |
+| Dotty Bus          |    2509 |
+| Betty Filippucci   |    2498 |
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT AVG(salario), local_de_trabalho FROM funcionarios  GROUP BY local_de_trabalho;
++--------------------+-------------------+
+| AVG(salario)       | local_de_trabalho |
++--------------------+-------------------+
+| 2012.5555555555557 | salao             |
+| 2284.6666666666665 | escritorio        |
+|             2159.5 | estacionamento    |
+|               1939 | cozinha           |
+|               1906 | caixa             |
+|            1894.75 | deposito          |
++--------------------+-------------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT COUNT(id), local_de_trabalho, genero
+                                                                                   -> FROM funcionarios
+                                                                                   -> GROUP BY local_de_trabalho, genero
+                                                                                   -> ORDER BY genero;
++-----------+-------------------+--------+
+| COUNT(id) | local_de_trabalho | genero |
++-----------+-------------------+--------+
+|         4 | salao             | F      |
+|         5 | estacionamento    | F      |
+|         2 | caixa             | F      |
+|         3 | deposito          | F      |
+|         3 | escritorio        | F      |
+|         2 | cozinha           | F      |
+|         3 | escritorio        | M      |
+|         4 | cozinha           | M      |
+|         5 | salao             | M      |
+|         5 | deposito          | M      |
+|         2 | caixa             | M      |
+|         1 | estacionamento    | M      |
++-----------+-------------------+--------+
+12 rows in set (0.0450 sec)
+6 rows in set (0.0262 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT nome, data_contratacao FROM funcionarios ORDER BY data_contratacao LIMIT 10;
++--------------------+------------------+
+| nome               | data_contratacao |
++--------------------+------------------+
+| Deni Eakley        | 2000-12-18       |
+| Carol-jean Scholes | 2001-06-06       |
+| Tessy Copley       | 2001-09-11       |
+| Gusty McElrea      | 2001-10-07       |
+| Stirling Sowray    | 2002-06-21       |
+| Clarine Colam      | 2002-07-19       |
+| Buddy Phidgin      | 2003-03-28       |
+| Cayla Yggo         | 2004-09-19       |
+| Flemming Barrasse  | 2004-10-20       |
+| Julianne Dunnett   | 2005-11-06       |
++--------------------+------------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT primeiro_nome, pais, conta_corrente FROM correntistas WHERE pais="Brazil" ORDER BY conta_corrente DESC LIMIT 100;
++---------------+--------+----------------+
+| primeiro_nome | pais   | conta_corrente |
++---------------+--------+----------------+
+| Towney        | Brazil |       15758.05 |
+| Birgitta      | Brazil |       15644.57 |
+| Hodge         | Brazil |        15236.3 |
+| Kaiser        | Brazil |       14840.58 |
+| Josy          | Brazil |       13902.79 |
+| Dunc          | Brazil |       13768.08 |
+| Crysta        | Brazil |       13737.82 |
+| Clem          | Brazil |       13295.58 |
+| Gradey        | Brazil |       13159.82 |
+| Pebrook       | Brazil |       13145.05 |
+| Theobald      | Brazil |       13135.33 |
+| Melonie       | Brazil |       13063.22 |
+| Ludovika      | Brazil |        12881.3 |
+| Elia          | Brazil |       12834.78 |
+| Rana          | Brazil |       12822.71 |
+| Whit          | Brazil |       12712.94 |
+| Vassili       | Brazil |       12712.67 |
+| Herta         | Brazil |        12631.8 |
+| Olivie        | Brazil |       12628.73 |
+| Merry         | Brazil |       12555.87 |
+| Kathleen      | Brazil |       12477.49 |
+| Daniel        | Brazil |        12253.8 |
+| Riccardo      | Brazil |       12228.19 |
+| Constancy     | Brazil |       12153.97 |
+| Florentia     | Brazil |       12061.34 |
+| Flem          | Brazil |       11991.89 |
+| Alfredo       | Brazil |       11978.17 |
+| Eldridge      | Brazil |       11676.45 |
+| Otis          | Brazil |       11603.61 |
+| Debee         | Brazil |       11443.51 |
+| Ashla         | Brazil |       11287.61 |
+| Aryn          | Brazil |       11183.37 |
+| Gian          | Brazil |       11012.53 |
+| Nickolai      | Brazil |       10905.63 |
+| Ezmeralda     | Brazil |       10867.22 |
+| Vida          | Brazil |       10778.93 |
+| Hedda         | Brazil |       10754.78 |
+| Sam           | Brazil |       10692.62 |
+| Brenda        | Brazil |       10659.89 |
+| Karry         | Brazil |       10490.91 |
+| Griff         | Brazil |       10436.62 |
+| Harper        | Brazil |       10233.24 |
+| Meir          | Brazil |       10224.82 |
+| Hadlee        | Brazil |       10177.31 |
+| Engelbert     | Brazil |       10125.41 |
+| Luther        | Brazil |       10086.85 |
+| Jarrad        | Brazil |       10066.19 |
+| Carmel        | Brazil |       10007.61 |
+| Claude        | Brazil |       10005.66 |
+| Masha         | Brazil |        9946.73 |
+| Lynelle       | Brazil |        9934.91 |
+| Brad          | Brazil |        9832.74 |
+| Ludvig        | Brazil |        9804.61 |
+| Jamey         | Brazil |        9791.22 |
+| Hedi          | Brazil |        9784.38 |
+| Gertruda      | Brazil |         9607.2 |
+| Sasha         | Brazil |        9579.82 |
+| Branden       | Brazil |        9566.92 |
+| Dermot        | Brazil |        9560.88 |
+| Stevie        | Brazil |        9520.87 |
+| Bond          | Brazil |        9490.92 |
+| Gregg         | Brazil |         9490.9 |
+| Urbanus       | Brazil |        9449.57 |
+| Ennis         | Brazil |        9427.89 |
+| Starla        | Brazil |        9396.71 |
+| Adelheid      | Brazil |        9382.51 |
+| Barnaby       | Brazil |        9325.28 |
+| Catlin        | Brazil |         9320.8 |
+| Randolf       | Brazil |        9271.21 |
+| Ronny         | Brazil |        9270.69 |
+| Kennan        | Brazil |        9267.98 |
+| Brandi        | Brazil |        9206.97 |
+| Pete          | Brazil |        9195.24 |
+| Edwin         | Brazil |        9194.92 |
+| Amory         | Brazil |        9095.37 |
+| Nikoletta     | Brazil |        9082.53 |
+| Alexis        | Brazil |        9066.94 |
+| Fabe          | Brazil |        9045.65 |
+| Alla          | Brazil |        9005.36 |
+| Jarret        | Brazil |        8958.86 |
+| Mick          | Brazil |        8935.88 |
+| Odessa        | Brazil |        8814.45 |
+| Micah         | Brazil |        8807.31 |
+| Lani          | Brazil |        8798.21 |
+| Ania          | Brazil |        8691.19 |
+| Ugo           | Brazil |        8669.96 |
+| Sawyer        | Brazil |        8661.06 |
+| Sophey        | Brazil |        8608.18 |
+| Jesse         | Brazil |        8573.74 |
+| Alec          | Brazil |        8560.74 |
+| Gert          | Brazil |        8543.78 |
+| Juieta        | Brazil |        8526.89 |
+| Kellia        | Brazil |        8517.26 |
+| Conn          | Brazil |        8507.32 |
+| Lonnie        | Brazil |        8486.79 |
+| Aldrich       | Brazil |        8179.32 |
+| Krispin       | Brazil |         8163.9 |
+| Avictor       | Brazil |        8159.63 |
+| Betsy         | Brazil |        8125.44 |
+| Karla         | Brazil |         8077.9 |
++---------------+--------+----------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT COUNT(id) FROM correntistas WHERE genero="F" AND aniversario < "1987/12/17";
++-----------+
+| COUNT(id) |
++-----------+
+|       173 |
++-----------+
+1 row in set (0.1401 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT SUM(conta_corrente)
+                                                                                   -> FROM correntistas
+                                                                                   -> WHERE pais="Peru" AND aniversario<"1994/12/17";
++---------------------+
+| SUM(conta_corrente) |
++---------------------+
+|   937469.5300000003 |
++---------------------+
+1 row in set (0.0183 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT COUNT(id), pais, genero FROM correntistas GROUP BY pais, genero ORDER BY pais;
++-----------+-----------+--------+
+| COUNT(id) | pais      | genero |
++-----------+-----------+--------+
+|        95 | Argentina | F      |
+|        97 | Argentina | M      |
+|        14 | Bolivia   | F      |
+|        17 | Bolivia   | M      |
+|       235 | Brazil    | F      |
+|       255 | Brazil    | M      |
+|        19 | Chile     | F      |
+|        13 | Chile     | M      |
+|       120 | Peru      | F      |
+|       135 | Peru      | M      |
++-----------+-----------+--------+
+10 rows in set (0.0248 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT COUNT(id) "Total", aniversario FROM correntistas GROUP BY aniversario  ORDER BY Total DESC LIMIT 1;
++-------+-------------+
+| Total | aniversario |
++-------+-------------+
+|     3 | 1983-08-31  |
++-------+-------------+
+1 row in set (0.0206 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT primeiro_nome, aniversario
+                                                                                   -> FROM correntistas
+                                                                                   -> WHERE SUBSTRING(aniversario,6,2)="12";
++---------------+-------------+
+| primeiro_nome | aniversario |
++---------------+-------------+
+| Florella      | 1989-12-07  |
+| Ave           | 1986-12-20  |
+| Tasha         | 1988-12-05  |
+| Dunc          | 1984-12-23  |
+| Sibyl         | 1988-12-12  |
+| Alla          | 1994-12-05  |
+| Cecil         | 1983-12-12  |
+| Cristiano     | 1996-12-11  |
+| Rodie         | 1992-12-01  |
+| Nanine        | 1995-12-16  |
+| Chris         | 1994-12-05  |
+| Alexis        | 1995-12-01  |
+| Margit        | 1991-12-09  |
+| Klara         | 1981-12-08  |
+| Harper        | 1985-12-05  |
+| Dacia         | 1990-12-24  |
+| Bettine       | 1994-12-23  |
+| Mara          | 1984-12-05  |
+| Robbie        | 1992-12-18  |
+| Layney        | 1990-12-09  |
+| Rolland       | 1990-12-15  |
+| Eldridge      | 1980-12-26  |
+| Rani          | 1989-12-30  |
+| Chalmers      | 1985-12-31  |
+| Barbette      | 1997-12-02  |
+| Gretal        | 1999-12-30  |
+| Toni          | 1991-12-26  |
+| Bride         | 1986-12-24  |
+| Engelbert     | 1989-12-09  |
+| Rana          | 1995-12-11  |
+| Shaun         | 1991-12-11  |
+| Angelle       | 1988-12-10  |
+| Bondie        | 1987-12-21  |
+| Ynes          | 1984-12-06  |
+| Brander       | 1994-12-30  |
+| Obie          | 1984-12-27  |
+| Sashenka      | 1985-12-02  |
+| Iago          | 1994-12-31  |
+| Eloisa        | 1997-12-20  |
+| Sax           | 1999-12-25  |
+| Anica         | 1989-12-31  |
+| Morty         | 1992-12-31  |
+| Claudio       | 1983-12-18  |
+| Brandise      | 1981-12-01  |
+| Victor        | 1987-12-09  |
+| Culley        | 1993-12-30  |
+| Ichabod       | 2000-12-11  |
+| Sutton        | 1996-12-06  |
+| Even          | 1981-12-06  |
+| Elissa        | 1996-12-10  |
+| Westbrook     | 1983-12-03  |
+| Kathye        | 1992-12-21  |
+| Corenda       | 1991-12-29  |
+| Sheryl        | 1986-12-21  |
+| Hanni         | 1996-12-04  |
+| Elaina        | 1992-12-17  |
+| Laurene       | 1995-12-23  |
+| Wilhelmine    | 1991-12-16  |
+| Sayres        | 1998-12-07  |
+| Ludvig        | 1982-12-15  |
+| Ugo           | 1998-12-23  |
+| Matilde       | 1997-12-26  |
+| Gunar         | 1982-12-12  |
+| Otis          | 1987-12-07  |
+| Hammad        | 1997-12-11  |
+| Rebbecca      | 1989-12-02  |
+| Carlen        | 1990-12-11  |
+| Gottfried     | 1994-12-17  |
+| Ulberto       | 1987-12-12  |
+| Della         | 1998-12-01  |
+| Launce        | 1991-12-14  |
+| Kiri          | 1983-12-09  |
+| Gallagher     | 1981-12-04  |
+| Arlee         | 1986-12-27  |
+| Lissi         | 1999-12-07  |
+| Florella      | 2000-12-04  |
+| Charity       | 2000-12-11  |
+| Sasha         | 1992-12-17  |
+| Abigail       | 1997-12-07  |
+| Hughie        | 1985-12-15  |
+| Jose          | 1990-12-08  |
+| Town          | 1999-12-15  |
+| Loralee       | 1990-12-22  |
+| Marlyn        | 1986-12-29  |
+| Baryram       | 1990-12-30  |
+| Ulric         | 1993-12-07  |
+| Trista        | 1999-12-11  |
+| Damiano       | 1990-12-15  |
+| Birgitta      | 1993-12-07  |
+| Arron         | 1985-12-03  |
+| Aguste        | 1989-12-15  |
+| Vincents      | 1996-12-31  |
++---------------+-------------+
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT AVG(conta_corrente), LOWER(pais) FROM correntistas GROUP BY pais;
++---------------------+-------------+
+| AVG(conta_corrente) | LOWER(pais) |
++---------------------+-------------+
+|   5351.939218749999 | argentina   |
+|   5022.757265306126 | brazil      |
+|   5419.939490196074 | peru        |
+|   6362.166774193549 | bolivia     |
+|          5693.27875 | chile       |
++---------------------+-------------+
+5 rows in set (0.0313 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  exercicios  SQL > SELECT COUNT(primeiro_nome) "Total", primeiro_nome FROM correntistas GROUP BY primeiro_nome ORDER BY Total DESC  LIMIT 3;
++-------+---------------+
+| Total | primeiro_nome |
++-------+---------------+
+|     3 | Alexis        |
+|     3 | Mil           |
+|     3 | Vic           |
++-------+---------------+
+3 rows in set (0.0962 sec)
+
+
