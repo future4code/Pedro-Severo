@@ -333,4 +333,135 @@
 +-------+---------------+
 3 rows in set (0.0962 sec)
 
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > insert into novos_correntistas (id, primeiro_nome, segundo_nome, email, genero, conta_corrent, pais, aniversario) values (7, 'Erskine', 'Audritt', 'eaudritt6@surveymonkey.com', 'M', 9473.07, 'Bolivia', '1992-06-26'), (8, 'Dalton', 'Paylor', 'dpaylor7@pinterest.com', 'M', 5708.56, 'Argentina', '1996-11-14'), (9, 'Sonja', 'Suggey', 'ssuggey8@discovery.com', 'F', -1779.05, 'Brazil', '1996-07-23'), (10, 'Ritchie', 'Ruppert', 'rruppert9@earthlink.net', 'M', 6676.83, 'Argentina', '1990-08-14'), (11, 'Josy', 'Gommowe', 'jgommowea@craigslist.org', 'F', 13902.79, 'Brazil', '1986-05-13'), (12, 'Ave', 'Binden', 'abindenb@behance.net', 'M', -740.14, 'Brazil', '1986-12-20'), (13, 'Modestia', 'Mattussevich', 'mmattussevichc@gov.uk', 'F', 7637.14, 'Peru', '1983-08-24'), (14, 'Royal', 'Hutcheson', 'rhutchesond@unicef.org', 'M', 5827.91, 'Brazil', '1987-02-13'), (15, 'Rheta', 'Tollerton', 'rtollertone@irs.gov', 'F', 4872.41, 'Brazil', '1997-10-29');
+Query OK, 9 rows affected (0.0512 sec)
+
+Records: 9  Duplicates: 0  Warnings: 0
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > select * from novos_correntistas;
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+
+| id | primeiro_nome | segundo_nome | email                      | genero | conta_corrent | pais      | aniversario |
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com            | M      |             0 | Brazil    | 1994-12-06  |
+|  2 | Correntista   | 2            | correntista2@gmail.com     | F      |             0 | Brazil    | 1990-10-06  |
+|  3 | Correntista   | 3            | correntista3@gmail.com     | F      |             0 | Argentina | 1990-10-06  |
+|  4 | Correntista   | 4            | correntista4@gmail.com     | M      |             0 | EUA       | 1990-10-06  |
+|  5 | Correntista   | 5            | correntista5@gmail.com     | NULL   |             0 | EUA       | 1990-10-06  |
+|  6 | Arvie         | Wilks        | awilks5@xrea.com           | M      |       4831.37 | Peru      | 1982-03-16  |
+|  7 | Erskine       | Audritt      | eaudritt6@surveymonkey.com | M      |       9473.07 | Bolivia   | 1992-06-26  |
+|  8 | Dalton        | Paylor       | dpaylor7@pinterest.com     | M      |       5708.56 | Argentina | 1996-11-14  |
+|  9 | Sonja         | Suggey       | ssuggey8@discovery.com     | F      |      -1779.05 | Brazil    | 1996-07-23  |
+| 10 | Ritchie       | Ruppert      | rruppert9@earthlink.net    | M      |       6676.83 | Argentina | 1990-08-14  |
+| 11 | Josy          | Gommowe      | jgommowea@craigslist.org   | F      |      13902.79 | Brazil    | 1986-05-13  |
+| 12 | Ave           | Binden       | abindenb@behance.net       | M      |       -740.14 | Brazil    | 1986-12-20  |
+| 13 | Modestia      | Mattussevich | mmattussevichc@gov.uk      | F      |       7637.14 | Peru      | 1983-08-24  |
+| 14 | Royal         | Hutcheson    | rhutchesond@unicef.org     | M      |       5827.91 | Brazil    | 1987-02-13  |
+| 15 | Rheta         | Tollerton    | rtollertone@irs.gov        | F      |       4872.41 | Brazil    | 1997-10-29  |
+| 50 | Florella      | Venediktov   | fvenediktov4@goo.ne.jp     | F      |       1860.85 | Brazil    | 1989-12-07  |
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+
+16 rows in set (0.0469 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > ALTER TABLE novos_correntistas
+                                                                              -> ADD estado_civil VARCHAR(50) DEFAULT "Solteiro";
+Query OK, 0 rows affected (0.1356 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > DESCRIBE no
+NO                  nome                NOT                 NOW
+NO_WRITE_TO_BINLOG  NONE                novos_correntistas
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > DESCRIBE novos_correntistas;
++---------------+--------------+------+-----+----------+-------+
+| Field         | Type         | Null | Key | Default  | Extra |
++---------------+--------------+------+-----+----------+-------+
+| id            | int(11)      | NO   | PRI | NULL     |       |
+| primeiro_nome | varchar(255) | NO   |     | NULL     |       |
+| segundo_nome  | varchar(255) | NO   |     | NULL     |       |
+| email         | varchar(50)  | NO   |     | NULL     |       |
+| genero        | varchar(1)   | YES  |     | NULL     |       |
+| conta_corrent | double       | NO   |     | 0        |       |
+| pais          | varchar(50)  | NO   |     | NULL     |       |
+| aniversario   | date         | YES  |     | NULL     |       |
+| estado_civil  | varchar(50)  | YES  |     | Solteiro |       |
++---------------+--------------+------+-----+----------+-------+
+9 rows in set (0.0361 sec)
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > UPDATE novos_correntistas SET estado_civil = "casado" WHERE aniversario < "1989-12-17";
+Query OK, 6 rows affected (0.0446 sec)
+
+Rows matched: 6  Changed: 6  Warnings: 0
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > select * from novos_correntistas;
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+--------------+
+| id | primeiro_nome | segundo_nome | email                      | genero | conta_corrent | pais      | aniversario | estado_civil |
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+--------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com            | M      |             0 | Brazil    | 1994-12-06  | Solteiro     |
+|  2 | Correntista   | 2            | correntista2@gmail.com     | F      |             0 | Brazil    | 1990-10-06  | Solteiro     |
+|  3 | Correntista   | 3            | correntista3@gmail.com     | F      |             0 | Argentina | 1990-10-06  | Solteiro     |
+|  4 | Correntista   | 4            | correntista4@gmail.com     | M      |             0 | EUA       | 1990-10-06  | Solteiro     |
+|  5 | Correntista   | 5            | correntista5@gmail.com     | NULL   |             0 | EUA       | 1990-10-06  | Solteiro     |
+|  6 | Arvie         | Wilks        | awilks5@xrea.com           | M      |       4831.37 | Peru      | 1982-03-16  | casado       |
+|  7 | Erskine       | Audritt      | eaudritt6@surveymonkey.com | M      |       9473.07 | Bolivia   | 1992-06-26  | Solteiro     |
+|  8 | Dalton        | Paylor       | dpaylor7@pinterest.com     | M      |       5708.56 | Argentina | 1996-11-14  | Solteiro     |
+|  9 | Sonja         | Suggey       | ssuggey8@discovery.com     | F      |      -1779.05 | Brazil    | 1996-07-23  | Solteiro     |
+| 10 | Ritchie       | Ruppert      | rruppert9@earthlink.net    | M      |       6676.83 | Argentina | 1990-08-14  | Solteiro     |
+| 11 | Josy          | Gommowe      | jgommowea@craigslist.org   | F      |      13902.79 | Brazil    | 1986-05-13  | casado       |
+| 12 | Ave           | Binden       | abindenb@behance.net       | M      |       -740.14 | Brazil    | 1986-12-20  | casado       |
+| 13 | Modestia      | Mattussevich | mmattussevichc@gov.uk      | F      |       7637.14 | Peru      | 1983-08-24  | casado       |
+| 14 | Royal         | Hutcheson    | rhutchesond@unicef.org     | M      |       5827.91 | Brazil    | 1987-02-13  | casado       |
+| 15 | Rheta         | Tollerton    | rtollertone@irs.gov        | F      |       4872.41 | Brazil    | 1997-10-29  | Solteiro     |
+| 50 | Florella      | Venediktov   | fvenediktov4@goo.ne.jp     | F      |       1860.85 | Brazil    | 1989-12-07  | casado       |
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+--------------+
+16 rows in set (0.0442 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL >
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > ALTER TABLE novos_correntistas ADD numero_da_sorte INT(11) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected, 1 warning (0.1650 sec)
+
+Records: 0  Duplicates: 0  Warnings: 1
+Warning (code 1681): Integer display width is deprecated and will be removed in a future release.
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > DESCRIBE novos_correntistas;
++-----------------+--------------+------+-----+----------+-------+
+| Field           | Type         | Null | Key | Default  | Extra |
++-----------------+--------------+------+-----+----------+-------+
+| id              | int(11)      | NO   | PRI | NULL     |       |
+| primeiro_nome   | varchar(255) | NO   |     | NULL     |       |
+| segundo_nome    | varchar(255) | NO   |     | NULL     |       |
+| email           | varchar(50)  | NO   |     | NULL     |       |
+| genero          | varchar(1)   | YES  |     | NULL     |       |
+| conta_corrent   | double       | NO   |     | 0        |       |
+| pais            | varchar(50)  | NO   |     | NULL     |       |
+| aniversario     | date         | YES  |     | NULL     |       |
+| estado_civil    | varchar(50)  | YES  |     | Solteiro |       |
+| numero_da_sorte | int(11)      | NO   |     | 0        |       |
++-----------------+--------------+------+-----+----------+-------+
+10 rows in set (0.0262 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL >
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > UPDATE novos_correntistas SET numero_da_sorte = FLOOR(RAND()*(1000-1+1)+1);
+Query OK, 16 rows affected (0.0520 sec)
+
+Rows matched: 16  Changed: 16  Warnings: 0
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > select * from novos_correntistas;
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+--------------+-----------------+
+| id | primeiro_nome | segundo_nome | email                      | genero | conta_corrent | pais      | aniversario | estado_civil | numero_da_sorte |
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+--------------+-----------------+
+|  1 | Pedro         | Severo       | pedro@gmail.com            | M      |             0 | Brazil    | 1994-12-06  | Solteiro     |             416 |
+|  2 | Correntista   | 2            | correntista2@gmail.com     | F      |             0 | Brazil    | 1990-10-06  | Solteiro     |             601 |
+|  3 | Correntista   | 3            | correntista3@gmail.com     | F      |             0 | Argentina | 1990-10-06  | Solteiro     |             756 |
+|  4 | Correntista   | 4            | correntista4@gmail.com     | M      |             0 | EUA       | 1990-10-06  | Solteiro     |             976 |
+|  5 | Correntista   | 5            | correntista5@gmail.com     | NULL   |             0 | EUA       | 1990-10-06  | Solteiro     |             613 |
+|  6 | Arvie         | Wilks        | awilks5@xrea.com           | M      |       4831.37 | Peru      | 1982-03-16  | casado       |             137 |
+|  7 | Erskine       | Audritt      | eaudritt6@surveymonkey.com | M      |       9473.07 | Bolivia   | 1992-06-26  | Solteiro     |             843 |
+|  8 | Dalton        | Paylor       | dpaylor7@pinterest.com     | M      |       5708.56 | Argentina | 1996-11-14  | Solteiro     |             804 |
+|  9 | Sonja         | Suggey       | ssuggey8@discovery.com     | F      |      -1779.05 | Brazil    | 1996-07-23  | Solteiro     |             489 |
+| 10 | Ritchie       | Ruppert      | rruppert9@earthlink.net    | M      |       6676.83 | Argentina | 1990-08-14  | Solteiro     |              34 |
+| 11 | Josy          | Gommowe      | jgommowea@craigslist.org   | F      |      13902.79 | Brazil    | 1986-05-13  | casado       |             700 |
+| 12 | Ave           | Binden       | abindenb@behance.net       | M      |       -740.14 | Brazil    | 1986-12-20  | casado       |             401 |
+| 13 | Modestia      | Mattussevich | mmattussevichc@gov.uk      | F      |       7637.14 | Peru      | 1983-08-24  | casado       |             902 |
+| 14 | Royal         | Hutcheson    | rhutchesond@unicef.org     | M      |       5827.91 | Brazil    | 1987-02-13  | casado       |             306 |
+| 15 | Rheta         | Tollerton    | rtollertone@irs.gov        | F      |       4872.41 | Brazil    | 1997-10-29  | Solteiro     |             823 |
+| 50 | Florella      | Venediktov   | fvenediktov4@goo.ne.jp     | F      |       1860.85 | Brazil    | 1989-12-07  | casado       |             197 |
++----+---------------+--------------+----------------------------+--------+---------------+-----------+-------------+--------------+-----------------+
+16 rows in set (0.1235 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL >
+
 
