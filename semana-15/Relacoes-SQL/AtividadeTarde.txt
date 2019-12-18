@@ -128,3 +128,27 @@ Query OK, 0 rows affected (0.1456 sec)
 +--------------------+
 6 rows in set (0.0435 sec)
  MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL >
+
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > CREATE TABLE livros_usuarios (
+                                                                              -> usuario_id INT,
+                                                                              -> livro_id INT,
+                                                                              -> PRIMARY KEY (usuario_id, livro_id),
+                                                                              -> FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+                                                                              -> FOREIGN KEY (livro_id) REFERENCES livros(id)
+                                                                              -> );
+Query OK, 0 rows affected (0.1692 sec)
+ MySQL  ec2-18-229-236-15.sa-east-1.compute.amazonaws.com:3306 ssl  pedro  SQL > show tables
+                                                                              -> ;
++--------------------+
+| Tables_in_pedro    |
++--------------------+
+| autores            |
+| editoras           |
+| funcionarios       |
+| livros             |
+| livros_usuarios    |
+| novos_correntistas |
+| usuarios           |
++--------------------+
+7 rows in set (0.0412 sec)
+
