@@ -11,9 +11,9 @@ const connection = knex_1.default({
     client: 'mysql',
     connection: {
         host: 'ec2-18-229-236-15.sa-east-1.compute.amazonaws.com',
-        user: 'USUARIO',
-        password: 'SENHA',
-        database: 'exercicios'
+        user: 'pedro',
+        password: process.env.SENHA_BANCO,
+        database: 'pedro'
     }
 });
 app.get('/', (req, res) => {
@@ -43,15 +43,14 @@ app.get('/hello/:name', (req, res) => {
     // Exemplo de retorno de HTML
     res.send(resposta);
 });
-app.post('/mirror/:cor', (req, res) => {
-    let responseBody;
-    if (req.params.cor !== "0") {
-        responseBody = Object.assign(Object.assign({}, req.body), { corPredileta: req.params.cor });
-    }
-    else {
-        responseBody = Object.assign(Object.assign({}, req.body), { corPredileta: "NAO INFORMADA" });
-    }
-    res.send(responseBody);
+app.post('/createUser', (req, res) => {
+    const query = connection('usuarios_todo').insert(req.body);
+    query.then(result => {
+        res.send(result);
+    }).catch(e => {
+        res.send(e);
+        console.log("mensagem de erro");
+    });
 });
 // Trecho do código responsável por inicializar todas as APIs
 const server = app.listen(process.env.PORT || 3000, () => {

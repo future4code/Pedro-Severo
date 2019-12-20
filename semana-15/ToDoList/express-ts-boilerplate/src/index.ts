@@ -9,54 +9,58 @@ const connection = knex({
   client: 'mysql',
   connection: {
     host : 'ec2-18-229-236-15.sa-east-1.compute.amazonaws.com',
-    user : 'USUARIO',
-    password : 'SENHA',
-    database : 'exercicios'
+    user : 'pedro',
+    password : process.env.SENHA_BANCO,
+    database : 'pedro'
   }
 });
 
-app.get('/', (req: Request, res: Response) => {
-  const resposta = {
-    endpoints: {
-      '/': 'retorna lista com todos os endpoints',
-      '/ping': 'retorna o texto pong',
-      '/hello/:NAME': 'utiliza o parâmetro passado no PATH para retornar um HTML contendo o parâmetro.'
-    }
-  };
+app.post('/createUser', (req: Request, res: Response) => {
 
-  // Exemplo de retorno de um JSON
-  res.send(resposta)
+  const query = connection('usuarios_todo').insert(req.body);
+  query.then(result => {
+    res.send(result);
+  }).catch(e => {
+    res.send(e);
+  });
 });
 
-app.get('/ping', (req: Request, res: Response) => {
-  const hasQueryString = Object.values(req.query).length > 0;
+app.put('/editUser/:id', (req: Request, res: Response) => {
+  const userId = req.params.id
 
-  if(hasQueryString){
-    // Exemplo de retorno de um JSON
-    res.send(req.query);
-  } else {
-    // Exemplo de retorno de texto "puro"
-    res.send('pong (nenhuma query string foi passada)');
-  }
+  const query = connection('usuarios_todo')
+  .where({ id: userId })
+  .update({ nickname: req.body.nickname });
+
+  query.then(() => {
+    res.send("Usuário modificado com sucesso");
+  }).catch(e => {
+    res.status(500).send(e)
+  });
+
 });
 
-app.get('/hello/:name', (req: Request, res: Response) => {
-  const resposta = `<h1>Olá ${req.params.name}, seja bem-vindo(a) à Future4.</h1>`;
+app.delete('/deleteUser/:id', (req: Request, res: Response) => {
+  const userId = req.params.id
 
-  // Exemplo de retorno de HTML
-  res.send(resposta)
+  const query = connection('usuarios_todo')
+  .where('id', userId)
+  .del();
+
+  query.then(() => {
+    res.send("Usuário deletado com sucesso");
+  }).catch(e => {
+    res.send(e);
+  });
 });
 
-app.post('/mirror/:cor', (req: Request, res: Response) => {
-  let responseBody;
-
-  if(req.params.cor !== "0"){
-    responseBody = { ...req.body, corPredileta: req.params.cor };
-  } else {
-    responseBody = { ...req.body, corPredileta: "NAO INFORMADA" };
-  }
-
-  res.send(responseBody);
+app.get('/getUser/:idOuNickname', (req: Request, res: Response) => {
+  const userId = req.params.id
+  
+  const query = connection.raw(`SELECT nickname FROM usuarios_todo WHERE id = "${userId}" | nickname = "${userId}"`);
+  query.then(result => {
+    res.send(result);
+  });
 });
 
 // Trecho do código responsável por inicializar todas as APIs
