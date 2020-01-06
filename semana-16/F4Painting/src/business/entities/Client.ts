@@ -1,11 +1,11 @@
-import { Request } from './Request';
+import { Demand } from './Demand';
 
 export class Client {
     constructor(
         private id: string,
         private name: string,
         private email: string,
-        private requests: Request[]
+        private Demands: Demand[]
     ) {}
 
     public getId() {
@@ -20,8 +20,8 @@ export class Client {
         return this.email
     };
 
-    public getRequests() {
-        return this.requests
+    public getDemands() {
+        return this.Demands
     };
 
 };

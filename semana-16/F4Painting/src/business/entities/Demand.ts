@@ -1,4 +1,4 @@
-export class Request {
+export class Demand {
     constructor(
         private id: string,
         private width: number,
