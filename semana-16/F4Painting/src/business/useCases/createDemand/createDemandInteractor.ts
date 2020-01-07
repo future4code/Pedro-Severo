@@ -1,4 +1,4 @@
-import { Demand } from './../../entities/Demand';
+import { Demand } from '../../entities/Demand';
 import knex from 'knex';
 
 export class CreateDemandInteractor {

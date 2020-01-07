@@ -5,10 +5,10 @@ export class Demand {
         private paperType: PaperType,
         private frameType: FrameType,
         private borderHight: BorderHight,
-        private color: string,
+        private color: Color,
     ) { };
 
-    private calculatePicturePrice(): number {
+    private calculatePictureSizePrice(): number {
         switch (this.pictureSize) {
             case PictureSize.MICRO:
                 return 20;
@@ -42,12 +42,12 @@ export class Demand {
         switch (this.frameType) {
             case FrameType.NONE:
                 return 0;
+            case FrameType.CRUDE:
+                return 15;
             case FrameType.CLEAN:
                 return 32;
             case FrameType.CLASSIC:
                 return 43;
-            case FrameType.CRUDE:
-                return 15;
             case FrameType.VINTAGE:
                 return 52.50;
             case FrameType.WOOD:
@@ -58,16 +58,16 @@ export class Demand {
     private calculateBorderPrice(): number {
         switch (this.borderHight) {
             case BorderHight.SMALL:
-                return this.calculatePicturePrice() * 0.25;
+                return this.calculatePictureSizePrice() * 0.25;
             case BorderHight.MEDIUM:
-                return this.calculatePicturePrice() * 0.50;
+                return this.calculatePictureSizePrice() * 0.50;
             case BorderHight.BIG:
-                return this.calculatePicturePrice() * 0.75;
+                return this.calculatePictureSizePrice() * 0.75;
         };
     };
 
     public calculateImpressionPrice(): number {
-        return this.calculatePicturePrice() * this.calculatePaperRate()
+        return this.calculatePictureSizePrice() * this.calculatePaperRate()
     };
 
     public calculateFramePrice(): number {
@@ -75,7 +75,7 @@ export class Demand {
     };
 
     public calculateFinalPrice(): number {
-        this.calculateFramePrice() + this.calculateImpressionPrice();
+        return this.calculateFramePrice() + this.calculateImpressionPrice();
     };
 
     public getId() {
@@ -103,7 +103,7 @@ export class Demand {
     };
 };
 
-enum PictureSize {
+export enum PictureSize {
     MICRO = "13x18",
     SMALL = "21x30",
     MEDIUM = "30x30",
@@ -111,7 +111,7 @@ enum PictureSize {
     EXTRA_LARGE = "42x60"
 };
 
-enum PaperType {
+export enum PaperType {
     BRIGHT = "brilhante",
     MAT = "fosco",
     FIBER = "fibra",
@@ -119,7 +119,7 @@ enum PaperType {
     PEARL = "perola"
 };
 
-enum FrameType {
+export enum FrameType {
     NONE = "",
     CRUDE = "crua",
     CLEAN = "lisa",
@@ -128,8 +128,17 @@ enum FrameType {
     WOOD = "madeira"
 };
 
-enum BorderHight {
+export enum BorderHight {
     SMALL = "pequena",
     MEDIUM = "media",
     BIG = "grande"
+};
+
+export enum Color {
+    YELLOW = "amarelo",
+    RED = "vermelho",
+    BLUE = "azul",
+    ORANGE = "laranja",
+    GREEN = "verde",
+    PURPLE = "roxo"
 };
