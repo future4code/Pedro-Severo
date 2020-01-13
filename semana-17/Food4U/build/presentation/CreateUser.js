@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const V4IdGenerator_1 = require("./../services/V4IdGenerator");
 const UserDatabase_1 = require("./../data/UserDatabase");
 const CreateUserUseCase_1 = require("./../business/usecases/User/CreateUserUseCase");
+const bcryptImplementation_1 = require("../services/crypt/bcryptImplementation");
 function createUserEndpoint(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -21,9 +22,10 @@ function createUserEndpoint(req, res) {
             };
             const userGateway = new UserDatabase_1.UserDatabase();
             const idGenerator = new V4IdGenerator_1.V4IdGenerator();
-            const useCase = new CreateUserUseCase_1.CreateUserUseCase(userGateway, idGenerator);
+            const bcryptImplementation = new bcryptImplementation_1.BcryptImplementation();
+            const useCase = new CreateUserUseCase_1.CreateUserUseCase(userGateway, idGenerator, bcryptImplementation);
             const result = yield useCase.execute(createUserInput);
-            res.send(Object.assign(Object.assign({}, result), { sucess: true, message: 'User created succesfully' }));
+            res.send(Object.assign(Object.assign({}, result), { message: 'User created succesfully' }));
         }
         catch (e) {
             console.log(e);

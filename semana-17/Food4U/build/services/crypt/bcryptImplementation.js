@@ -8,30 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const User_1 = require("../../entities/User");
-;
-class CreateUserUseCase {
-    constructor(userGateway, idGenerator, cryptographyGateway) {
-        this.userGateway = userGateway,
-            this.idGenerator = idGenerator,
-            this.cryptographyGateway = cryptographyGateway;
-    }
-    ;
-    execute(input) {
+const bcrypt = __importStar(require("bcrypt"));
+class BcryptImplementation {
+    encrypt(word) {
         return __awaiter(this, void 0, void 0, function* () {
-            const encryptPassword = yield this.cryptographyGateway.encrypt(input.password);
-            const user = new User_1.User(this.idGenerator.generate(), input.email, encryptPassword);
-            yield this.userGateway.createUser(user);
-            return {
-                id: user.getId(),
-                email: user.getEmail()
-            };
+            const salt = yield bcrypt.genSalt(BcryptImplementation.BCRYPT_SALT_ROUNDS);
+            const encryptedWord = yield bcrypt.hash(word, salt);
+            return encryptedWord;
         });
     }
     ;
 }
-exports.CreateUserUseCase = CreateUserUseCase;
-;
-;
+exports.BcryptImplementation = BcryptImplementation;
+BcryptImplementation.BCRYPT_SALT_ROUNDS = 10;
 ;

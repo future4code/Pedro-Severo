@@ -1,3 +1,4 @@
+import { CryptographyGateway } from './../../gateways/crypt/cryptographyGateway';
 import { UserGateway } from './../../gateways/UserGateway';
 import {User} from '../../entities/User';
 
@@ -8,14 +9,19 @@ export interface RandomIdGenerator {
 export class CreateUserUseCase {
     private userGateway: UserGateway;
     private idGenerator: RandomIdGenerator;
+    private cryptographyGateway: CryptographyGateway;
     
-    constructor(userGateway: UserGateway, idGenerator: RandomIdGenerator) {
+    
+    constructor(userGateway: UserGateway, idGenerator: RandomIdGenerator, cryptographyGateway: CryptographyGateway) {
         this.userGateway = userGateway,
-        this.idGenerator = idGenerator
+        this.idGenerator = idGenerator,
+        this.cryptographyGateway = cryptographyGateway
     };
 
     async execute(input: CreateUserInput) {
-        const user = new User(this.idGenerator.generate(), input.email, input.password);
+        const encryptPassword = await this.cryptographyGateway.encrypt(input.password);
+
+        const user = new User(this.idGenerator.generate(), input.email, encryptPassword);
 
         await this.userGateway.createUser(user);
 

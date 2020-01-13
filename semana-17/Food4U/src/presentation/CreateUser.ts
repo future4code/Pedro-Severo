@@ -3,6 +3,7 @@ import { UserDatabase } from './../data/UserDatabase';
 import { CreateUserUseCase } from './../business/usecases/User/CreateUserUseCase';
 import {Request, Response} from 'express'
 import { CreateUserInput } from '../business/usecases/User/CreateUserUseCase'
+import { BcryptImplementation } from '../services/crypt/bcryptImplementation';
 
 export async function createUserEndpoint(req: Request, res: Response) {
     try {
@@ -13,10 +14,11 @@ export async function createUserEndpoint(req: Request, res: Response) {
 
         const userGateway = new UserDatabase();
         const idGenerator = new V4IdGenerator()
-        const useCase = new CreateUserUseCase(userGateway, idGenerator);
+        const bcryptImplementation = new BcryptImplementation()
+        const useCase = new CreateUserUseCase(userGateway, idGenerator, bcryptImplementation);
         const result = await useCase.execute(createUserInput);
 
-        res.send({...result, sucess: true, message: 'User created succesfully'});
+        res.send({...result, message: 'User created succesfully'});
     } catch (e) {
         console.log(e);
         res.status(500).send(e);
