@@ -21,6 +21,7 @@ class UserModel {
     }
     ;
 }
+exports.UserModel = UserModel;
 ;
 class UserEntityMapper {
     entityToModel(entity) {
@@ -32,6 +33,7 @@ class UserEntityMapper {
     }
     ;
 }
+exports.UserEntityMapper = UserEntityMapper;
 ;
 class UserDatabase {
     constructor() {
@@ -49,11 +51,17 @@ class UserDatabase {
     ;
     createUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            // await this.connection.raw(`
-            //     INSERT INTO users (email, password, id)
-            //     VALUES (${user.getEmail()}, ${user.getPassword()}, ${user.getId()})
-            // `)
             yield this.connection('Users_Food4U').insert(this.userEntityMapper.entityToModel(user));
+        });
+    }
+    ;
+    getUserByEmail(userEmail) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const results = yield this.connection.raw(`
+            SELECT email, id, password FROM Users_Food4U
+            WHERE Users_Food4U.email="${userEmail}";
+        `);
+            return results[0][0];
         });
     }
     ;

@@ -2,7 +2,7 @@ import { UserGateway } from './../business/gateways/UserGateway';
 import { User } from '../business/entities/User';
 import knex from 'knex';
 
-class UserModel {
+export class UserModel {
     constructor(
         public id: string,
         public email: string, 
@@ -10,7 +10,7 @@ class UserModel {
     ) {};
 };
 
-class UserEntityMapper {
+export class UserEntityMapper {
     entityToModel(entity: User): UserModel {
         return {
             id: entity.getId(),
@@ -39,11 +39,15 @@ export class UserDatabase implements UserGateway {
     };
 
     async createUser(user: User) {
-        // await this.connection.raw(`
-        //     INSERT INTO users (email, password, id)
-        //     VALUES (${user.getEmail()}, ${user.getPassword()}, ${user.getId()})
-        // `)
-
         await this.connection('Users_Food4U').insert(this.userEntityMapper.entityToModel(user))
+    };
+
+    async getUserByEmail(userEmail: string) {
+        const results = await this.connection.raw(`
+            SELECT email, id, password FROM Users_Food4U
+            WHERE Users_Food4U.email="${userEmail}";
+        `);
+
+        return results[0][0]
     };
 };

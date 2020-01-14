@@ -1,8 +1,7 @@
 import { V4IdGenerator } from './../services/V4IdGenerator';
 import { UserDatabase } from './../data/UserDatabase';
-import { CreateUserUseCase } from './../business/usecases/User/CreateUserUseCase';
+import { CreateUserUseCase, CreateUserInput } from './../business/usecases/User/CreateUserUseCase';
 import {Request, Response} from 'express'
-import { CreateUserInput } from '../business/usecases/User/CreateUserUseCase'
 import { BcryptImplementation } from '../services/crypt/bcryptImplementation';
 
 export async function createUserEndpoint(req: Request, res: Response) {
