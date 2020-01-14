@@ -10,4 +10,8 @@ export class BcryptImplementation implements CryptographyGateway {
         
         return encryptedWord;
     };
+
+    async compare(passwordInput: string, passwordAunthenticate: string): Promise<boolean> {
+        return bcrypt.compare(passwordInput, passwordAunthenticate);
+    };
 };

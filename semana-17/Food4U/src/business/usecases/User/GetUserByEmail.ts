@@ -1,3 +1,4 @@
+import { User } from './../../entities/User';
 import { UserGateway } from './../../gateways/UserGateway';
 
 export class GetUserByEmailUseCase {
@@ -12,11 +13,7 @@ export class GetUserByEmailUseCase {
         const user = await this.userGateway.getUserByEmail(input.userEmail);
 
         return { 
-            user: {
-                userEmail: user.email,
-                userId: user.id,
-                userPassword: user.password
-            }
+            user: new User(user.id, user.email, user.password)
         };
     };
 };
@@ -26,9 +23,5 @@ export interface GetUserByEmailInput {
 };
 
 interface GestUserByEmailOutput {
-    user: {
-        userEmail: string,
-        userId: string, 
-        userPassword: string
-    }
+    user: User
 };

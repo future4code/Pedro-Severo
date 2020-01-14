@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const User_1 = require("./../../entities/User");
 class GetUserByEmailUseCase {
     constructor(userGateway) {
         this.userGateway = userGateway;
@@ -17,11 +18,7 @@ class GetUserByEmailUseCase {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield this.userGateway.getUserByEmail(input.userEmail);
             return {
-                user: {
-                    userEmail: user.email,
-                    userId: user.id,
-                    userPassword: user.password
-                }
+                user: new User_1.User(user.id, user.name, user.password)
             };
         });
     }

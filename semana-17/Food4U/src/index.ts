@@ -2,6 +2,7 @@ import express from "express";
 import { AddressInfo } from 'net'
 import { createUserEndpoint } from './presentation/CreateUser';
 import { getUserByEmailEndpoint } from "./presentation/GetUserByEmail";
+import { loginEndpoint } from "./presentation/Login";
 
 const app = express()
 app.use(express.json()); // Linha mágica (middleware)
@@ -9,6 +10,8 @@ app.use(express.json()); // Linha mágica (middleware)
 app.post('/user', createUserEndpoint);
 
 app.get('/user/:userEmail', getUserByEmailEndpoint);
+
+app.post('/login', loginEndpoint);
 
 // Trecho do código responsável por inicializar todas as APIs
 const server = app.listen(process.env.PORT || 3000, () => {
