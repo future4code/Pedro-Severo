@@ -8,7 +8,7 @@ export class RecipeModel {
         public id: string,
         public title: string, 
         public description: string,
-        public date: string,
+        public date_: string,
         public userId: string
     ) {};
 };
@@ -19,7 +19,7 @@ export class RecipeEntityMapper {
             id: entity.getId(),
             title: entity.getTitle(),
             description: entity.getDescription(),
-            date: entity.getDate(),
+            date_: entity.getDate(),
             userId: entity.getUserId()
         };
     };
@@ -44,6 +44,6 @@ export class RecipeDatabase implements RecipeGateway {
     };
 
     async createRecipe(recipe: Recipe) {
-        await this.connection('Recipers_Food4U').insert(this.recipeEntityMapper.entityToModel(recipe));
+        await this.connection('Recipes_Food4U').insert(this.recipeEntityMapper.entityToModel(recipe));
     };
 };

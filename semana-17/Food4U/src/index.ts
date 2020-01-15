@@ -11,7 +11,7 @@ app.post('/user', createUserEndpoint);
 
 app.get('/user/:userEmail', getUserByEmailEndpoint);
 
-app.get('/recipe', createRecipeEndpoint);
+app.post('/recipe', createRecipeEndpoint);
 
 // Trecho do código responsável por inicializar todas as APIs
 const server = app.listen(process.env.PORT || 3000, () => {

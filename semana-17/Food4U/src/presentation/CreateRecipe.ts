@@ -9,7 +9,7 @@ export async function createRecipeEndpoint(req: Request, res: Response) {
         const createRecipeInput: CreateRecipeInput = {
             title: req.body.title,
             description: req.body.description,
-            date: req.body.date,
+            date_: req.body.date_,
             userId: req.body.userId
         };
 
