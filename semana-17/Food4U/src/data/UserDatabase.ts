@@ -1,4 +1,4 @@
-import { UserGateway } from './../business/gateways/UserGateway';
+import { UserGateway } from '../business/gateways/user/UserGateway';
 import { User } from '../business/entities/User';
 import knex from 'knex';
 
@@ -48,6 +48,8 @@ export class UserDatabase implements UserGateway {
             WHERE Users_Food4U.email="${userEmail}";
         `);
 
-        return results[0][0]
+        const user = results[0][0];
+
+        return new User(user.id, user.email, user.password);
     };
 };

@@ -1,6 +1,6 @@
 import { AuthenticationGateway } from './../../gateways/authentication/authenticationGateway';
 import { CryptographyGateway } from './../../gateways/crypt/cryptographyGateway';
-import { UserGateway } from './../../gateways/UserGateway';
+import { UserGateway } from '../../gateways/user/UserGateway';
 
 export class LoginUseCase {
     constructor(

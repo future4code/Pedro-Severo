@@ -1,5 +1,5 @@
 import { User } from './../../entities/User';
-import { UserGateway } from './../../gateways/UserGateway';
+import { UserGateway } from '../../gateways/user/UserGateway';
 
 export class GetUserByEmailUseCase {
     private userGateway: UserGateway;
