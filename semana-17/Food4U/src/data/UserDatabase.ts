@@ -52,4 +52,20 @@ export class UserDatabase implements UserGateway {
 
         return new User(user.id, user.email, user.password);
     };
+
+    async verifyUserExist(id: string) {
+        const results = await this.connection.raw(
+            `SELECT * FROM Users_Food4U
+            WHERE Users_Food4U.id=${id}`
+        );
+
+        console.log(results[0][0])
+
+        if (!results[0][0]) {
+            return false
+        };
+
+        return true
+    };
+
 };

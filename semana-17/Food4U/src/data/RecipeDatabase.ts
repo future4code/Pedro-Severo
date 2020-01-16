@@ -8,7 +8,7 @@ export class RecipeModel {
         public id: string,
         public title: string, 
         public description: string,
-        public date_: string,
+        public date_: Date,
         public userId: string
     ) {};
 };

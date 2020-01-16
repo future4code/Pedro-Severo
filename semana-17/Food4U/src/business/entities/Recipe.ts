@@ -3,7 +3,7 @@ export class Recipe {
         private id: string,
         private title: string, 
         private description: string,
-        private date: string, 
+        private date: Date, 
         private userId: string
     ) {};
 

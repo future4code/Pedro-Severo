@@ -13,7 +13,7 @@ export class GetUserByEmailUseCase {
         const user = await this.userGateway.getUserByEmail(input.userEmail);
 
         return { 
-            user: new User(user.id, user.email, user.password)
+            user: new User(user.getId(), user.getEmail(), user.getPassword())
         };
     };
 };
