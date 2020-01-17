@@ -3,6 +3,7 @@ import { AddressInfo } from 'net'
 import { createUserEndpoint } from './presentation/CreateUser';
 import { getUserByEmailEndpoint } from "./presentation/GetUserByEmail";
 import { createRecipeEndpoint } from "./presentation/CreateRecipe";
+import { followUserEndpoint } from "./presentation/FollowUser";
 
 const app = express();
 app.use(express.json()); // Linha mágica (middleware)
@@ -12,6 +13,8 @@ app.post('/user', createUserEndpoint);
 app.get('/user/:userEmail', getUserByEmailEndpoint);
 
 app.post('/recipe', createRecipeEndpoint);
+
+app.post('/follow/:followerUserId', followUserEndpoint);
 
 // Trecho do código responsável por inicializar todas as APIs
 const server = app.listen(process.env.PORT || 3000, () => {

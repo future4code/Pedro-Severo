@@ -1,6 +1,6 @@
 import { UserGateway } from '../business/gateways/user/UserGateway';
 import { User } from '../business/entities/User';
-import knex from 'knex';
+import { KnexConnection } from './knexConnection/knexConnection';
 
 export class UserModel {
     constructor(
@@ -20,22 +20,12 @@ export class UserEntityMapper {
     };
 };
 
-export class UserDatabase implements UserGateway {
-    private connection: knex;
+export class UserDatabase extends KnexConnection implements UserGateway {
     private userEntityMapper: UserEntityMapper;
 
     constructor () {
-        this.connection = knex({
-            client: 'mysql',
-            connection: {
-                host: 'ec2-18-229-236-15.sa-east-1.compute.amazonaws.com',
-                user: 'pedro',
-                password: process.env.SENHA_DATABASE,
-                database: 'pedro'
-            }
-        });
-
-        this.userEntityMapper = new UserEntityMapper()
+        super();
+        this.userEntityMapper = new UserEntityMapper();
     };
 
     async createUser(user: User) {
@@ -69,6 +59,13 @@ export class UserDatabase implements UserGateway {
     };
 
     async followUser(followerUserId: string, followedUserId: string) {
-        await this.connection('users_relations').insert(followerUserId, followedUserId);
+        const input = {
+            followerUserId,
+            followedUserId
+        }
+
+        console.log(input)
+
+        await this.connection('users_relations').insert(input);
     };
 };

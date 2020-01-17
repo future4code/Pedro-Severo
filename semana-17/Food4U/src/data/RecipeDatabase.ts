@@ -1,6 +1,6 @@
-import knex from 'knex';
 import { RecipeGateway } from './../business/gateways/recipe/RecipeGateway';
 import { Recipe } from "../business/entities/Recipe";
+import { KnexConnection } from './knexConnection/knexConnection';
 
 
 export class RecipeModel {
@@ -25,21 +25,11 @@ export class RecipeEntityMapper {
     };
 };
 
-export class RecipeDatabase implements RecipeGateway {
-    private connection: knex;
+export class RecipeDatabase extends KnexConnection implements RecipeGateway {
     private recipeEntityMapper: RecipeEntityMapper;
 
     constructor () {
-        this.connection = knex({
-            client: 'mysql',
-            connection: {
-                host: 'ec2-18-229-236-15.sa-east-1.compute.amazonaws.com',
-                user: 'pedro',
-                password: process.env.SENHA_DATABASE,
-                database: 'pedro'
-            }
-        });
-
+        super()
         this.recipeEntityMapper = new RecipeEntityMapper;
     };
 

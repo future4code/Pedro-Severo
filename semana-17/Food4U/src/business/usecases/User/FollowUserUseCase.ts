@@ -17,6 +17,8 @@ export class FollowUserUseCase {
             this.verifyUserExist(input.followedUserId),
             this.verifyUserExist(input.followerUserId)
         ]);
+
+        console.log(input)
         
         this.userGateway.followUser(input.followerUserId, input.followedUserId);
     };
