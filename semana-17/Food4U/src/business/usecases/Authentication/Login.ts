@@ -23,7 +23,8 @@ export class LoginUseCase {
         const token = this.authenticationGateway.generateToken(user.getId());
 
         return {
-            token
+            token,
+            userId: user.getId()
         };
     };
 };
@@ -35,4 +36,5 @@ export interface LoginInput {
 
 interface LoginOutPut { 
     token: string,
+    userId: string
 };

@@ -68,4 +68,7 @@ export class UserDatabase implements UserGateway {
         return true
     };
 
+    async followUser(followerUserId: string, followedUserId: string) {
+        await this.connection('users_relations').insert(followerUserId, followedUserId);
+    };
 };
