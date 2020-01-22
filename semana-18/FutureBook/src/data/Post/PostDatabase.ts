@@ -7,8 +7,8 @@ export class PostModel {
         public picture: string, 
         public description: string, 
         public type: PostType,
-        public userId: string,
-        public creationDate: Date = new Date(),
+        public user_id: string,
+        public creation_date: Date = new Date(),
     ) {};
 };
 
@@ -18,8 +18,8 @@ export class PostEntityMapper {
             picture: entity.getPicture(),
             description: entity.getDescription(),
             type: entity.getType(),
-            userId: entity.getUserId(),
-            creationDate: entity.getDate()
+            user_id: entity.getUserId(),
+            creation_date: entity.getDate()
         };
     };
 };

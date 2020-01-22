@@ -64,4 +64,47 @@ export class UserDatabase extends KnexConnection implements UserGateway {
             return true
         };
     };
+
+    public async makeFriends(senderUserId: string, receptorUserId: string): Promise<void> {
+        const friendishipExistenceVerification = await this.connection.raw(
+            `
+            SELECT * FROM friendships 
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            `
+        );
+
+        if (friendishipExistenceVerification[0][0]) {
+            throw new Error ("You already be friends.")
+        } else {        
+            await this.connection.raw(
+                `
+                INSERT INTO friendships (sender_id, receptor_id)
+                VALUES ("${senderUserId}", "${receptorUserId}");
+                `
+            );
+        };
+    };
+
+    public async unmakeFriendship(senderUserId: string, receptorUserId: string): Promise<void> {
+        const friendishipExistenceVerification = await this.connection.raw(
+            `
+            SELECT * FROM friendships 
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            `
+        );
+
+        if (!friendishipExistenceVerification[0][0]) {
+            throw new Error ("You aren't friends.")
+        } else {        
+            await this.connection.raw(
+                `
+                DELETE FROM friendships
+                WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+                OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+                `
+            );
+        };
+    };
 };

@@ -29,6 +29,7 @@ export class CreatePostUseCase {
         this.verifyUserExists(input.userId);
 
         const { picture, description, type, userId } = input
+        console.log({...input})
         const newPost = new Post(picture, description, type, userId);
 
         try {
