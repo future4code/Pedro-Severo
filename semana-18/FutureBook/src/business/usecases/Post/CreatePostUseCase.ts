@@ -11,7 +11,7 @@ export class CreatePostUseCase {
     validateInput(input: CreatePostInput) {
         const { picture, description, type, userId } = input
         
-        if (!picture || !description || !type || !userId) {
+        if (!description || !type || !userId) {
             throw new Error('Missing information to create a post.');
         };
     };
@@ -29,7 +29,6 @@ export class CreatePostUseCase {
         this.verifyUserExists(input.userId);
 
         const { picture, description, type, userId } = input
-        console.log({...input})
         const newPost = new Post(picture, description, type, userId);
 
         try {
