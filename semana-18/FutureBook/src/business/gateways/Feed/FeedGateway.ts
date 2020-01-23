@@ -1,4 +1,4 @@
-import { Post } from "../../entities/Post";
+import { Post, PostType } from "../../entities/Post";
 
 export interface FeedResponse {
     post: Post
@@ -6,5 +6,6 @@ export interface FeedResponse {
 };
 
 export interface FeedGateway {
-    getPostsFeedForUser(userId: string): Promise<FeedResponse[]>
+    getPostsFeedForUser(userId: string, offset: number): Promise<FeedResponse[]>;
+    getPostsFeedByType(userId: string, offset: number, type: PostType): Promise<FeedResponse[]>
 };

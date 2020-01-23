@@ -1,18 +1,19 @@
 import { authenticate } from './BaseFunctions/baseFunctions';
 import { Request, Response } from "express";
-import { GetFeedInput, GetFeedUseCase } from "../business/usecases/Feed/GetFeedUseCase";
 import { FeedDatabase } from '../data/Feed/FeedDatabase';
+import { GetFeedByTypeInput, GetFeedByTypeUseCase } from '../business/usecases/Feed/GetFeedByTypeUseCase';
 
 
-export async function GetFeedEndpoint(req: Request, res: Response) {
+export async function GetFeedByTypeEndpoint(req: Request, res: Response) {
     try {
-        const input: GetFeedInput = {
+        const input: GetFeedByTypeInput = {
             userId: authenticate(req),
-            offset: req.body.offset
+            offset: req.body.offset,
+            type: req.body.type
         };
         
         const feedGateway = new FeedDatabase();
-        const useCase = new GetFeedUseCase(feedGateway);
+        const useCase = new GetFeedByTypeUseCase(feedGateway);
 
         const result = await useCase.execute(input);
 
@@ -22,4 +23,4 @@ export async function GetFeedEndpoint(req: Request, res: Response) {
             errorMessage: err.message
         });
     };
-}
+};
