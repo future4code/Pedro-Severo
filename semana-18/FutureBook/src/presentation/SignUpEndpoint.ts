@@ -15,7 +15,9 @@ export async function SignUpEndpoint(req: Request, res: Response) {
         const userGateway = new UserDatabase();
         const idGenerator = new V4IdGenerator();
         const bcryptService = new BcryptService();
+
         const useCase = new SignUpUseCase(userGateway, bcryptService, idGenerator);
+        
         const result = await useCase.execute(signUpInput);
 
         res.send({...result, message:"Signup done succesfully!"})

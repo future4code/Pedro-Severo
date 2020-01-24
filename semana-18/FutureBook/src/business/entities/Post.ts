@@ -1,11 +1,16 @@
 export class Post {    
     constructor (
+        private id: string,
         private picture: string, 
         private description: string, 
         private type: PostType,
         private userId: string,
         private creationDate: Date = new Date(),
     ) {};
+
+    public getId(): string {
+        return this.id;
+    };
 
     public getPicture(): string {
         return this.picture;

@@ -1,11 +1,13 @@
 import { PostGateway } from "../../gateways/Post/PostGateway";
 import { UserGateway } from "../../gateways/User/UserGateway";
 import { PostType, Post } from "../../entities/Post";
+import { IdGeneratorGateway } from "../../gateways/auth/idGenerator";
 
 export class CreatePostUseCase {
     constructor (
         private userGateway: UserGateway,
-        private postGateway: PostGateway 
+        private postGateway: PostGateway, 
+        private idGenerator: IdGeneratorGateway
     ) {};
 
     validateInput(input: CreatePostInput) {
@@ -29,7 +31,14 @@ export class CreatePostUseCase {
         this.verifyUserExists(input.userId);
 
         const { picture, description, type, userId } = input
-        const newPost = new Post(picture, description, type, userId);
+        
+        const newPost = new Post(
+            this.idGenerator.generateId(),
+            picture, 
+            description, 
+            type, 
+            userId
+        );
 
         try {
             await this.postGateway.createPost(newPost);
@@ -38,6 +47,7 @@ export class CreatePostUseCase {
         };
         
         return {
+            id: newPost.getId(),
             picture: newPost.getPicture(),
             description: newPost.getDescription(),
             type: newPost.getType(),
@@ -55,6 +65,7 @@ export interface CreatePostInput {
 };
 
 interface CreatePostOutput {
+    id: string,
     picture: string, 
     description: string, 
     type: PostType,

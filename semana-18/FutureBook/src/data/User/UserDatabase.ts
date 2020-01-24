@@ -96,7 +96,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         );
 
         if (!friendishipExistenceVerification[0][0]) {
-            throw new Error ("You aren't friends.")
+            throw new Error ("You and this user aren't friends.")
         } else {        
             await this.connection.raw(
                 `
