@@ -8,6 +8,8 @@ import { UnmakeFriendshipEndpoint } from './presentation/UnmakeFriendshipEndpoin
 import { GetFeedEndpoint } from './presentation/GetFeedEndpoint';
 import { GetFeedByTypeEndpoint } from './presentation/GetFeedByTypeEndpoint';
 import { LikePostEndpoint } from './presentation/LikePostEndpoint';
+import { ToCommentEndpoint } from './presentation/ToCommentEndpoint';
+import { GetCommentsEndpoint } from './presentation/GetCommentsEndpoint';
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
@@ -27,6 +29,10 @@ app.get("/feed", GetFeedEndpoint);
 app.get("/feed/type", GetFeedByTypeEndpoint);
 
 app.post("/like", LikePostEndpoint);
+
+app.post("/post/comment", ToCommentEndpoint);
+
+app.get("/post/comments", GetCommentsEndpoint);
 
 // Trecho do código responsável por inicializar todas as APIs
 const server = app.listen(process.env.PORT || 3000, () => {

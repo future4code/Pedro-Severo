@@ -3,6 +3,7 @@ import { FeedGateway, FeedResponse } from "../../business/gateways/Feed/FeedGate
 import { Post, PostType } from "../../business/entities/Post";
 
 interface PostFeedModel {
+    id: string,
     picture: string,
     description: string,
     type: PostType,
@@ -19,14 +20,14 @@ export class FeedDatabase extends KnexConnection implements FeedGateway {
     async getPostsFeedForUser(userId: string, offset: number): Promise<FeedResponse[]> {
         const query = await this.connection.raw(
               `
-              SELECT posts.picture, posts.description, posts.type, posts.user_id, posts.creation_date, users.name as userName 
+              SELECT posts.id, posts.picture, posts.description, posts.type, posts.user_id, posts.creation_date, users.name as userName 
               FROM friendships friends 
               JOIN posts_fbook posts 
               ON (friends.sender_id=posts.user_id) OR (friends.receptor_id=posts.user_id) 
               JOIN users_fbook users 
               ON (posts.user_id=users.id) OR (posts.user_id=users.id) 
               WHERE (sender_id="${userId}") OR (receptor_id="${userId}")
-              ORDER BY posts.creation_date ASC
+              ORDER BY posts.creation_date DESC
               LIMIT 2 OFFSET ${offset};
               `
         );
@@ -34,7 +35,7 @@ export class FeedDatabase extends KnexConnection implements FeedGateway {
         const postsFromDb: PostFeedModel[] = query[0]
 
         return postsFromDb.map(post => ({
-            post: new Post(post.picture, post.description, post.type, post.user_id, new Date(post.creation_date)),
+            post: new Post("", post.picture, post.description, post.type, post.user_id, new Date(post.creation_date)),
             name: post.userName
         }));
     };
@@ -42,14 +43,14 @@ export class FeedDatabase extends KnexConnection implements FeedGateway {
     async getPostsFeedByType(userId: string, offset: number, type: PostType): Promise<FeedResponse[]> {
         const query = await this.connection.raw(
             `
-            SELECT posts.picture, posts.description, posts.type, posts.user_id, posts.creation_date, users.name as userName 
+            SELECT posts.id, posts.picture, posts.description, posts.type, posts.user_id, posts.creation_date, users.name as userName 
             FROM friendships friends 
             JOIN posts_fbook posts 
             ON (friends.sender_id=posts.user_id) OR (friends.receptor_id=posts.user_id) 
             JOIN users_fbook users 
             ON (posts.user_id=users.id) OR (posts.user_id=users.id) 
             WHERE ((sender_id="${userId}") OR (receptor_id="${userId}")) AND posts.type="${type}"
-            ORDER BY posts.creation_date ASC
+            ORDER BY posts.creation_date DESC
             LIMIT 2 OFFSET ${offset};
             `
       );
@@ -57,7 +58,7 @@ export class FeedDatabase extends KnexConnection implements FeedGateway {
       const postsFromDb: PostFeedModel[] = query[0]
 
       return postsFromDb.map(post => ({
-          post: new Post(post.picture, post.description, post.type, post.user_id, new Date(post.creation_date)),
+          post: new Post("", post.picture, post.description, post.type, post.user_id, new Date(post.creation_date)),
           name: post.userName
       }));
     };

@@ -6,4 +6,5 @@ export interface UserGateway {
     verifyUserExists(id: string): Promise<boolean>;
     makeFriends(senderUserId: string, receptorUserId: string): Promise<void>;
     unmakeFriendship(senderUserId: string, receptorUserId:string): Promise<void>;
+    getUserById(id: string): Promise<User>;
 };

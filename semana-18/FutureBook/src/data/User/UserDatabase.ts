@@ -107,4 +107,23 @@ export class UserDatabase extends KnexConnection implements UserGateway {
             );
         };
     };
+
+    public async getUserById(id: string): Promise<User> {
+        const query = await this.connection.raw(
+            `SELECT * FROM users_fbook WHERE id='${id}';`
+        );
+
+        const user = query[0][0]
+
+        if (!user) {
+            throw new Error("User not found.");
+        };
+
+        return new User (
+            user.id, 
+            user.name, 
+            user.email, 
+            user.password
+        );
+    };
 };
