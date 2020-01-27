@@ -65,7 +65,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         };
     };
 
-    public async makeFriends(senderUserId: string, receptorUserId: string): Promise<void> {
+    public async makeFriendship(senderUserId: string, receptorUserId: string): Promise<void> {
         const friendishipExistenceVerification = await this.connection.raw(
             `
             SELECT * FROM friendships 

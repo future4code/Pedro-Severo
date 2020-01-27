@@ -3,7 +3,7 @@ import express from 'express';
 import { SignUpEndpoint } from './presentation/SignUpEndpoint';
 import { LoginEndpoint } from './presentation/LoginEndpoint';
 import { CreatePostEndpoint } from './presentation/CreatePostEndpoint';
-import { MakeFriendsEndpoint } from './presentation/MakeFriendsEndpoint';
+import { MakeFriendshipEndpoint } from './presentation/MakeFriendsEndpoint';
 import { UnmakeFriendshipEndpoint } from './presentation/UnmakeFriendshipEndpoint';
 import { GetFeedEndpoint } from './presentation/GetFeedEndpoint';
 import { GetFeedByTypeEndpoint } from './presentation/GetFeedByTypeEndpoint';
@@ -20,7 +20,7 @@ app.post("/login", LoginEndpoint);
 
 app.post("/post", CreatePostEndpoint);
 
-app.post("/make/friend", MakeFriendsEndpoint);
+app.post("/make/friend", MakeFriendshipEndpoint);
 
 app.delete("/unmake/friendship", UnmakeFriendshipEndpoint);
 

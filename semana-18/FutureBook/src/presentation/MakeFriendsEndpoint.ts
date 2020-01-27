@@ -1,20 +1,20 @@
 import { authenticate } from './BaseFunctions/baseFunctions';
 import { Request, Response } from "express";
 import { UserDatabase } from '../data/User/UserDatabase';
-import { MakeFriendsInput, MakeFriendsUseCase } from "../business/usecases/User/MakeFriendsUseCase";
+import { MakeFriendshipInput, MakeFriendshipUseCase } from "../business/usecases/User/MakeFriendshipUseCase";
 
-export async function MakeFriendsEndpoint(req: Request, res: Response) {
+export async function MakeFriendshipEndpoint(req: Request, res: Response) {
     try {
         const senderUserId = authenticate(req)
 
-        const input: MakeFriendsInput = {
+        const input: MakeFriendshipInput = {
             senderUserId,
             receptorUserId: req.body.receptorUserId
         };
 
         const userGateway = new UserDatabase();
 
-        const useCase = new MakeFriendsUseCase(userGateway);
+        const useCase = new MakeFriendshipUseCase(userGateway);
 
         const result = await useCase.execute(input);
 

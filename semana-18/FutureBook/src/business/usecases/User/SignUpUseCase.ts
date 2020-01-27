@@ -23,7 +23,7 @@ export class SignUpUseCase {
         try {
             await this.userGateway.signUp(user);
         } catch (err) {
-            throw new Error ("It wasn't possible create user.")
+            throw new Error ("It wasn't possible to create user.")
         };
 
         return {

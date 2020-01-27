@@ -1,11 +1,11 @@
 import { UserGateway } from "../../gateways/User/UserGateway";
 
-export class MakeFriendsUseCase {
+export class MakeFriendshipUseCase {
     constructor(
         private userGateway: UserGateway
     ) {};
 
-    async verifyUserExists(input: MakeFriendsInput) {
+    async verifyUserExists(input: MakeFriendshipInput) {
         const senderUserId = await this.userGateway.verifyUserExists(input.senderUserId)
         const receptorUserId = await this.userGateway.verifyUserExists(input.receptorUserId)
 
@@ -18,26 +18,26 @@ export class MakeFriendsUseCase {
         };
     };
 
-    async execute(input: MakeFriendsInput) {
+    async execute(input: MakeFriendshipInput): Promise<MakeFriendshipOutput> {
         await this.verifyUserExists(input);
 
         try {
-            await this.userGateway.makeFriends(input.senderUserId, input.receptorUserId)
+            await this.userGateway.makeFriendship(input.senderUserId, input.receptorUserId)
         } catch (err) {
             throw new Error ("It wasn't possible to send friendship request.");
         };
 
         return {
-            message: "Friendship request sended successfully!"
+            message: "Friendship request sent successfully!"
         }
     };
 };
 
-export interface MakeFriendsInput {
+export interface MakeFriendshipInput {
     senderUserId: string,
     receptorUserId: string
 }
 
-export interface MakeFriendsOutput {
+export interface MakeFriendshipOutput {
     message: string
 };

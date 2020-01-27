@@ -10,7 +10,7 @@ export class UnmakeFriendshipUseCase {
         const receptorUserId = await this.userGateway.verifyUserExists(input.receptorUserId)
 
         if (!senderUserId) {
-            throw new Error("You need be logged to unmake a friendship.");
+            throw new Error("You need be logged to unmade a friendship.");
         };
 
         if (!receptorUserId) {
@@ -24,11 +24,11 @@ export class UnmakeFriendshipUseCase {
         try {
             await this.userGateway.unmakeFriendship(input.senderUserId, input.receptorUserId)
         } catch (err) {
-            throw new Error ("It wasn't possible unmake this friendship.");
+            throw new Error ("It wasn't possible unmade this friendship.");
         };
 
         return {
-            message: "Friendship unmaked successfully!"
+            message: "Friendship unmade successfully!"
         }
     };
 };
