@@ -8,6 +8,8 @@ app.use(express.json()) // Linha mágica (middleware)
 
 app.post('/signup', SignUpEndpoint);
 
+
+
 app.post('/login', LoginEndpoint);
 
 // Trecho do código responsável por inicializar todas as APIs
