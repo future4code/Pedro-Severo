@@ -27,4 +27,4 @@ export class JwtAuthService implements UserTokenGateway {
     };
     return jwtVerifiedResult["userId"];
   };
-}
+};

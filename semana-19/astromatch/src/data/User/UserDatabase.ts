@@ -92,48 +92,94 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         }));
     };
 
-    // public async makeFriendship(senderUserId: string, receptorUserId: string): Promise<void> {
-    //     const friendishipExistenceVerification = await this.connection.raw(
-    //         `
-    //         SELECT * FROM friendships 
-    //         WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-    //         OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-    //         `
-    //     );
+    public async match(senderUserId: string, receptorUserId: string): Promise<void> {
+        const halfMatchExistenceVerification = await this.connection.raw(
+            `
+            SELECT * FROM half_match
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            `
+        );
 
-    //     if (friendishipExistenceVerification[0][0]) {
-    //         throw new Error ("You already be friends.")
-    //     } else {        
-    //         await this.connection.raw(
-    //             `
-    //             INSERT INTO friendships (sender_id, receptor_id)
-    //             VALUES ("${senderUserId}", "${receptorUserId}");
-    //             `
-    //         );
-    //     };
-    // };
+        const bothMatchExistenceVerification = await this.connection.raw(
+            `
+            SELECT * FROM both_match 
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+            WHERE (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            `
+        );
 
-    // public async unmakeFriendship(senderUserId: string, receptorUserId: string): Promise<void> {
-    //     const friendishipExistenceVerification = await this.connection.raw(
-    //         `
-    //         SELECT * FROM friendships 
-    //         WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-    //         OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-    //         `
-    //     );
+        if (!halfMatchExistenceVerification[0][0]) {
+            await this.connection.raw(
+                `
+                INSERT INTO half_match (sender_id, receptor_id)
+                VALUES ("${senderUserId}", "${receptorUserId}");
+                `
+            );
 
-    //     if (!friendishipExistenceVerification[0][0]) {
-    //         throw new Error ("You and this user aren't friends.")
-    //     } else {        
-    //         await this.connection.raw(
-    //             `
-    //             DELETE FROM friendships
-    //             WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-    //             OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-    //             `
-    //         );
-    //     };
-    // };
+            return  
+        } else { 
+            if (bothMatchExistenceVerification[0][0]) {
+                throw new Error ("You already be matched with this user.");
+            } else {       
+                await this.connection.raw(
+                    `
+                    INSERT INTO both_match (sender_id, receptor_id)
+                    VALUES ("${senderUserId}", "${receptorUserId}");
+                    `
+                );
+            };
+        };
+    };
+
+    public async unmatch(senderUserId: string, receptorUserId: string): Promise<void> {
+        const halfMatchExistenceVerification = await this.connection.raw(
+            `
+            SELECT * FROM half_match
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            `
+        );
+        
+        const bothMatchExistenceVerification = await this.connection.raw(
+            `
+            SELECT * FROM both_match 
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            `
+        );
+
+
+        if (!halfMatchExistenceVerification[0][0]) {
+            throw new Error ("You and this user aren't matched.");
+        } else { 
+            if (bothMatchExistenceVerification[0][0] && halfMatchExistenceVerification[0][0]) {
+                await this.connection.raw(
+                    `
+                    DELETE FROM half_match
+                    WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+                    OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+                    `
+                );
+                
+                await this.connection.raw(
+                    `
+                    DELETE FROM both_match
+                    WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+                    OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+                    `
+                );
+            } else if (halfMatchExistenceVerification[0][0]) {       
+                await this.connection.raw(
+                    `
+                    DELETE FROM half_match
+                    WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
+                    OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+                    `
+                );
+            };
+        };
+    };
 
     // public async getUserById(id: string): Promise<User> {
     //     const query = await this.connection.raw(

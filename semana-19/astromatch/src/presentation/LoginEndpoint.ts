@@ -4,6 +4,7 @@ import { UserDatabase } from "../data/User/UserDatabase";
 import { BcryptService } from "../services/cryptography/bcryptService";
 import { JwtAuthService } from "../services/auth/jwtAuthService";
 
+
 export async function LoginEndpoint(req: Request, res: Response) {
     try {
         const loginInput: LoginInput = {
