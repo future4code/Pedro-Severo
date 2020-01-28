@@ -1,5 +1,5 @@
 import { KnexConnection } from "../KnexConnection/knexConnection"
-import { UserGateway } from "../../business/gateways/User/UserGateway";
+import { UserGateway, GetAllUsersResponse } from "../../business/gateways/User/UserGateway";
 import { User } from "../../business/entities/User";
 
 export class UserModel {
@@ -24,6 +24,15 @@ export class UserEntityMapper {
             password: entity.getPassword()
         };
     };
+};
+
+interface GetAllUsersModel {
+    id: string,
+    name: string,
+    email: string,
+    photo: string,
+    birth: Date,
+    password: string,
 };
 
 export class UserDatabase extends KnexConnection implements UserGateway {
@@ -69,6 +78,18 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         } else {
             return true
         };
+    };
+
+    public async getAllUsers(): Promise<GetAllUsersResponse[]> {
+        const allUsers = await this.connection.raw(
+            `SELECT * FROM users`
+        );
+
+        const usersFromDataBase: GetAllUsersModel[] = allUsers[0]
+
+        return usersFromDataBase.map(user => ({
+            user: new User(user.id, user.name, user.email, user.photo, user.birth, user.password)
+        }));
     };
 
     // public async makeFriendship(senderUserId: string, receptorUserId: string): Promise<void> {

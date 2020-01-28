@@ -1,1 +1,0 @@
-{"version":3,"file":"mammal.js","sourceRoot":"","sources":["../src/mammal.ts"],"names":[],"mappings":";;AAAA,qCAAkC;AAElC,MAAsB,MAAO,SAAQ,eAAM;IAIlC,GAAG,CAAC,IAAY;QACrB,OAAO,CAAC,GAAG,CAAC,cAAc,CAAC,CAAC;QAC5B,IAAI,CAAC,eAAe,IAAI,IAAI,GAAG,GAAG,CAAC;IACrC,CAAC;IAEM,kBAAkB;QACvB,OAAO,IAAI,CAAC,eAAe,CAAC;IAC9B,CAAC;CACF;AAZD,wBAYC"}

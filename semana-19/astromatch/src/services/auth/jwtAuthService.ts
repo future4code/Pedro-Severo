@@ -1,5 +1,5 @@
+import { UserTokenGateway } from './../../business/gateways/Auth/UserTokenGateway';
 import * as jwt from "jsonwebtoken";
-import { UserTokenGateway } from "../../business/gateways/auth/userTokenGateway";
 
 export class JwtAuthService implements UserTokenGateway {
   static EXPIRES_IN_TIME: string = "10h";
