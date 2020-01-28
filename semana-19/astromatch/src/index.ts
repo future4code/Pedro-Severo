@@ -5,6 +5,7 @@ import { LoginEndpoint } from './presentation/LoginEndpoint';
 import { GetAllUsersEndpoint } from './presentation/GetAllUsersEndpoint';
 import { MatchEndpoint } from './presentation/MatchEndpoint';
 import { UnmatchEndpoint } from './presentation/UnmatchEndpoint';
+import { GetAllMatchesEndpoint } from './presentation/GetAllMatchesEndpoint';
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
@@ -18,6 +19,8 @@ app.get('/users', GetAllUsersEndpoint);
 app.post('/match', MatchEndpoint);
 
 app.delete('/unmatch', UnmatchEndpoint);
+
+app.get('/matches', GetAllMatchesEndpoint);
 
 // Trecho do código responsável por inicializar todas as APIs
 const server = app.listen(process.env.PORT || 3000, () => {

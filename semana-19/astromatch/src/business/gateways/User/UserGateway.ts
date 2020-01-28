@@ -4,6 +4,10 @@ export interface GetAllUsersResponse {
     user: User
 };
 
+export interface GetAllMatchesResponse {
+    user: User
+};
+
 export interface UserGateway {
     signUp(user: User): Promise<void>;
     getUserByEmail(email: string): Promise<User>;
@@ -11,4 +15,5 @@ export interface UserGateway {
     getAllUsers(): Promise<GetAllUsersResponse[]>;
     match(senderUserId: string, receptorUserId: string): Promise<void>;
     unmatch(senderUserId: string, receptorUserId: string): Promise<void>;
+    getAllMatches(userId: string): Promise<GetAllMatchesResponse[]>;
 };

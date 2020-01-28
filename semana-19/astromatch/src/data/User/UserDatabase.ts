@@ -35,6 +35,15 @@ interface GetAllUsersModel {
     password: string,
 };
 
+interface GetAllMatchesModel {
+    id: string,
+    name: string,
+    email: string,
+    photo: string,
+    birth: Date,
+    password: string,
+};
+
 export class UserDatabase extends KnexConnection implements UserGateway {
     private userEntityMapper: UserEntityMapper;
     
@@ -93,95 +102,64 @@ export class UserDatabase extends KnexConnection implements UserGateway {
     };
 
     public async match(senderUserId: string, receptorUserId: string): Promise<void> {
-        const halfMatchExistenceVerification = await this.connection.raw(
+        const matchExistenceVerification = await this.connection.raw(
             `
-            SELECT * FROM half_match
-            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-            `
-        );
-
-        const bothMatchExistenceVerification = await this.connection.raw(
-            `
-            SELECT * FROM both_match 
-            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-            WHERE (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            SELECT * FROM matches
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}');
             `
         );
 
-        if (!halfMatchExistenceVerification[0][0]) {
+        if (!matchExistenceVerification[0][0]) {
             await this.connection.raw(
                 `
-                INSERT INTO half_match (sender_id, receptor_id)
+                INSERT INTO matches (sender_id, receptor_id)
                 VALUES ("${senderUserId}", "${receptorUserId}");
                 `
-            );
-
-            return  
+            ); 
         } else { 
-            if (bothMatchExistenceVerification[0][0]) {
-                throw new Error ("You already be matched with this user.");
-            } else {       
-                await this.connection.raw(
-                    `
-                    INSERT INTO both_match (sender_id, receptor_id)
-                    VALUES ("${senderUserId}", "${receptorUserId}");
-                    `
-                );
-            };
+            throw new Error ("You already be matched with this user.");
         };
     };
 
     public async unmatch(senderUserId: string, receptorUserId: string): Promise<void> {
-        const halfMatchExistenceVerification = await this.connection.raw(
+        const matchExistenceVerification = await this.connection.raw(
             `
-            SELECT * FROM half_match
-            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
+            SELECT * FROM matches
+            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}');
             `
         );
         
-        const bothMatchExistenceVerification = await this.connection.raw(
-            `
-            SELECT * FROM both_match 
-            WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-            OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-            `
-        );
-
-
-        if (!halfMatchExistenceVerification[0][0]) {
+        if (matchExistenceVerification[0][0]) {
+            await this.connection.raw(
+                `
+                DELETE FROM matches
+                WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}');
+                `
+            );
+        } else {
             throw new Error ("You and this user aren't matched.");
-        } else { 
-            if (bothMatchExistenceVerification[0][0] && halfMatchExistenceVerification[0][0]) {
-                await this.connection.raw(
-                    `
-                    DELETE FROM half_match
-                    WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-                    OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-                    `
-                );
-                
-                await this.connection.raw(
-                    `
-                    DELETE FROM both_match
-                    WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-                    OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-                    `
-                );
-            } else if (halfMatchExistenceVerification[0][0]) {       
-                await this.connection.raw(
-                    `
-                    DELETE FROM half_match
-                    WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}')
-                    OR (sender_id='${receptorUserId}' AND receptor_id='${senderUserId}');
-                    `
-                );
-            };
         };
     };
 
-    // public async getUserById(id: string): Promise<User> {
+    public async getAllMatches(id: string): Promise<any> {
+        const query = await this.connection.raw(
+            `
+            SELECT DISTINCT id, name, email, photo, birth 
+            FROM users u
+            JOIN matches m
+            ON ((m.sender_id=u.id) AND (m.receptor_id='${id}')) 
+            OR ((m.sender_id='${id}') AND (m.receptor_id='u.id'));
+            `
+        );
+
+        const matchesFromDataBase: GetAllMatchesModel[] = query[0]
+
+        return matchesFromDataBase.map(match => ({
+            match: new User(match.id, match.name, match.email, match.photo, match.birth, match.password)
+        }));
+    };
+
+    // public async getmatchById(id: string): Promise<User> {
     //     const query = await this.connection.raw(
     //         `SELECT * FROM users_fbook WHERE id='${id}';`
     //     );
