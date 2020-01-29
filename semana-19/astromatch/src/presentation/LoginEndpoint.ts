@@ -1,11 +1,10 @@
-import { Response, Request } from "express";
 import { LoginInput, LoginUseCase } from "../business/usecases/User/LoginUseCase";
 import { UserDatabase } from "../data/User/UserDatabase";
 import { BcryptService } from "../services/cryptography/bcryptService";
 import { JwtAuthService } from "../services/auth/jwtAuthService";
 
 
-export async function LoginEndpoint(req: Request, res: Response) {
+export async function LoginEndpoint() {
     try {
         const loginInput: LoginInput = {
             email: req.body.email, 
@@ -20,10 +19,11 @@ export async function LoginEndpoint(req: Request, res: Response) {
 
         const result = await useCase.execute(loginInput);
 
-        res.status(200).send(result);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(result)
+        };    
     } catch (err) {
-        res.status(400).send({
-            errorMessage: err.message
-        });
+        throw new Error(err);
     };
 };

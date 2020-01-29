@@ -1,10 +1,9 @@
 import { SignUpInput, SignUpUseCase } from './../business/usecases/User/SignUpUseCase';
-import {Request, Response} from 'express'
 import { UserDatabase } from '../data/User/UserDatabase';
 import { V4IdGenerator } from '../services/auth/v4IdGenerator';
 import { BcryptService } from '../services/cryptography/bcryptService';
 
-export async function SignUpEndpoint(req: Request, res: Response) {
+export async function SignUpEndpoint() {
     try {
         const signUpInput: SignUpInput = {
             name: req.body.name,
@@ -22,10 +21,11 @@ export async function SignUpEndpoint(req: Request, res: Response) {
         
         const result = await useCase.execute(signUpInput);
 
-        res.send({...result, message:"Signup done succesfully!"})
+        return {
+            statusCode: 200,
+            body: JSON.stringify(result)
+        };    
     } catch (err) {
-        res.status(400).send({
-            errorMessage: err.message
-        });
+        throw new Error(err);
     };
 };
