@@ -2,8 +2,9 @@ import { GetAllUsersUseCase } from './../business/usecases/User/GetAllUsersUseCa
 import { GetAllUsersInput } from "../business/usecases/User/GetAllUsersUseCase";
 import { authenticate } from "./BaseFunctions/baseFunctions";
 import { UserDatabase } from "../data/User/UserDatabase";
+import { Request, Response } from 'express';
 
-export async function GetAllUsersEndpoint() {
+export async function GetAllUsersEndpoint(req: Request, res: Response) {
     try {
         const input: GetAllUsersInput = {
             userId: authenticate(req)
@@ -13,11 +14,11 @@ export async function GetAllUsersEndpoint() {
         const useCase = new GetAllUsersUseCase(userGateway);
 
         const result = await useCase.execute(input);
-        return {
-            statusCode: 200,
-            body: JSON.stringify(result)
-        };    
+        
+        res.status(200).send(result);
     } catch (err) {
-        throw new Error(err);
+        res.status(400).send({
+            errorMessage: err.message
+        });
     };
 };

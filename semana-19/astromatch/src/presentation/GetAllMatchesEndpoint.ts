@@ -1,9 +1,9 @@
 import { GetAllMatchesInput, GetAllMatchesUseCase } from "../business/usecases/User/GetAllMatchesUseCase";
 import { authenticate } from "./BaseFunctions/baseFunctions";
 import { UserDatabase } from "../data/User/UserDatabase";
+import { Request, Response } from 'express';
 
-
-export async function GetAllMatchesEndpoint () {
+export async function GetAllMatchesEndpoint (req: Request, res: Response) {
     try {
         const input: GetAllMatchesInput = {
             userId: authenticate(req)
@@ -13,11 +13,10 @@ export async function GetAllMatchesEndpoint () {
         const useCase = new GetAllMatchesUseCase(userGateway);
 
         const result = await useCase.execute(input);
-        return {
-            statusCode: 200,
-            body: JSON.stringify(result)
-        };
+        res.status(200).send(result);
     } catch (err) {
-        throw new Error(err);
+        res.status(400).send({
+            errorMessage: err.message
+        });
     };
 }; 

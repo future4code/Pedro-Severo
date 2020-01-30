@@ -2,8 +2,9 @@ import { UnmatchUseCase } from './../business/usecases/User/UnmatchUseCase';
 import { authenticate } from "./BaseFunctions/baseFunctions";
 import { UnmatchInput } from "../business/usecases/User/UnmatchUseCase";
 import { UserDatabase } from "../data/User/UserDatabase";
+import { Request, Response } from 'express';
 
-export async function UnmatchEndpoint() {
+export async function UnmatchEndpoint(req: Request, res: Response) {
     try {
         const senderUserId = authenticate(req)
 
@@ -18,11 +19,10 @@ export async function UnmatchEndpoint() {
 
         const result = await useCase.execute(input);
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify(result)
-        };    
+        res.status(200).send(result);
     } catch (err) {
-        throw new Error(err);
+        res.status(400).send({
+            errorMessage: err.message
+        });
     };
 };

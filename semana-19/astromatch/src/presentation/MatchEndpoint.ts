@@ -1,9 +1,9 @@
 import { authenticate } from "./BaseFunctions/baseFunctions";
 import { MatchInput, MatchUseCase } from "../business/usecases/User/MatchUseCase";
 import { UserDatabase } from "../data/User/UserDatabase";
+import { Request, Response } from 'express';
 
-
-export async function MatchEndpoint() {
+export async function MatchEndpoint(req: Request, res: Response) {
     try {
         const senderUserId = authenticate(req)
 
@@ -18,11 +18,10 @@ export async function MatchEndpoint() {
 
         const result = await useCase.execute(input);
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify(result)
-        };    
+        res.status(200).send(result);
     } catch (err) {
-        throw new Error(err);
+        res.status(400).send({
+            errorMessage: err.message
+        });
     };
 };

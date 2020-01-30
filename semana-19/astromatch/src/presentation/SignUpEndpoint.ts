@@ -2,8 +2,9 @@ import { SignUpInput, SignUpUseCase } from './../business/usecases/User/SignUpUs
 import { UserDatabase } from '../data/User/UserDatabase';
 import { V4IdGenerator } from '../services/auth/v4IdGenerator';
 import { BcryptService } from '../services/cryptography/bcryptService';
+import { Request, Response } from 'express';
 
-export async function SignUpEndpoint() {
+export async function SignUpEndpoint(req: Request, res: Response) {
     try {
         const signUpInput: SignUpInput = {
             name: req.body.name,
@@ -21,11 +22,10 @@ export async function SignUpEndpoint() {
         
         const result = await useCase.execute(signUpInput);
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify(result)
-        };    
+        res.status(200).send(result);
     } catch (err) {
-        throw new Error(err);
+        res.status(400).send({
+            errorMessage: err.message
+        });
     };
 };
