@@ -6,11 +6,14 @@ import { GetAllUsersEndpoint } from './presentation/GetAllUsersEndpoint';
 import { MatchEndpoint } from './presentation/MatchEndpoint';
 import { UnmatchEndpoint } from './presentation/UnmatchEndpoint';
 import { GetAllMatchesEndpoint } from './presentation/GetAllMatchesEndpoint';
+import { ChangePasswordEndpoint } from './presentation/ChangePasswordEndpoint';
 
 const app = express();
 app.use(express.json()); // Linha mágica (middleware)
 
 app.post('/signup', SignUpEndpoint);
+
+app.post('/password', ChangePasswordEndpoint);
 
 app.post('/login', LoginEndpoint);
 

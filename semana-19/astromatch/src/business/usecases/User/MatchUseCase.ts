@@ -1,25 +1,16 @@
 import { UserGateway } from "../../gateways/User/UserGateway";
+import { UserExistenceVerification } from "./UserExistenceVerification/UserExistenceVerification";
 
-export class MatchUseCase {
+export class MatchUseCase extends UserExistenceVerification {
     constructor (
-        private userGateway: UserGateway
-    ) {};
-
-    async verifyUserExists(input: MatchInput) {
-        const senderUserId = await this.userGateway.verifyUserExists(input.senderUserId)
-        const receptorUserId = await this.userGateway.verifyUserExists(input.receptorUserId)
-
-        if (!senderUserId) {
-            throw new Error("You need be logged to match with anyone.");
-        };
-
-        if (!receptorUserId) {
-            throw new Error("This user doesn't exist.");
-        };
+        public userGateway: UserGateway
+    ) {
+        super(userGateway);
     };
-
+    
     async execute(input: MatchInput): Promise<MatchOutput> {
-        await this.verifyUserExists(input);
+        await this.verifyUserExists(input.senderUserId);
+        await this.verifyUserExists(input.receptorUserId);
 
         try {
             await this.userGateway.match(input.senderUserId, input.receptorUserId)

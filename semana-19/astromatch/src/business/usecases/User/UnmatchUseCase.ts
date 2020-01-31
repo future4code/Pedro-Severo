@@ -1,25 +1,16 @@
 import { UserGateway } from "../../gateways/User/UserGateway";
+import { UserExistenceVerification } from "./UserExistenceVerification/UserExistenceVerification";
 
-export class UnmatchUseCase {
+export class UnmatchUseCase extends UserExistenceVerification {
     constructor (
         public userGateway: UserGateway
-    ) {};
-
-    async verifyUserExists(input: UnmatchInput) {
-        const senderUserId = await this.userGateway.verifyUserExists(input.senderUserId)
-        const receptorUserId = await this.userGateway.verifyUserExists(input.receptorUserId)
-
-        if (!senderUserId) {
-            throw new Error("You need be logged to unmatch.");
-        };
-
-        if (!receptorUserId) {
-            throw new Error("This user doesn't exist.");
-        };
+    ) {
+        super(userGateway);
     };
 
     async execute(input: UnmatchInput): Promise<UnmatchOutput> {
-        await this.verifyUserExists(input);
+        await this.verifyUserExists(input.senderUserId);
+        await this.verifyUserExists(input.receptorUserId);
 
         try {
             await this.userGateway.unmatch(input.senderUserId, input.receptorUserId)
@@ -28,7 +19,7 @@ export class UnmatchUseCase {
         };
 
         return {
-            message: "Match successfully!"
+            message: "Unmatch successfully!"
         }
     };
 

@@ -1,20 +1,15 @@
 import { UserGateway, GetAllMatchesResponse } from "../../gateways/User/UserGateway";
+import { UserExistenceVerification } from "./UserExistenceVerification/UserExistenceVerification";
 
-export class GetAllMatchesUseCase {
+export class GetAllMatchesUseCase extends UserExistenceVerification {
     constructor (
-        private userGateway: UserGateway
-    ) {};
-
-    async verifyUserExists(input: GetAllMatchesInput) {
-        const userId = this.userGateway.verifyUserExists(input.userId);
-    
-        if (!userId) {
-            throw new Error("You need be logged to see your matches.");
-        };
-    };   
+        public userGateway: UserGateway
+    ) {
+        super(userGateway)
+    };
 
     public async execute(input: GetAllMatchesInput): Promise<GetAllMatchesOutput> {
-        this.verifyUserExists(input);
+        this.verifyUserExists(input.userId);
 
         return {
             matches: await this.userGateway.getAllMatches(input.userId)

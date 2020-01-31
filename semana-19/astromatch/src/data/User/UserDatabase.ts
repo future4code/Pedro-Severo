@@ -46,19 +46,24 @@ interface GetAllMatchesModel {
 
 export class UserDatabase extends KnexConnection implements UserGateway {
     private userEntityMapper: UserEntityMapper;
+    private usersTableName: string;
+    private matchesTableName: string
+
     
-    constructor() {
+    constructor () {
         super();
         this.userEntityMapper = new UserEntityMapper();
+        this.usersTableName = "users";
+        this.matchesTableName = "matches";
     };
 
     public async signUp(user: User): Promise<void> {
-        await this.connection("users").insert(this.userEntityMapper.entityToModel(user));
+        await this.connection(this.usersTableName).insert(this.userEntityMapper.entityToModel(user));
     };
 
     public async getUserByEmail(email: string): Promise<User> {
         const query = await this.connection.raw(
-            `SELECT * FROM users WHERE email='${email}';`
+            `SELECT * FROM ${this.usersTableName} WHERE email='${email}';`
         );
 
         const user = query[0][0]
@@ -79,7 +84,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
 
     public async verifyUserExists(id: string): Promise<boolean> {
         const query = await this.connection.raw(
-            `SELECT * FROM users WHERE id='${id}';`
+            `SELECT * FROM ${this.usersTableName} WHERE id='${id}';`
         );
 
         if (!query[0][0]) {
@@ -91,7 +96,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
 
     public async getAllUsers(): Promise<GetAllUsersResponse[]> {
         const allUsers = await this.connection.raw(
-            `SELECT * FROM users`
+            `SELECT * FROM ${this.usersTableName}`
         );
 
         const usersFromDataBase: GetAllUsersModel[] = allUsers[0]
@@ -104,7 +109,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
     public async match(senderUserId: string, receptorUserId: string): Promise<void> {
         const matchExistenceVerification = await this.connection.raw(
             `
-            SELECT * FROM matches
+            SELECT * FROM ${this.matchesTableName}
             WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}');
             `
         );
@@ -112,7 +117,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         if (!matchExistenceVerification[0][0]) {
             await this.connection.raw(
                 `
-                INSERT INTO matches (sender_id, receptor_id)
+                INSERT INTO ${this.matchesTableName} (sender_id, receptor_id)
                 VALUES ("${senderUserId}", "${receptorUserId}");
                 `
             ); 
@@ -124,7 +129,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
     public async unmatch(senderUserId: string, receptorUserId: string): Promise<void> {
         const matchExistenceVerification = await this.connection.raw(
             `
-            SELECT * FROM matches
+            SELECT * FROM ${this.matchesTableName}
             WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}');
             `
         );
@@ -132,7 +137,7 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         if (matchExistenceVerification[0][0]) {
             await this.connection.raw(
                 `
-                DELETE FROM matches
+                DELETE FROM ${this.matchesTableName}
                 WHERE (sender_id='${senderUserId}' AND receptor_id='${receptorUserId}');
                 `
             );
@@ -145,10 +150,10 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         const query = await this.connection.raw(
             `
             SELECT DISTINCT id, name, email, photo, birth 
-            FROM users u
-            JOIN matches m
+            FROM ${this.usersTableName} u
+            JOIN ${this.matchesTableName} m
             ON ((m.sender_id=u.id) AND (m.receptor_id='${id}')) 
-            OR ((m.sender_id='${id}') AND (m.receptor_id='u.id'));
+            OR ((m.sender_id='${id}') AND (m.receptor_id=u.id));
             `
         );
 
@@ -159,22 +164,13 @@ export class UserDatabase extends KnexConnection implements UserGateway {
         }));
     };
 
-    // public async getmatchById(id: string): Promise<User> {
-    //     const query = await this.connection.raw(
-    //         `SELECT * FROM users_fbook WHERE id='${id}';`
-    //     );
-
-    //     const user = query[0][0]
-
-    //     if (!user) {
-    //         throw new Error("User not found.");
-    //     };
-
-    //     return new User (
-    //         user.id, 
-    //         user.name, 
-    //         user.email, 
-    //         user.password
-    //     );
-    // };
+    public async changePassword(oldPassword: string, newPassword: string): Promise<any> {
+        await this.connection.raw(
+            `
+            UPDATE ${this.usersTableName} 
+            SET senha='${newPassword}'  
+            WHERE senha='${oldPassword}';
+            `
+        );
+    };
 };

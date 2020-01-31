@@ -16,4 +16,5 @@ export interface UserGateway {
     match(senderUserId: string, receptorUserId: string): Promise<void>;
     unmatch(senderUserId: string, receptorUserId: string): Promise<void>;
     getAllMatches(userId: string): Promise<GetAllMatchesResponse[]>;
+    changePassword(oldPassword: string, newPassword: string): Promise<void>;
 };
