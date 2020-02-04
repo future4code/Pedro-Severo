@@ -7,9 +7,6 @@ import Logo from "../../components/Logo";
 import { 
     LoginWrapper,
     ContainerLoginPage, 
-    LogoWrapper,
-    LogoIcon, 
-    LogoText,
     TextEnter,
     InputUserName,
     InputEmail,
