@@ -41,14 +41,14 @@ export const InputPassword = styled(TextField)`
     height: 56px;
 `;
 
-export const TextRegisterUser = styled.div `
+export const SignUpText = styled.div `
     font-size: 16px;
     color: #000000;
     height: 18px; 
     margin-top: 28px;  
 `;
 
-export const GoToSignUp = styled.a `
+export const GoToSignUpButton = styled.a `
     color: black;
 `;
 

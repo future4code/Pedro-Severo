@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import routes from '../Router';
 import { push } from 'connected-react-router';
+import { routes } from '../Router';
 import MainButtonComponent from '../../components/MainButton';
 import Logo from "../../components/Logo";
 import { 
@@ -11,8 +11,8 @@ import {
     InputUserName,
     InputEmail,
     InputPassword,
-    TextRegisterUser,
-    GoToSignUp,
+    SignUpText,
+    GoToSignUpButton,
     ErrorMessage 
 } from './styled';
 import Visibility from '@material-ui/icons/Visibility';
@@ -27,7 +27,7 @@ const LoginPage = props => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const onClickLogin = event => {
+    const handleSubmit = event => {
         event.preventDefault();
     };
 
@@ -47,10 +47,9 @@ const LoginPage = props => {
         setShowPassword(!showPassword)
     };
 
-
     return (
         <LoginWrapper>
-            <ContainerLoginPage>
+            <ContainerLoginPage onSubmit={handleSubmit}>
                 <Logo />
                 <TextEnter>Entrar</TextEnter>
                 <InputUserName
@@ -114,12 +113,12 @@ const LoginPage = props => {
                 />
                 <ErrorMessage>mensagem de erro, usar o redux</ErrorMessage>
                 <MainButtonComponent title="Entrar" type="submit" />
-                <TextRegisterUser>
+                <SignUpText>
                     Não possui cadastro?{' '}
-                    <GoToSignUp onClick={props.goToSignUp}>
+                    <GoToSignUpButton onClick={props.goToSignUp}>
                         Clique aqui.
-                    </GoToSignUp>
-                </TextRegisterUser>
+                    </GoToSignUpButton>
+                </SignUpText>
             </ContainerLoginPage>
         </LoginWrapper>
     )
@@ -127,7 +126,7 @@ const LoginPage = props => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      goToSignUp: () => dispatch(push(routes.signUp)) 
+      goToSignUp: () => {dispatch(push(routes.signUp))}
     };
 };
 

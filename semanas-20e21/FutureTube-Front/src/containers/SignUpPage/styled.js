@@ -40,7 +40,7 @@ export const InputPassword = styled(TextField)`
     height: 56px;
 `
 
-export const InputPasswordConfirm = styled(TextField)`
+export const InputPasswordConfirmation = styled(TextField)`
     margin-top: 16px;
     width: calc(100% - 32px);
     height: ${props => props.height};

@@ -5,16 +5,16 @@ import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 
 export const routes = {
+    login: "/",
     signUp: "/signup",
-    login: "/"
 };
 
-function Router(props) {
+const Router = props => {
     return (
         <ConnectedRouter history={props.history}>
             <Switch>
-                <Route path={routes.signUp} component={SignUpPage} />
-                <Route path={routes.login} component={LoginPage} />
+                <Route exact path={routes.signUp} component={SignUpPage} />
+                <Route exact path={routes.login} component={LoginPage} />
             </Switch>
         </ConnectedRouter>
     );
