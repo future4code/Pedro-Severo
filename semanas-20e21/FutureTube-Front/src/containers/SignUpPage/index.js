@@ -14,8 +14,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
+import * as firebase from 'firebase';
 
-const SignUpPage = props => {
+const SignUpPage = () => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -52,17 +53,25 @@ const SignUpPage = props => {
         setShowPasswordConfirmation(!showPasswordConfirmation);
     };
 
-    const handleSubmit = event => {
-        event.preventDefault()
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
+        console.log("foi")
         if (password === passwordConfirmation) {
-            return 
-        }
-        else {
+            const newUser = {
+                userName,
+                email,
+                password,
+            };
+            
+            await firebase.firestore().collection("users").add({newUser});         
+        } else {
             setPasswordErrorMessage({msg:"Os campos de senha e de confirmação de senha não estão iguais.", status: true});
             setHeightInputPasswordConfirmation("66px")
         };
     };
+
+    // TODO: mudar campo de login de acordo com o que é pedido no enunciado do projeto
 
     return ( 
         <SignUpWrapper>

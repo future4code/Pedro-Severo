@@ -29,6 +29,8 @@ const LoginPage = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
+
+        console.log(userName, email, password);
     };
 
     const handleFieldChangeUserName = event => {

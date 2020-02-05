@@ -14,7 +14,8 @@ import { createBrowserHistory } from "history";
 import { createStore, applyMiddleware, compose } from "redux";
 import { generateReducers } from "../../reducers";
 import { routerMiddleware} from "connected-react-router";
-import styled from "styled-components"
+import styled from "styled-components";
+
 
 export const MainStyled = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap"');
