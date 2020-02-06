@@ -34,6 +34,12 @@ export const InputEmail = styled(TextField) `
     height: 56px;
 `
 
+export const InputBirth = styled(TextField)`
+    margin-top: 16px;
+    width: calc(100% - 32px);
+    height: 56px;
+`
+
 export const InputPassword = styled(TextField)`
     margin-top: 16px;
     width: calc(100% - 32px);

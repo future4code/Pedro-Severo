@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import { routes } from '../Router';
 import MainButtonComponent from '../../components/MainButton';
 import Logo from "../../components/Logo";
 import { 
@@ -6,7 +9,8 @@ import {
     ContainerSignUpPage, 
     TextRegister, 
     InputName, 
-    InputEmail, 
+    InputEmail,
+    InputBirth, 
     InputPassword, 
     InputPasswordConfirmation 
 } from './styled';
@@ -16,9 +20,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import * as firebase from 'firebase';
 
-const SignUpPage = () => {
+const SignUpPage = props => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
+    const [birth, setBirth] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +40,10 @@ const SignUpPage = () => {
 
     const handleFieldChangeEmail = event => {
         setEmail(event.target.value);
+    };
+
+    const handleFieldChangeBirth = event => {
+        setBirth(event.target.value);
     };
 
     const handleFieldChangePassword = event => {
@@ -56,22 +65,25 @@ const SignUpPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        console.log("foi")
         if (password === passwordConfirmation) {
             const newUser = {
                 userName,
                 email,
-                password,
+                birth,
+                password
             };
             
-            await firebase.firestore().collection("users").add({newUser});         
+            firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password).then((res) => {
+                props.goToHomePage();  
+            })
+            .catch(function(error) {
+                console.log(error);
+            });       
         } else {
             setPasswordErrorMessage({msg:"Os campos de senha e de confirmação de senha não estão iguais.", status: true});
             setHeightInputPasswordConfirmation("66px")
         };
     };
-
-    // TODO: mudar campo de login de acordo com o que é pedido no enunciado do projeto
 
     return ( 
         <SignUpWrapper>
@@ -107,6 +119,17 @@ const SignUpPage = () => {
                     name="email"
                     type="email"
                     value={email}
+                />
+                <InputBirth
+                    required
+                    id="date"
+                    label="Birthday"
+                    type="date"
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    onChange={handleFieldChangeBirth}
+                    value={birth}
                 />
                 <InputPassword
                     required
@@ -175,4 +198,11 @@ const SignUpPage = () => {
     );
 };
 
-export default SignUpPage
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      goToHomePage: () => {dispatch(push(routes.homePage))}
+    };
+};
+
+export default connect(null, mapDispatchToProps)(SignUpPage);

@@ -8,7 +8,6 @@ import {
     LoginWrapper,
     ContainerLoginPage, 
     TextEnter,
-    InputUserName,
     InputEmail,
     InputPassword,
     SignUpText,
@@ -19,10 +18,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
-
+import * as firebase from 'firebase';
 
 const LoginPage = props => {
-    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -30,13 +28,14 @@ const LoginPage = props => {
     const handleSubmit = event => {
         event.preventDefault();
 
-        console.log(userName, email, password);
+        firebase.auth().signInWithEmailAndPassword(email, password).then((res) => {
+            props.goToHomePage();  
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
     };
-
-    const handleFieldChangeUserName = event => {
-        setUserName(event.target.value)
-    };
-    
+   
     const handleFieldChangeEmail = event => {
         setEmail(event.target.value);
     };
@@ -54,20 +53,6 @@ const LoginPage = props => {
             <ContainerLoginPage onSubmit={handleSubmit}>
                 <Logo />
                 <TextEnter>Entrar</TextEnter>
-                <InputUserName
-                    required
-                    label="Nome"
-                    placeholder="Como você quer ser chamado?"
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{
-                        shrink: true
-                    }}
-                    onChange={handleFieldChangeUserName}
-                    name="userName"
-                    type="userName"
-                    value={userName}
-                />
                 <InputEmail
                     required
                     label="E-mail"
@@ -128,7 +113,8 @@ const LoginPage = props => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      goToSignUp: () => {dispatch(push(routes.signUp))}
+      goToSignUp: () => {dispatch(push(routes.signUp))},
+      goToHomePage: () => {dispatch(push(routes.homePage))}
     };
 };
 
