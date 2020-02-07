@@ -1,26 +1,10 @@
-// TODO: Isolar o form de Login em um componente separado
-
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { routes } from '../Router';
-import MainButtonComponent from '../../components/MainButton';
-import Logo from "../../components/Logo";
-import { 
-    LoginWrapper,
-    ContainerLoginPage, 
-    TextEnter,
-    InputEmail,
-    InputPassword,
-    SignUpText,
-    GoToSignUpButton,
-    ErrorMessage 
-} from './styled';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
+import { LoginWrapper } from './styled';
 import * as firebase from 'firebase';
+import LoginForm from '../../components/LoginForm';
 
 const LoginPage = props => {
     const [email, setEmail] = useState('');
@@ -52,63 +36,16 @@ const LoginPage = props => {
 
     return (
         <LoginWrapper>
-            <ContainerLoginPage onSubmit={handleSubmit}>
-                <Logo />
-                <TextEnter>Entrar</TextEnter>
-                <InputEmail
-                    required
-                    label="E-mail"
-                    placeholder="email@email.com"
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{
-                        shrink: true
-                    }}
-                    onChange={handleFieldChangeEmail}
-                    name="email"
-                    type="email"
-                    value={email}
-                />
-                <InputPassword
-                    required
-                    label="Senha"
-                    placeholder="Mínimo 6 caracteres"
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{
-                        shrink: true
-                    }}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="Toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                >
-                                    {showPassword ? (
-                                        <VisibilityOff />
-                                    ) : (
-                                        <Visibility />
-                                    )}
-                                </IconButton>
-                            </InputAdornment>
-                        )
-                    }}
-                    onChange={handleFieldChangePassword}
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    id="password"
-                />
-                <ErrorMessage>mensagem de erro, usar o redux</ErrorMessage>
-                <MainButtonComponent title="Entrar" type="submit" />
-                <SignUpText>
-                    Não possui cadastro?{' '}
-                    <GoToSignUpButton onClick={props.goToSignUp}>
-                        Clique aqui.
-                    </GoToSignUpButton>
-                </SignUpText>
-            </ContainerLoginPage>
+            <LoginForm 
+                handleFieldChangeEmail={handleFieldChangeEmail}
+                handleFieldChangePassword={handleFieldChangePassword}
+                handleClickShowPassword={handleClickShowPassword}
+                handleSubmit={handleSubmit}
+                email={email}
+                showPassword={showPassword}
+                password={password}
+                goToSignUp={props.goToSignUp}
+            />
         </LoginWrapper>
     )
 };
