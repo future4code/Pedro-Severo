@@ -1,3 +1,7 @@
+// TODO: Isolar o form de cadastro em um componente separado
+// TODO: Adicionar url da phto no serviço de cadastro de usuário
+
+
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
@@ -73,8 +77,26 @@ const SignUpPage = props => {
                 password
             };
             
-            firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password).then((res) => {
-                props.goToHomePage();  
+            firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password).then(() => {
+                const user = firebase.auth().currentUser;
+                
+                firebase.firestore().collection("users").doc(user.uid).set({
+                    userName, 
+                    email,
+                    birth, 
+                    password
+                }).then(() => {
+                    user.updateProfile({
+                        displayName: userName,  
+                        photoURL: "link da foto"
+                    }).then(() => {
+                        props.goToHomePage();  
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                });
             })
             .catch(function(error) {
                 console.log(error);

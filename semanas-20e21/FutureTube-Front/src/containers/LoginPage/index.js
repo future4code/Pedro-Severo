@@ -1,3 +1,5 @@
+// TODO: Isolar o form de Login em um componente separado
+
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
@@ -24,17 +26,6 @@ const LoginPage = props => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        firebase.auth().signInWithEmailAndPassword(email, password).then((res) => {
-            props.goToHomePage();  
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
-    };
    
     const handleFieldChangeEmail = event => {
         setEmail(event.target.value);
@@ -46,6 +37,17 @@ const LoginPage = props => {
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword)
+    };
+
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+            props.goToHomePage();  
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
     };
 
     return (
