@@ -35,7 +35,9 @@ const LoginForm = props => {
     return (
         <ContainerLoginPage onSubmit={handleSubmit}>
             <Logo />
-            <TextEnter>Entrar</TextEnter>
+            <TextEnter>
+                Entrar
+            </TextEnter>
             <InputEmail
                 required
                 label="E-mail"
@@ -81,13 +83,15 @@ const LoginForm = props => {
                 value={props.password}
                 id="password"
             />
-            <ErrorMessage>mensagem de erro, usar o redux</ErrorMessage>
+            <ErrorMessage>
+                mensagem de erro, usar o redux
+            </ErrorMessage>
             <MainButtonComponent title="Entrar" type="submit" />
             <SignUpText>
                 Não possui cadastro?{' '}
                 <GoToSignUpButton onClick={props.goToSignUp}>
                     Clique aqui.
-            </GoToSignUpButton>
+                </GoToSignUpButton>
             </SignUpText>
         </ContainerLoginPage>
     );

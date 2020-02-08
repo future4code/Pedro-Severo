@@ -13,4 +13,5 @@ export const LogoIcon = styled(PlayCircleFilledWhiteIcon) `
 
 export const LogoText = styled.span `
     color: #000000;
+    font-size: 1.2vw;
 `;

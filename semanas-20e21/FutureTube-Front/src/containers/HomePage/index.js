@@ -1,9 +1,12 @@
 import React from "react";
 import * as firebase from 'firebase';
+import { HomePageWrapper } from './styled';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { routes } from '../Router';
-
+import Header from '../../components/Header';
+import Body from '../../components/Body';
+import LeftBar from '../../components/LeftBar';
 
 const HomePage = (props) => {
     
@@ -13,9 +16,13 @@ const HomePage = (props) => {
     };
 
     return (
-        <div>
-            <button onClick={handleClickLogout}>Logout</button>
-        </div>
+        <HomePageWrapper>
+            <Header 
+                handleClickLogout={handleClickLogout}
+            />
+            <LeftBar />
+            <Body />
+        </HomePageWrapper>
     );
 };
 
