@@ -20,9 +20,11 @@ const HomePage = (props) => {
             <Header 
                 handleClickLogout={handleClickLogout}
             />
-            <LeftBar />
+            <LeftBar 
+                
+            />
             <Body />
-        </HomePageWrapper>
+k4        </HomePageWrapper>
     );
 };
 
