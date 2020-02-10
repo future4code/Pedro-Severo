@@ -15,6 +15,6 @@ export const FlexDiv = styled.div`
 export const LeftButton = styled.div`   
     margin-left: 1.5vw;
     margin-top: 4px;
-    font-size: 3.5vh;
+    font-size: 14px;
     font-weight: bold;
 `;
