@@ -3,7 +3,7 @@ import { BodyWrapper } from "./styled";
 
 const Body = () => {    
     return <BodyWrapper>
-        Body
+        
     </BodyWrapper>
 };
 

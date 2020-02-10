@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button } from "@material-ui/core";
 
 export const HeaderWrapper = styled.div `
-    width: 100vw;
+    width: 100%;
     height: 56px;
     display: flex;
     align-items: center;
