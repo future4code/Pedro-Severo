@@ -23,8 +23,10 @@ const HomePage = (props) => {
             <LeftBar 
                 
             />
-            <Body />
-k4        </HomePageWrapper>
+            <Body 
+            
+            />
+        </HomePageWrapper>
     );
 };
 

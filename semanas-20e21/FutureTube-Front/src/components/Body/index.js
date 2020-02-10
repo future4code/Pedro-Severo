@@ -1,9 +1,10 @@
 import React from "react";
+import { BodyWrapper } from "./styled";
 
 const Body = () => {    
-    return <div>
+    return <BodyWrapper>
         Body
-    </div>
+    </BodyWrapper>
 };
 
 export default Body
