@@ -2,7 +2,7 @@ import React from 'react';
 import MainButtonComponent from '../../components/MainButton';
 import Logo from "../../components/Logo";
 import { 
-    ContainerLoginPage, 
+    LoginFormContainer, 
     TextEnter,
     InputEmail,
     InputPassword,
@@ -33,7 +33,7 @@ const LoginForm = props => {
     };
 
     return (
-        <ContainerLoginPage onSubmit={handleSubmit}>
+        <LoginFormContainer onSubmit={handleSubmit}>
             <Logo />
             <TextEnter>
                 Entrar
@@ -93,7 +93,7 @@ const LoginForm = props => {
                     Clique aqui.
                 </GoToSignUpButton>
             </SignUpText>
-        </ContainerLoginPage>
+        </LoginFormContainer>
     );
 };
 

@@ -5,11 +5,13 @@ import { Switch, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import HomePage from "../HomePage";
+import NewVideoPage from "../NewVideoPage";
 
 export const routes = {
     login: "/",
     signUp: "/signup",
-    homePage: "/home"
+    homePage: "/home",
+    newVideo: "/newVideo"
 };
 
 class Router extends Component {
@@ -33,6 +35,7 @@ class Router extends Component {
                 <Switch>
                     <Route exact path={routes.signUp} component={SignUpPage} />
                     <Route exact path={routes.homePage} component={HomePage} />
+                    <Route exact path={routes.newVideo} component={NewVideoPage} />
                     <Route exact path={routes.login} component={LoginPage} />
                 </Switch>
             </ConnectedRouter>
