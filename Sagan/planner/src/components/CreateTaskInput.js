@@ -22,7 +22,7 @@ const CreateTaskInput = (props) => {
     
     const createTask = event => {
         event.preventDefault()
-        props.createTask(taskValue)
+        props.createTask(taskValue, new Date().getTime(), false)
         setTaskValue('')
     };
 
@@ -48,7 +48,7 @@ const CreateTaskInput = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createTask: (text) => dispatch(createTask(text))
+        createTask: (text, id, done) => dispatch(createTask(text, id, done))
     }
 }
 

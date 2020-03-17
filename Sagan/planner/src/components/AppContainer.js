@@ -18,10 +18,10 @@ const AppContainer = (props) => {
             <TaskContainer 
                 task={task}
             />
-            <button>Excluir</button>
-            <button>Completar</button>
         </div>
     });
+
+    console.log(props.tasks)
     
     return <AppWrapper>
         <CreateTaskInput />
