@@ -8,9 +8,9 @@ import ListTripsPage from "../ListTripsPage/index";
 import TripDetailsPage from "../TripDetailsPage/index";
 
 export const routes = {
-  root: "/",
-  loginPage: "/login-page",
-  triperForm: "/application-form",
+  home: "/",
+  login: "/login",
+  applicationForm: "/application-form",
   tripsList: "/trips/list",
   tripsCreation: "/trips/create",
   tripsDetails: "/trips/details",
@@ -20,12 +20,12 @@ function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
-        <Route path={routes.loginPage} component={LoginPage} />
-        <Route path={routes.triperForm} component={ApplicationForm} />
-        <Route path={routes.tripsCreation} component={HomePage} />
-        <Route path={routes.tripsList} component={ListTripsPage} />
-        <Route path={routes.tripsDetails} component={TripDetailsPage} />
-        <Route path={routes.root} component={HomePage} />
+        <Route exact path={routes.home} component={HomePage} />
+        <Route exact path={routes.login} component={LoginPage} />
+        <Route exact path={routes.applicationForm} component={ApplicationForm} />
+        <Route exact path={routes.tripsList} component={ListTripsPage} />
+        <Route exact path={routes.tripsCreation} component={HomePage} />
+        <Route exact path={routes.tripsDetails} component={TripDetailsPage} />
       </Switch>
     </ConnectedRouter>
   );

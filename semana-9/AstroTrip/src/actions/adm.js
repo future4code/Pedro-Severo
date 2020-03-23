@@ -3,7 +3,8 @@ import { push } from "connected-react-router";
 import { routes } from "../containers/Router/index";
 
 export const doLogin = (email, password) => async(dispatch) => {
-    const response = await axios.post(
+    try {
+      const response = await axios.post(
         "https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/login",
         {
           email,
@@ -13,4 +14,7 @@ export const doLogin = (email, password) => async(dispatch) => {
       console.log("olar")
       window.localStorage.setItem("token", response.data.token);
       dispatch(push(routes.tripsList));
+    } catch (e) {
+      console.log("Error", e.message)
+    }
 }

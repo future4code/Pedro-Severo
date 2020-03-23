@@ -17,9 +17,9 @@ export class ListTripsPage extends Component {
     componentDidMount = () => {
         this.props.getTrips()
         const token = window.localStorage.getItem("token");
-        if (!token) {
-            this.props.goToHome();
-        }
+        // if (!token) {
+        //     this.props.goToHome();
+        // }
     }
 
     returnTripDetail = id => {
@@ -51,7 +51,7 @@ function mapDispatchToProps (dispatch) {
     return {
         getTrips: () => dispatch(getTrips()),
         setID: (id) => dispatch(setID(id)),
-        goToHome: () => dispatch(push(routes.root)),
+        goToHome: () => dispatch(push(routes.home)),
         goToTripsDetails: () => dispatch(push(routes.tripsDetails)),
     };
 };
