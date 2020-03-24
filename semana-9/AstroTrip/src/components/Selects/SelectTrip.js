@@ -8,7 +8,7 @@ export const SelectTrip = (props) => {
             name={props.name} 
             class="form-control"
             onChange={props.handleInputChange}
-            // value={props.value}
+            required
         >
             <option value=""></option>
             <option value="NXw3cviXO0zwpG4XKN1F">Festa Marciana - Marte</option>
