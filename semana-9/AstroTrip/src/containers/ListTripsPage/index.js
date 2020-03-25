@@ -17,9 +17,9 @@ export class ListTripsPage extends Component {
     componentDidMount = () => {
         this.props.getTrips()
         const token = window.localStorage.getItem("token");
-        // if (!token) {
-        //     this.props.goToHome();
-        // }
+        if (!token) {
+            this.props.goToHome();
+        }
     }
 
     returnTripDetail = id => {

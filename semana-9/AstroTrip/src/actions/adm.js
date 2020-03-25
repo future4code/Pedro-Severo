@@ -11,7 +11,6 @@ export const doLogin = (email, password) => async(dispatch) => {
           password
         }
       );
-      console.log("olar")
       window.localStorage.setItem("token", response.data.token);
       dispatch(push(routes.tripsList));
     } catch (e) {
