@@ -63,7 +63,7 @@ const Post = (props) => {
     </div>
     {componenteComentario}
   </div>
-  }
+}
 
 
 export default Post

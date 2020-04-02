@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import './SecaoComentario.css'
 
 const SecaoComentario = (props) => {
 
 
-	const onChangeComentario = () => {
+	const onChangeComentario = (event) => {
 
 	}
 
