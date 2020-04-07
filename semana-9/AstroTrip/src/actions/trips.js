@@ -28,24 +28,31 @@ export const setTripDetail = (trip) => {
 }
 
 export const getTrips = () => async (dispatch) => {
-    const response = await axios.get(
-        "https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips"
-    )
-    
-    dispatch(setTrips(response.data.trips))
+    try {
+        const response = await axios.get(
+            "https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips"
+        )
+        
+        dispatch(setTrips(response.data.trips))
+    } catch (e) {
+        console.log("Error", e.message)
+    }
 }
 
 export const getTripDetail = (id) => async (dispatch) => {
     const token = window.localStorage.getItem("token");
-    const response = await axios.get(
-        `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trip/${id}`,
-        {
-            headers: {
-                auth: token
-            }
+    try{    
+        const response = await axios.get(
+            `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trip/${id}`,
+            {
+                headers: {
+                    auth: token
+                }
         })
-        
-    dispatch(setTripDetail(response.data.trip))
+        dispatch(setTripDetail(response.data.trip))
+    } catch (e) {
+        console.log("Error", e.message)
+    }
 }
 
 export const createTrip = (newTrip) => async () => {
@@ -56,8 +63,12 @@ export const createTrip = (newTrip) => async () => {
         planet: newTrip.planet,
         name: newTrip.tripName,
     };
-    axios.post (
-        'https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips',
-        trip,
-    );
+    try {
+        axios.post (
+            'https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips',
+            trip,
+        );
+    } catch (e) {
+        console.log("Error", e.message);
+    }
 }

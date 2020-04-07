@@ -9,7 +9,7 @@ export const SelectCountry = (props) => {
             name={props.name} 
             class="form-control" 
             onChange={props.handleInputChange}
-            // value={props.value}
+            required
         >
             <option value=""></option>
             <option value="Brazil">Brazil</option>

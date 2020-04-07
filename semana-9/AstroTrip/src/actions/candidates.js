@@ -9,8 +9,12 @@ export const applyToTrip = (applicationForm) => async () => {
         country: applicationForm.country
     };
     console.log(candidate)
-    axios.post (
-        `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips/${applicationForm.tripId}/apply`,
-        candidate,
-    );
+    try {
+        axios.post (
+            `https://us-central1-missao-newton.cloudfunctions.net/futureX/severo/trips/${applicationForm.tripId}/apply`,
+            candidate,
+        );
+    } catch (e) {
+        console.log("Error:", e.message)
+    }
 }

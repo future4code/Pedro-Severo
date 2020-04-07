@@ -51,7 +51,7 @@ function mapDispatchToProps (dispatch) {
     return {
         getTrips: () => dispatch(getTrips()),
         setID: (id) => dispatch(setID(id)),
-        goToHome: () => dispatch(push(routes.root)),
+        goToHome: () => dispatch(push(routes.home)),
         goToTripsDetails: () => dispatch(push(routes.tripsDetails)),
     };
 };
