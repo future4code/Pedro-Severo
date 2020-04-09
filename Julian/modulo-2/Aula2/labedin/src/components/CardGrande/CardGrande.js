@@ -1,7 +1,7 @@
 import React from 'react';
-import './BigCard.css'
+import './CardGrande.css'
 
-function BigCard(props) {
+function CardGrande(props) {
     return (
         <div className="bigcard-container">
             <img src={ props.imagem } />
@@ -13,4 +13,4 @@ function BigCard(props) {
     )
 }
 
-export default BigCard;
+export default CardGrande;
