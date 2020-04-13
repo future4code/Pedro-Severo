@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import PageSection from './components/PageSection/PageSection';
 import CardGrande from './components/CardGrande/CardGrande';
-import SmallCard from './components/SmallCard/SmallCard';
+import CardPequeno from './components/CardPequeno/CardPequeno';
 import ImagemButton from './components/ImagemButton/ImagemButton';
 
 function App() {
@@ -19,6 +18,17 @@ function App() {
           imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
           texto="Ver mais"
         />
+
+        <CardPequeno 
+          imagem="https://icon-library.net/images/mail-icon-vector/mail-icon-vector-11.jpg" 
+          item="Email: " 
+          informacao="labenucode@gmail.com" />
+        <CardPequeno 
+          imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUr0CB5hbLoumCajStiAqj4aqoI2CDKmm0eJY2-9cTUuBy6qnx" 
+          item="Endereço: " 
+          informacao="Rua Labenu" 
+        />
+
       </div>
 
       <div className="page-section-container">
@@ -26,7 +36,7 @@ function App() {
         <CardGrande 
           imagem="https://s3.amazonaws.com/future4.com.br/static/headf4-c492117ca2373dc85ca81bf715b3dc2a.png" 
           nome="Labenu" 
-          descricao="Formando desenvolvedores para o futuro!." 
+          descricao="Formando desenvolvedores para o mercado de trabalho!" 
         />
         
         <CardGrande 
