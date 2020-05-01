@@ -28,7 +28,6 @@ class App extends React.Component {
   };
 
   render () {
-    console.log("render")
     return (
       <div>
         {this.renderizaEtapa()}

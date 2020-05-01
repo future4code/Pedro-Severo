@@ -7,7 +7,8 @@ function CardGrande(props) {
             <img src={ props.imagem } />
             <div>
                 <h4>{ props.nome }</h4>
-                <p>{ props.descricao }</p>
+                <p>{ props.descricaoProps }</p>
+                <p>{ props.bananinha }</p>
             </div>
         </div>
     )
