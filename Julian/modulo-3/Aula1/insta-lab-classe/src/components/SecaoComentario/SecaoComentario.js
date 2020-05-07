@@ -12,7 +12,7 @@ const InputComment = styled.input `
     margin-right: 5px;
 `
 
-export class SecaoComentario extends Component {
+class SecaoComentario extends Component {
 	state = {
 		inputValue: "",
 	}
@@ -22,15 +22,15 @@ export class SecaoComentario extends Component {
 	}
 
 	render() {
-		return (
-			<CommentContainer>
-				<InputComment
-					placeholder={'Comentário'}
-					value={this.state.inputValue}
-					onChange={this.onChangeComentario}
-				/>
-				<button onClick={() => {this.props.enviarComentario(this.state.inputValue)}}>Enviar</button>
-			</CommentContainer>
-		)
+		return <CommentContainer>
+			<InputComment
+				placeholder={'Comentário'}
+				value={this.state.inputValue}
+				onChange={this.onChangeComentario}
+			/>
+			<button onClick={() => {this.props.enviarComentario(this.state.inputValue)}}>Enviar</button>
+		</CommentContainer>
 	}
 }
+
+export default SecaoComentario

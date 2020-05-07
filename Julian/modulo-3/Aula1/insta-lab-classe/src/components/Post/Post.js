@@ -4,17 +4,17 @@ import { PostContainer, PostHeader, UserPhoto, PostPhoto, PostFooter, CommentCon
 import { IconeComContador } from '../IconeComContador/IconeComContador'
 import { SecaoComentario } from '../SecaoComentario/SecaoComentario'
 
-import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
+import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 
 class Post extends React.Component {
   state = {
-    comentarios: [], // responsável por guardar os comentários que são feitos
     curtido: false, // usado para a lógica de mudança de cor do coração e o aumento/diminuição do número de curtidas
     numeroCurtidas: 0, // número de curtidas do post. Varia entre 0 e 1. 
     comentando: false, // usado para a lógica de abrir ou fechar a caixa de comentário
-    numeroComentarios: 0 // número de comentários do post.
+    numeroComentarios: 0, // número de comentários do post.
+    comentarios: [], // responsável por guardar a lista de comentários feitos no post
   }
 
   onClickCurtida = () => {
@@ -59,17 +59,17 @@ class Post extends React.Component {
 
   render() {
     // De acordo com a propriedade curtido do estado, o valor muda entre  iconeCoracaoPreto e o iconeCoracaoBranco, 
-    // que estão sendo importados nas linhas ____ e ____, respectivamente. 
+    // que estão sendo importados nas linhas 7 e 8, respectivamente. 
     const iconeCurtida = this.state.curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
 
-    // expressão condicional que, de acordo com o valor de comentando, do estado, renderiza o componente
-    // SecaoComentario ou o componente CommentContainer. Esta expressão está sendo chamada na tela na linha ___
+    // expressão condicional que, de acordo com o valor de comentando no estado, renderiza o componente
+    // SecaoComentario ou o CommentContainer. Esta expressão está sendo chamada no JSX na linha 104
     const caixaDeComentario = this.state.comentando ? (
-      // Componente com o input e botão de enviar novo comentario. Inport dele na linha 2.
+      // Componente com o input e botão de enviar novo comentario. Import dele na linha 5.
       <SecaoComentario enviarComentario={this.enviarComentario}/>
     ) : (
       // Funcao map sendo feita na propriedade comentarios do estado. Ou seja, está sendo pego todos os
-      // comentários do estado para que eles sejam renderizados na tela dentro do componente CommentContainer 
+      // comentários do estado para serem renderizados na tela, dentro do componente CommentContainer 
       this.state.comentarios.map(comentario => {
         return (
           <CommentContainer>
@@ -79,32 +79,30 @@ class Post extends React.Component {
       })
     )
 
-    return (
-      <PostContainer>
-        <PostHeader>
-          <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
-          <p>{this.props.nomeUsuario}</p>
-        </PostHeader>
+    return <PostContainer>
+      <PostHeader>
+        <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
+        <p>{this.props.nomeUsuario}</p>
+      </PostHeader>
 
-        <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>
 
-        <PostFooter>
-          <IconeComContador
-            icone={iconeCurtida}
-            onClickIcone={this.onClickCurtida}
-            valorContador={this.state.numeroCurtidas}
-          />
+      <PostFooter>
+        <IconeComContador
+          icone={iconeCurtida}
+          onClickIcone={this.onClickCurtida}
+          valorContador={this.state.numeroCurtidas}
+        />
 
-          <IconeComContador
-            icone={iconeComentario}
-            onClickIcone={this.onClickComentario}
-            valorContador={this.state.numeroComentarios}
-          />
+        <IconeComContador
+          icone={iconeComentario}
+          onClickIcone={this.onClickComentario}
+          valorContador={this.state.numeroComentarios}
+        />
 
-        </PostFooter>
-        {caixaDeComentario}
-      </PostContainer>
-    )
+      </PostFooter>
+      {caixaDeComentario}
+    </PostContainer>
   }
 }
 
