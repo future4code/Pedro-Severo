@@ -8,7 +8,9 @@ export const SelectPlanet = (props) => {
             name={props.name} 
             class="form-control" 
             onChange={props.handleInputChange}
+            required
         >
+            <option value=""></option>
             <option value="mercury">Mercúrio</option>
             <option value="venus">Vênus</option>
             <option value="earth">Terra</option>

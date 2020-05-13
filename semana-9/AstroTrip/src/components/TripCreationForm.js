@@ -4,6 +4,39 @@ import { connect } from 'react-redux';
 import { createTrip } from '../actions/trips';
 import SelectPlanet from './Selects/SelectPlanet';
 
+const labelsForm = [
+    {
+        required: true,
+        name: "tripName",
+        label: "Nome da viagem",
+        type: "text",
+        pattern: "[a-zA-Z\s]{5,}",
+        title: "Nome da viagem (mínimo 5 caracteres)"
+    },
+    {
+        required: true,
+        name: "date",
+        label: "Data",
+        type: "date",
+        title: "Data futura"
+    },
+    {
+        required: true,
+        name: "descriptionTrip",
+        label: "Descrição da viagem (mínimo 30 caracteres)",
+        type: "text",
+        title: "Descrição da viagem"
+    },
+    {
+        required: true,
+        name: "durationInDays",
+        label: "Duração da viagem em dias",
+        type: "number",
+        min: 50,
+        title: "Duração da viagem em dias (mínimo de 50 dias)"
+    }
+]
+
 const Form = styled.form `
     display: flex;
     flex-direction: column;
@@ -30,60 +63,41 @@ export class TripCreationForm extends Component {
     };
 
     handleOnSubmit = event => {
+        console.log("oi ")
         event.preventDefault();
         console.log(this.state);
-        this.props.createTrip(this.state.newTrip)
+        // this.props.createTrip(this.state.newTrip)
     };
 
 
     render () {
         return (
             <div>
-                <Form>
-                    <label>Nome da Viagem (mínimo: 5 caracteres):</label>
-                    <Input 
-                        required 
-                        name="tripName" 
-                        type="text" 
-                        pattern="[a-zA-Z\s]{5,}"
-                        value={this.state.newTrip["tripName"] || ""}
-                        onChange={this.handleInputChange} 
-                    />
-                    <label>Planeta:</label>
+                <Form onSubmit={this.handleOnSubmit}>
                     <SelectPlanet 
-                        // não estou conseguindo colocar requisito de necessiade de mudança no select,
-                        // o que permite que o submit seja feito com os dois campos de select em branco
                         name="planet"
                         handleInputChange={this.handleInputChange}
                     />
-                    {/* Não estou conseguindo criar o requisito de data mínima sendo o dia de hoje */}
-                    <label>Data:</label>
-                    <Input 
-                        required 
-                        name="date" 
-                        type="date"
-                        value={this.state.newTrip["date"] || ""}
-                        onChange={this.handleInputChange}
-                    />
-                    <label>Descrição da viagem (mínimo: 30 caracteres):</label>
-                    <Input 
-                        required 
-                        name="descriptionTrip" 
-                        type="text" 
-                        pattern="[a-zA-Z\s]{30,}" 
-                        value={this.state.newTrip["descriptionTrip"] || ""}
-                        onChange={this.handleInputChange}
-                    />
-                    <label>Duração da viagem em dias(mínimo: 50 dias):</label>
-                    <Input 
-                        required 
-                        name="durationInDays" 
-                        type="number" 
-                        min="50" 
-                        value={this.state.newTrip["durationInDays"] || ""}
-                        onChange={this.handleInputChange}
-                    />
-                    <button type="submit" onClick={this.handleOnSubmit}>Enviar</button>
+                    {labelsForm.map(field => {
+                        return (
+                            <div key={field.name}>
+                                <label>{field.label}</label>
+                                <Input 
+                                    required={field.required}
+                                    value={this.state.newTrip[field.name] || ""}
+                                    id={field.name}
+                                    name={field.name}
+                                    type={field.type}
+                                    label={field.label}
+                                    min={field.min}
+                                    parttern={field.pattern}
+                                    title={field.title}
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                        )
+                    })}
+                    <button type="submit">Enviar</button>
                 </Form>
             </div>
         );

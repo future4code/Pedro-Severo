@@ -60,8 +60,8 @@ export const HomePage = (props) => {
 
 function mapDispatchToProps (dispatch) {
     return {
-        goToLoginPage: () => dispatch(push(routes.loginPage)),
-        goToTriperForm: () => dispatch(push(routes.triperForm)),
+        goToLoginPage: () => dispatch(push(routes.login)),
+        goToTriperForm: () => dispatch(push(routes.applicationForm)),
         goToTripsCreation: () => dispatch(push(routes.tripsCreation)),
         goToTripsDetails: () => dispatch(push(routes.tripsDetails)),
     };
