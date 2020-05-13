@@ -9,7 +9,7 @@ const AppContainer = styled.div `
   align-items: center;
 `
 
-const App = (props) => {
+const App = () => {
   return (
     <AppContainer>
       <Post

@@ -9,17 +9,16 @@ const AppContainer = styled.div `
   align-items: center;
 `
 
-const App = (props) => {
+function App() {
   return (
     <AppContainer>
       <Post
         nomeUsuario={'Usuário'}
-        fotoUsuario={'https://picsum.photos/50/50'}
-        fotoPost={'https://picsum.photos/200/150'}
-      />
+        fotoUsuario={'https://picsum.photos/50/50?=1'}
+        fotoPost={'https://picsum.photos/200/150?=2'}
+      />        
     </AppContainer>
   );
 }
-
 
 export default App;
